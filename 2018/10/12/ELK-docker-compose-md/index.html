@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="聂小涛的博客">
+    <meta name="keyword"  content="腾讯">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        ELK_docker-compose.md - AirCloud的博客 | AirCloud&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> sometimes code， sometimes design </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ethan Lee</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#elasticsearch-集群部署"><span class="toc-text">elasticsearch 集群部署</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装docker"><span class="toc-text">安装docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#启动-Docker-CE"><span class="toc-text">启动 Docker CE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建立-docker-用户组"><span class="toc-text">建立 docker 用户组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试dockers-是否安装正确"><span class="toc-text">测试dockers 是否安装正确</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装docker-compopse"><span class="toc-text">安装docker-compopse</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PIP-安装-dockerpose"><span class="toc-text">PIP 安装 dockerpose</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写-docker-compose-yml"><span class="toc-text">编写 docker-compose.yml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行-eslasticsearch-kibana"><span class="toc-text">运行 eslasticsearch-kibana</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> sometimes code， sometimes design </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        ELK_docker-compose.md
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-10-12 03:56:40</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Elk" title="Elk">Elk</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="elasticsearch-集群部署"><a href="#elasticsearch-集群部署" class="headerlink" title="elasticsearch 集群部署"></a>elasticsearch 集群部署</h1><p>我们使用dockers-compose实现单机多节点的部署</p>
+<h2 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h2><p>在测试或开发环境中 Docker 官方为了简化安装流程，提供了一套便捷的安装脚本，Ubuntu 系统上可以使用这套脚本安装：<br><figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="string">curl </span>-<span class="string">fsSL </span><span class="string">get.</span><span class="string">docker.</span><span class="string">com </span>-o <span class="built_in">get-docker.sh</span></span><br><span class="line"><span class="built_in">$</span> <span class="string">sudo </span><span class="string">sh </span><span class="built_in">get-docker.sh</span> <span class="built_in">--mirror</span> <span class="string">Aliyun</span></span><br></pre></td></tr></table></figure></p>
+<p>执行这个命令后，脚本就会自动的将一切准备工作做好，并且把 Docker CE 的 Edge 版本安装在系统中。</p>
+<h3 id="启动-Docker-CE"><a href="#启动-Docker-CE" class="headerlink" title="启动 Docker CE"></a>启动 Docker CE</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl <span class="built_in">enable</span> docker</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl start docker</span></span><br></pre></td></tr></table></figure>
+<h3 id="建立-docker-用户组"><a href="#建立-docker-用户组" class="headerlink" title="建立 docker 用户组"></a>建立 docker 用户组</h3><p>默认情况下，docker 命令会使用 Unix socket 与 Docker 引擎通讯。而只有 root 用户和 docker 组的用户才可以访问 Docker 引擎的 Unix socket。出于安全考虑，一般 Linux 系统上不会直接使用 root 用户。因此，更好地做法是将需要使用 docker 的用户加入 docker 用户组。</p>
+<p><code>$ sudo groupadd docker</code></p>
+<p>将当前用户 加入 <code>docker</code> 组：</p>
+<p><code>$ sudo usermod -aG docker $USER</code></p>
+<h3 id="测试dockers-是否安装正确"><a href="#测试dockers-是否安装正确" class="headerlink" title="测试dockers 是否安装正确"></a>测试dockers 是否安装正确</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$ docker run hello-world</span><br><span class="line"></span><br><span class="line">Unable <span class="built_in">to</span> find image <span class="string">'hello-world:latest'</span> locally</span><br><span class="line">latest: Pulling <span class="built_in">from</span> library/hello-world</span><br><span class="line">ca4f61b1923c: Pull complete</span><br><span class="line">Digest: sha256:be0cd392e45be79ffeffa6b05338b98ebb16c87b255f48e297ec7f98e123905c</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> hello-world:latest</span><br><span class="line"></span><br><span class="line">Hello <span class="built_in">from</span> Docker!</span><br><span class="line">This message shows that your installation appears <span class="built_in">to</span> be working correctly.</span><br><span class="line"></span><br><span class="line">To generate this message, Docker took <span class="keyword">the</span> following steps:</span><br><span class="line"> <span class="number">1.</span> The Docker client contacted <span class="keyword">the</span> Docker daemon.</span><br><span class="line"> <span class="number">2.</span> The Docker daemon pulled <span class="keyword">the</span> <span class="string">"hello-world"</span> image <span class="built_in">from</span> <span class="keyword">the</span> Docker Hub.</span><br><span class="line">    (amd64)</span><br><span class="line"> <span class="number">3.</span> The Docker daemon created <span class="keyword">a</span> <span class="built_in">new</span> container <span class="built_in">from</span> that image which runs <span class="keyword">the</span></span><br><span class="line">    executable that produces <span class="keyword">the</span> output you are currently reading.</span><br><span class="line"> <span class="number">4.</span> The Docker daemon streamed that output <span class="built_in">to</span> <span class="keyword">the</span> Docker client, which sent <span class="keyword">it</span></span><br><span class="line">    <span class="built_in">to</span> your terminal.</span><br><span class="line"></span><br><span class="line">To <span class="keyword">try</span> something more ambitious, you can run <span class="keyword">an</span> Ubuntu container <span class="keyword">with</span>:</span><br><span class="line"> $ docker run -<span class="keyword">it</span> ubuntu bash</span><br><span class="line"></span><br><span class="line">Share images, automate workflows, <span class="keyword">and</span> more <span class="keyword">with</span> <span class="keyword">a</span> free Docker ID:</span><br><span class="line"> <span class="keyword">https</span>://cloud.docker.com/</span><br><span class="line"></span><br><span class="line">For more examples <span class="keyword">and</span> ideas, visit:</span><br><span class="line"> <span class="keyword">https</span>://docs.docker.com/engine/userguide/</span><br></pre></td></tr></table></figure>
+<h2 id="安装docker-compopse"><a href="#安装docker-compopse" class="headerlink" title="安装docker-compopse"></a>安装docker-compopse</h2><p>Compose 项目是 Docker 官方的开源项目，负责实现对 Docker 容器集群的快速编排。<br>它允许用户通过一个单独的 docker-compose.yml 模板文件（YAML 格式）来定义一组相关联的应用容器为一个项目（project）。</p>
+<p>Compose 中有两个重要的概念：</p>
+<ul>
+<li><p>服务 (service)：一个应用的容器，实际上可以包括若干运行相同镜像的容器实例。</p>
+</li>
+<li><p>项目 (project)：由一组关联的应用容器组成的一个完整业务单元，在 docker-compose.yml 文件中定义。</p>
+</li>
+</ul>
+<p>Compose 的默认管理对象是项目，通过子命令对项目中的一组容器进行便捷地生命周期管理。</p>
+<p>Compose 项目由 Python 编写，实现上调用了 Docker 服务提供的 API 来对容器进行管理。因此，只要所操作的平台支持 Docker API，就可以在其上利用 Compose 来进行编排管理。</p>
+<h3 id="PIP-安装-dockerpose"><a href="#PIP-安装-dockerpose" class="headerlink" title="PIP 安装 dockerpose"></a>PIP 安装 dockerpose</h3><p><code>$ sudo pip install -U docker-compose</code></p>
+<h3 id="编写-docker-compose-yml"><a href="#编写-docker-compose-yml" class="headerlink" title="编写 docker-compose.yml"></a>编写 docker-compose.yml</h3><p>编写 docker-compose.yml 文件,输入以下内容：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'2.2'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  elasticsearch:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">docker.elastic.co/elasticsearch/elasticsearch:6.4.0</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">elasticsearch</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">cluster.name=docker-cluster</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">bootstrap.memory_lock=true</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"ES_JAVA_OPTS=-Xms512m -Xmx512m"</span></span><br><span class="line"><span class="attr">    ulimits:</span></span><br><span class="line"><span class="attr">      memlock:</span></span><br><span class="line"><span class="attr">        soft:</span> <span class="bullet">-1</span></span><br><span class="line"><span class="attr">        hard:</span> <span class="bullet">-1</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="attr">        - esdata1:</span><span class="string">/usr/share/elasticsearch/data</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">/home/ethan/EKL/config:/usr/share/elasticsearch/config</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">9200</span><span class="string">:9200</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">9300</span><span class="string">:9300</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">esnet</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  elasticsearch2:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">docker.elastic.co/elasticsearch/elasticsearch:6.4.0</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">elasticsearch2</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">cluster.name=docker-cluster</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">bootstrap.memory_lock=true</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"ES_JAVA_OPTS=-Xms512m -Xmx512m"</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"discovery.zen.ping.unicast.hosts=elasticsearch"</span></span><br><span class="line"><span class="attr">    ulimits:</span></span><br><span class="line"><span class="attr">      memlock:</span></span><br><span class="line"><span class="attr">        soft:</span> <span class="bullet">-1</span></span><br><span class="line"><span class="attr">        hard:</span> <span class="bullet">-1</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="attr">      - esdata2:</span><span class="string">/usr/share/elasticsearch/data</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">esnet</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  elasticsearch3:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">docker.elastic.co/elasticsearch/elasticsearch:6.4.0</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">elasticsearch3</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">cluster.name=docker-cluster</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">bootstrap.memory_lock=true</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"ES_JAVA_OPTS=-Xms512m -Xmx512m"</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"discovery.zen.ping.unicast.hosts=elasticsearch"</span></span><br><span class="line"><span class="attr">    ulimits:</span></span><br><span class="line"><span class="attr">      memlock:</span></span><br><span class="line"><span class="attr">        soft:</span> <span class="bullet">-1</span></span><br><span class="line"><span class="attr">        hard:</span> <span class="bullet">-1</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="attr">      - esdata3:</span><span class="string">/usr/share/elasticsearch/data</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">esnet</span></span><br><span class="line"><span class="attr">  kibana:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">docker.elastic.co/kibana/kibana:6.4.0</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">kibana</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      SERVER_NAME:</span> <span class="string">kibana</span></span><br><span class="line"><span class="attr">      ELASTICSEARCH_URL:</span> <span class="attr">http://elasticsearch:9200</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">5601</span><span class="string">:5601</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">esnet</span></span><br><span class="line"></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line"><span class="attr">  esdata1:</span></span><br><span class="line"><span class="attr">    driver:</span> <span class="string">local</span></span><br><span class="line"><span class="attr">  esdata2:</span></span><br><span class="line"><span class="attr">    driver:</span> <span class="string">local</span></span><br><span class="line"><span class="attr">  esdata3:</span></span><br><span class="line"><span class="attr">    driver:</span> <span class="string">local</span></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line"><span class="attr">  esnet:</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="运行-eslasticsearch-kibana"><a href="#运行-eslasticsearch-kibana" class="headerlink" title="运行 eslasticsearch-kibana"></a>运行 eslasticsearch-kibana</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">docker-compose up</span></span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ethan2lee">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://anne2bin.top">anne2bin</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: 'ELK_docker-compose.md',
+        owner: 'ethan2lee',
+        repo: 'ethan2lee.github.io',
+        oauth: {
+            client_id: 'f89dcdd89e52d0081cc6',
+            client_secret: 'a8a684a5024e2f9c74f39cef20f7ed1c22ebed05',
+        },
+    })
+    gitment.render('comment-container')
+</script>
+
+
+</html>

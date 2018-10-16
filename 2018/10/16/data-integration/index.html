@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="聂小涛的博客">
+    <meta name="keyword"  content="腾讯">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        data_integration - AirCloud的博客 | AirCloud&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> sometimes code， sometimes design </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ethan Lee</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据整合"><span class="toc-text">数据整合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#行列操作"><span class="toc-text">行列操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#选择单列"><span class="toc-text">选择单列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择多行多列"><span class="toc-text">选择多行多列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建，删除列"><span class="toc-text">创建，删除列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#条件查询"><span class="toc-text">条件查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成示例数据"><span class="toc-text">生成示例数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单条件查询"><span class="toc-text">单条件查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多条件查询"><span class="toc-text">多条件查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-qurey"><span class="toc-text">使用 qurey</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#横向连接"><span class="toc-text">横向连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#外连接"><span class="toc-text">外连接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#左连接"><span class="toc-text">左连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#右连接"><span class="toc-text">右连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全连接"><span class="toc-text">全连接</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#行索引连接"><span class="toc-text">行索引连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#纵向合并"><span class="toc-text">纵向合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#排序"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分组汇总"><span class="toc-text">分组汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分组变量"><span class="toc-text">分组变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#汇总变量"><span class="toc-text">汇总变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#汇总统计量"><span class="toc-text">汇总统计量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多重索引"><span class="toc-text">多重索引</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> sometimes code， sometimes design </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        data_integration
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-10-16 09:51:49</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#数据分析，数据整合" title="数据分析，数据整合">数据分析，数据整合</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="数据整合"><a href="#数据整合" class="headerlink" title="数据整合"></a>数据整合</h1><h2 id="行列操作"><a href="#行列操作" class="headerlink" title="行列操作"></a>行列操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">sample = pd.DataFrame(np.random.randn(<span class="number">4</span>,<span class="number">5</span>),columns=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>])</span><br><span class="line">sample</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[2]</span>: </span><br><span class="line">          <span class="selector-tag">a</span>         <span class="selector-tag">b</span>         <span class="selector-tag">c</span>         <span class="selector-tag">d</span>         <span class="selector-tag">e</span></span><br><span class="line">0 <span class="selector-tag">-0</span><span class="selector-class">.776807</span>  2<span class="selector-class">.355071</span> <span class="selector-tag">-0</span><span class="selector-class">.940921</span>  0<span class="selector-class">.164487</span> <span class="selector-tag">-1</span><span class="selector-class">.025772</span></span><br><span class="line">1  0<span class="selector-class">.596704</span>  0<span class="selector-class">.962625</span>  1<span class="selector-class">.848441</span> <span class="selector-tag">-1</span><span class="selector-class">.122676</span> <span class="selector-tag">-0</span><span class="selector-class">.359290</span></span><br><span class="line">2 <span class="selector-tag">-0</span><span class="selector-class">.092755</span> <span class="selector-tag">-0</span><span class="selector-class">.124250</span> <span class="selector-tag">-0</span><span class="selector-class">.259899</span> <span class="selector-tag">-0</span><span class="selector-class">.111997</span> <span class="selector-tag">-1</span><span class="selector-class">.816197</span></span><br><span class="line">3  0<span class="selector-class">.372941</span>  0<span class="selector-class">.297850</span> <span class="selector-tag">-0</span><span class="selector-class">.409256</span>  0<span class="selector-class">.485376</span> <span class="selector-tag">-2</span><span class="selector-class">.790929</span></span><br></pre></td></tr></table></figure>
+<h3 id="选择单列"><a href="#选择单列" class="headerlink" title="选择单列"></a>选择单列</h3><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sample[<span class="string">'a'</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[4]</span>: </span><br><span class="line">0   <span class="selector-tag">-0</span><span class="selector-class">.776807</span></span><br><span class="line">1    0<span class="selector-class">.596704</span></span><br><span class="line">2   <span class="selector-tag">-0</span><span class="selector-class">.092755</span></span><br><span class="line">3    0<span class="selector-class">.372941</span></span><br><span class="line"><span class="selector-tag">Name</span>: <span class="selector-tag">a</span>, <span class="selector-tag">dtype</span>: <span class="selector-tag">float64</span></span><br></pre></td></tr></table></figure>
+<p>数据框的ix，iloc，ioc方法都可以选择行，列，iloc方法只能使用数值作为索引来选择行列，loc方法在选择时能使用字符串索引，ix方法则可以使用两种索引</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sample<span class="selector-class">.ix</span>[:,<span class="string">'a'</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[5]</span>: </span><br><span class="line">0   <span class="selector-tag">-0</span><span class="selector-class">.776807</span></span><br><span class="line">1    0<span class="selector-class">.596704</span></span><br><span class="line">2   <span class="selector-tag">-0</span><span class="selector-class">.092755</span></span><br><span class="line">3    0<span class="selector-class">.372941</span></span><br><span class="line"><span class="selector-tag">Name</span>: <span class="selector-tag">a</span>, <span class="selector-tag">dtype</span>: <span class="selector-tag">float64</span></span><br></pre></td></tr></table></figure>
+<p>或者单选列</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sample</span><span class="selector-attr">[['a']</span>]</span><br><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[6]</span>: </span><br><span class="line">          <span class="selector-tag">a</span></span><br><span class="line">0 <span class="selector-tag">-0</span><span class="selector-class">.776807</span></span><br><span class="line">1  0<span class="selector-class">.596704</span></span><br><span class="line">2 <span class="selector-tag">-0</span><span class="selector-class">.092755</span></span><br><span class="line">3  0<span class="selector-class">.372941</span></span><br></pre></td></tr></table></figure>
+<h3 id="选择多行多列"><a href="#选择多行多列" class="headerlink" title="选择多行多列"></a>选择多行多列</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sample</span><span class="selector-class">.ix</span><span class="selector-attr">[0:2,0:2]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[7]</span>: </span><br><span class="line">          <span class="selector-tag">a</span>         <span class="selector-tag">b</span></span><br><span class="line">0 <span class="selector-tag">-0</span><span class="selector-class">.776807</span>  2<span class="selector-class">.355071</span></span><br><span class="line">1  0<span class="selector-class">.596704</span>  0<span class="selector-class">.962625</span></span><br><span class="line">2 <span class="selector-tag">-0</span><span class="selector-class">.092755</span> <span class="selector-tag">-0</span><span class="selector-class">.124250</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sample</span><span class="selector-class">.iloc</span><span class="selector-attr">[0:2,0:2]</span></span><br></pre></td></tr></table></figure>
+<h3 id="创建，删除列"><a href="#创建，删除列" class="headerlink" title="创建，删除列"></a>创建，删除列</h3><p>第一种方式</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sample[<span class="string">'new_col1'</span>]=sample[<span class="string">'a'</span>]-sample[<span class="string">'b'</span>]</span><br><span class="line">sample</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[10]</span>: </span><br><span class="line">          <span class="selector-tag">a</span>         <span class="selector-tag">b</span>         <span class="selector-tag">c</span>         <span class="selector-tag">d</span>         <span class="selector-tag">e</span>  <span class="selector-tag">new_col1</span></span><br><span class="line">0 <span class="selector-tag">-0</span><span class="selector-class">.776807</span>  2<span class="selector-class">.355071</span> <span class="selector-tag">-0</span><span class="selector-class">.940921</span>  0<span class="selector-class">.164487</span> <span class="selector-tag">-1</span><span class="selector-class">.025772</span> <span class="selector-tag">-3</span><span class="selector-class">.131877</span></span><br><span class="line">1  0<span class="selector-class">.596704</span>  0<span class="selector-class">.962625</span>  1<span class="selector-class">.848441</span> <span class="selector-tag">-1</span><span class="selector-class">.122676</span> <span class="selector-tag">-0</span><span class="selector-class">.359290</span> <span class="selector-tag">-0</span><span class="selector-class">.365921</span></span><br><span class="line">2 <span class="selector-tag">-0</span><span class="selector-class">.092755</span> <span class="selector-tag">-0</span><span class="selector-class">.124250</span> <span class="selector-tag">-0</span><span class="selector-class">.259899</span> <span class="selector-tag">-0</span><span class="selector-class">.111997</span> <span class="selector-tag">-1</span><span class="selector-class">.816197</span>  0<span class="selector-class">.031495</span></span><br><span class="line">3  0<span class="selector-class">.372941</span>  0<span class="selector-class">.297850</span> <span class="selector-tag">-0</span><span class="selector-class">.409256</span>  0<span class="selector-class">.485376</span> <span class="selector-tag">-2</span><span class="selector-class">.790929</span>  0<span class="selector-class">.075091</span></span><br></pre></td></tr></table></figure>
+<p>第二种方式</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sample.assign(<span class="keyword">new</span><span class="type">_col2</span>=sample[<span class="string">'a'</span>]-sample[<span class="string">'b'</span>],<span class="keyword">new</span><span class="type">_col3</span>=sample[<span class="string">'a'</span>]+sample[<span class="string">'b'</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[11]</span>: </span><br><span class="line">          <span class="selector-tag">a</span>         <span class="selector-tag">b</span>         <span class="selector-tag">c</span>    ...     <span class="selector-tag">new_col1</span>  <span class="selector-tag">new_col2</span>  <span class="selector-tag">new_col3</span></span><br><span class="line">0 <span class="selector-tag">-0</span><span class="selector-class">.776807</span>  2<span class="selector-class">.355071</span> <span class="selector-tag">-0</span><span class="selector-class">.940921</span>    ...    <span class="selector-tag">-3</span><span class="selector-class">.131877</span> <span class="selector-tag">-3</span><span class="selector-class">.131877</span>  1<span class="selector-class">.578264</span></span><br><span class="line">1  0<span class="selector-class">.596704</span>  0<span class="selector-class">.962625</span>  1<span class="selector-class">.848441</span>    ...    <span class="selector-tag">-0</span><span class="selector-class">.365921</span> <span class="selector-tag">-0</span><span class="selector-class">.365921</span>  1<span class="selector-class">.559329</span></span><br><span class="line">2 <span class="selector-tag">-0</span><span class="selector-class">.092755</span> <span class="selector-tag">-0</span><span class="selector-class">.124250</span> <span class="selector-tag">-0</span><span class="selector-class">.259899</span>    ...     0<span class="selector-class">.031495</span>  0<span class="selector-class">.031495</span> <span class="selector-tag">-0</span><span class="selector-class">.217004</span></span><br><span class="line">3  0<span class="selector-class">.372941</span>  0<span class="selector-class">.297850</span> <span class="selector-tag">-0</span><span class="selector-class">.409256</span>    ...     0<span class="selector-class">.075091</span>  0<span class="selector-class">.075091</span>  0<span class="selector-class">.670792</span></span><br><span class="line"><span class="selector-attr">[4 rows x 8 columns]</span></span><br></pre></td></tr></table></figure>
+<p>删除列，第一种方式</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sample.drop<span class="comment">('a',axis=1)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[12]</span>: </span><br><span class="line">          <span class="selector-tag">b</span>         <span class="selector-tag">c</span>         <span class="selector-tag">d</span>         <span class="selector-tag">e</span>  <span class="selector-tag">new_col1</span></span><br><span class="line">0  2<span class="selector-class">.355071</span> <span class="selector-tag">-0</span><span class="selector-class">.940921</span>  0<span class="selector-class">.164487</span> <span class="selector-tag">-1</span><span class="selector-class">.025772</span> <span class="selector-tag">-3</span><span class="selector-class">.131877</span></span><br><span class="line">1  0<span class="selector-class">.962625</span>  1<span class="selector-class">.848441</span> <span class="selector-tag">-1</span><span class="selector-class">.122676</span> <span class="selector-tag">-0</span><span class="selector-class">.359290</span> <span class="selector-tag">-0</span><span class="selector-class">.365921</span></span><br><span class="line">2 <span class="selector-tag">-0</span><span class="selector-class">.124250</span> <span class="selector-tag">-0</span><span class="selector-class">.259899</span> <span class="selector-tag">-0</span><span class="selector-class">.111997</span> <span class="selector-tag">-1</span><span class="selector-class">.816197</span>  0<span class="selector-class">.031495</span></span><br><span class="line">3  0<span class="selector-class">.297850</span> <span class="selector-tag">-0</span><span class="selector-class">.409256</span>  0<span class="selector-class">.485376</span> <span class="selector-tag">-2</span><span class="selector-class">.790929</span>  0<span class="selector-class">.075091</span></span><br></pre></td></tr></table></figure>
+<p>第二种方式，</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># In</span></span><br><span class="line">sample.drop([<span class="string">'a'</span>,<span class="string">'b'</span>],axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">      c         d         e  new_col1</span><br><span class="line"></span><br><span class="line"><span class="number">0</span> <span class="number">-0.940921</span>  <span class="number">0.164487</span> <span class="number">-1.025772</span> <span class="number">-3.131877</span></span><br><span class="line"><span class="number">1</span>  <span class="number">1.848441</span> <span class="number">-1.122676</span> <span class="number">-0.359290</span> <span class="number">-0.365921</span></span><br></pre></td></tr></table></figure>
+<h2 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h2><h3 id="生成示例数据"><a href="#生成示例数据" class="headerlink" title="生成示例数据"></a>生成示例数据</h3><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># <span class="symbol">In</span>[]</span><br><span class="line">sample = pd.<span class="symbol">DataFrame</span>(&#123;<span class="string">'name'</span>:[<span class="string">'Bob'</span>,<span class="string">'Lindy'</span>,<span class="string">'Mark'</span>,<span class="string">"Miki"</span>,<span class="string">'Sully'</span>,<span class="string">'Rose'</span>],</span><br><span class="line">                       <span class="string">'score'</span>:[<span class="number">98</span>,<span class="number">78</span>,<span class="number">88</span>,<span class="number">77</span>,<span class="number">69</span>,<span class="number">69</span>],</span><br><span class="line">                       <span class="string">'group'</span>:[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>]&#125;)</span><br><span class="line">sample</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Out[14]: </span><br><span class="line">    name  score  group</span><br><span class="line">0    Bob     98      1</span><br><span class="line">1  Lindy     78      1</span><br><span class="line">2   Mark     88      1</span><br><span class="line">3   Miki     77      2</span><br><span class="line">4  Sully     69      1</span><br><span class="line">5   Rose     69      2</span><br></pre></td></tr></table></figure>
+<h3 id="单条件查询"><a href="#单条件查询" class="headerlink" title="单条件查询"></a>单条件查询</h3><p>涉及单条件查询时，一般会使用比较运算符，产生布尔类型的索引可用于条件查询。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sample</span>.<span class="keyword">score</span> &gt;66</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">Out[15]:</span> </span><br><span class="line"><span class="number">0</span>    <span class="literal">True</span></span><br><span class="line"><span class="number">1</span>    <span class="literal">True</span></span><br><span class="line"><span class="number">2</span>    <span class="literal">True</span></span><br><span class="line"><span class="number">3</span>    <span class="literal">True</span></span><br><span class="line"><span class="number">4</span>    <span class="literal">True</span></span><br><span class="line"><span class="number">5</span>    <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<p>再通过指定的索引进行条件查询，返回bool值为True的数据：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sample[sample.score &gt;66]</span><br><span class="line"></span><br><span class="line">Out[16]: </span><br><span class="line">    name  score  group</span><br><span class="line">0    Bob     98      1</span><br><span class="line">1  Lindy     78      1</span><br><span class="line">2   Mark     88      1</span><br><span class="line">3   Miki     77      2</span><br><span class="line">4  Sully     69      1</span><br><span class="line">5   Rose     69      2</span><br></pre></td></tr></table></figure>
+<h3 id="多条件查询"><a href="#多条件查询" class="headerlink" title="多条件查询"></a>多条件查询</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sample[(sample.score &gt;66) &amp; (sample.<span class="attribute">group</span>==1)]</span><br><span class="line">Out[17]: </span><br><span class="line">    name  score  group</span><br><span class="line">0    Bob     98      1</span><br><span class="line">1  Lindy     78      1</span><br><span class="line">2   Mark     88      1</span><br><span class="line">4  Sully     69      1</span><br></pre></td></tr></table></figure>
+<h3 id="使用-qurey"><a href="#使用-qurey" class="headerlink" title="使用 qurey"></a>使用 qurey</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sample</span>.<span class="keyword">query</span>('<span class="keyword">score</span> &gt; 90')</span><br><span class="line"><span class="keyword">Out</span>[20]: </span><br><span class="line">  name  <span class="keyword">score</span>  <span class="built_in">group</span></span><br><span class="line">0  Bob     98      1</span><br></pre></td></tr></table></figure>
+<p>其他查询</p>
+<p>查询sample中70到80之间的记录，并且将边界包含进来（inclusive=True）</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">In</span>[]</span><br><span class="line"><span class="keyword">sample</span>[<span class="keyword">sample</span>['<span class="keyword">score</span>'].between(70,80,inclusive=True)]</span><br><span class="line"><span class="keyword">Out</span>[21]: </span><br><span class="line">    name  <span class="keyword">score</span>  <span class="built_in">group</span></span><br><span class="line">1  Lindy     78      1</span><br><span class="line">3   Miki     77      2</span><br></pre></td></tr></table></figure>
+<p>对于字符串列来说，可以使用isin 方法进行查询：</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sample[sample[<span class="string">'name'</span>].isin([<span class="string">'Bob'</span>,<span class="string">'Lindy'</span>])]</span><br><span class="line"><span class="symbol">Out</span>[<span class="number">24</span>]: </span><br><span class="line">    name  score  group</span><br><span class="line"><span class="number">0</span>    <span class="symbol">Bob</span>     <span class="number">98</span>      <span class="number">1</span></span><br><span class="line"><span class="number">1</span>  <span class="symbol">Lindy</span>     <span class="number">78</span>      <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>使用正则表达式匹配进行查询，例如查询姓名以M开头的人的所有记录：</p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sample[sample[<span class="string">'name'</span>].<span class="built_in">str</span>.contains(<span class="string">'[M]+'</span>)]</span><br><span class="line">Out[<span class="number">26</span>]: </span><br><span class="line">   <span class="built_in">name</span>  <span class="built_in">score</span>  <span class="built_in">group</span></span><br><span class="line"><span class="number">2</span>  Mark     <span class="number">88</span>      <span class="number">1</span></span><br><span class="line"><span class="number">3</span>  Miki     <span class="number">77</span>      <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h2 id="横向连接"><a href="#横向连接" class="headerlink" title="横向连接"></a>横向连接</h2><p>Pandas Data Frame 提供 merge 方法以完成各种表格的横向连接操作，这种连接操作跟SQL语句的连接操作类似。</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">df1 =pd.<span class="symbol">DataFrame</span>(&#123;<span class="string">'id'</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">                   <span class="string">'col1'</span>:[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]&#125;)</span><br><span class="line">df2 = pd.<span class="symbol">DataFrame</span>(&#123;<span class="string">'id'</span>:[<span class="number">4</span>,<span class="number">3</span>],</span><br><span class="line">                    <span class="string">'col2'</span>:[<span class="string">'d'</span>,<span class="string">'e'</span>]&#125;)</span><br><span class="line">df1</span><br><span class="line"><span class="symbol">Out</span>[<span class="number">29</span>]: </span><br><span class="line">   id col1</span><br><span class="line"><span class="number">0</span>   <span class="number">1</span>    a</span><br><span class="line"><span class="number">1</span>   <span class="number">2</span>    b</span><br><span class="line"><span class="number">2</span>   <span class="number">3</span>    c</span><br><span class="line">df2</span><br><span class="line"><span class="symbol">Out</span>[<span class="number">30</span>]: </span><br><span class="line">   id col2</span><br><span class="line"><span class="number">0</span>   <span class="number">4</span>    d</span><br><span class="line"><span class="number">1</span>   <span class="number">3</span>    e</span><br></pre></td></tr></table></figure>
+<p>内连接使用merge函数示例，根据公共字段保留两表的共有信息，<code>how = &#39;innner&#39;</code>参数表示使用内连接，<code>on</code>表示两表的公共字段，若公共字段再两表名称不一致时，可以通过 <code>left_on</code>和<code>right_on</code>指定：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df1</span><span class="selector-class">.merge</span>(df2,how=<span class="string">'inner'</span>,on=<span class="string">'id'</span>)</span><br><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[32]</span>: </span><br><span class="line">   <span class="selector-tag">id</span> <span class="selector-tag">col1</span> <span class="selector-tag">col2</span></span><br><span class="line"><span class="selector-tag">0</span>   <span class="selector-tag">3</span>    <span class="selector-tag">c</span>    <span class="selector-tag">e</span></span><br><span class="line"><span class="selector-tag">df1</span><span class="selector-class">.merge</span>(df2,how=<span class="string">'inner'</span>,left_on=<span class="string">'id'</span>,right_on=<span class="string">'id'</span>)</span><br><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[33]</span>: </span><br><span class="line">   <span class="selector-tag">id</span> <span class="selector-tag">col1</span> <span class="selector-tag">col2</span></span><br><span class="line"><span class="selector-tag">0</span>   <span class="selector-tag">3</span>    <span class="selector-tag">c</span>    <span class="selector-tag">e</span></span><br></pre></td></tr></table></figure>
+<h3 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h3><p>外连接包括左连接，全连接，右连接</p>
+<h4 id="左连接"><a href="#左连接" class="headerlink" title="左连接"></a>左连接</h4><p>左连接通过公共字段，保留坐标的全部信息，右表在左表缺失的信息会以NaN补全：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df1.<span class="built_in">merge</span>(df2,how=<span class="string">'left'</span>,<span class="keyword">on</span>=<span class="string">'id'</span>)</span><br><span class="line">Out[<span class="number">34</span>]: </span><br><span class="line">   id col1 col2</span><br><span class="line"><span class="number">0</span>   <span class="number">1</span>    <span class="keyword">a</span>  NaN</span><br><span class="line"><span class="number">1</span>   <span class="number">2</span>    b  NaN</span><br><span class="line"><span class="number">2</span>   <span class="number">3</span>    c    e</span><br></pre></td></tr></table></figure>
+<h4 id="右连接"><a href="#右连接" class="headerlink" title="右连接"></a>右连接</h4><p>右连接与左连接相对，右连接通过公共字段，保留右表的全部信息，左表在右表缺失的信息会以 NaN 补全。</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df1.<span class="built_in">merge</span>(df2,how=<span class="string">'right'</span>,<span class="keyword">on</span>=<span class="string">'id'</span>)</span><br><span class="line">Out[<span class="number">35</span>]: </span><br><span class="line">   id col1 col2</span><br><span class="line"><span class="number">0</span>   <span class="number">3</span>    c    e</span><br><span class="line"><span class="number">1</span>   <span class="number">4</span>  NaN    d</span><br></pre></td></tr></table></figure>
+<h4 id="全连接"><a href="#全连接" class="headerlink" title="全连接"></a>全连接</h4><p>全连接通过公共字段，保留右表的全部信息，两表相互缺失的信息会以 NaN 补全。</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">df1.<span class="built_in">merge</span>(df2,how=<span class="string">'outer'</span>,<span class="keyword">on</span>=<span class="string">'id'</span>)</span><br><span class="line">Out[<span class="number">36</span>]: </span><br><span class="line">   id col1 col2</span><br><span class="line"><span class="number">0</span>   <span class="number">1</span>    <span class="keyword">a</span>  NaN</span><br><span class="line"><span class="number">1</span>   <span class="number">2</span>    b  NaN</span><br><span class="line"><span class="number">2</span>   <span class="number">3</span>    c    e</span><br><span class="line"><span class="number">3</span>   <span class="number">4</span>  NaN    d</span><br></pre></td></tr></table></figure>
+<h2 id="行索引连接"><a href="#行索引连接" class="headerlink" title="行索引连接"></a>行索引连接</h2><p><code>pd.concat</code>可以完成横向和纵向的合并，这通过 ’axis=‘ 来控制，当参数axis= 1时表示进行横向合并。</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">df1 = pd.<span class="symbol">DataFrame</span>(&#123;<span class="string">'id'</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">                    <span class="string">'col1'</span>:[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]&#125;,</span><br><span class="line">                   index=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line">df2 =pd.<span class="symbol">DataFrame</span>(&#123;<span class="string">'id'</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">                   <span class="string">'col2'</span>:[<span class="string">'aa'</span>,<span class="string">'bb'</span>,<span class="string">'cc'</span>]&#125;,</span><br><span class="line">                  index=[<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>])</span><br><span class="line">pd.concat([df1,df2],axis=<span class="number">1</span>)</span><br><span class="line"><span class="symbol">Out</span>[<span class="number">37</span>]: </span><br><span class="line">   id col1  id col2</span><br><span class="line"><span class="number">1</span>   <span class="number">1</span>    a   <span class="number">1</span>   aa</span><br><span class="line"><span class="number">2</span>   <span class="number">2</span>    b   <span class="number">3</span>   cc</span><br><span class="line"><span class="number">3</span>   <span class="number">3</span>    c   <span class="number">2</span>   bb</span><br></pre></td></tr></table></figure>
+<h2 id="纵向合并"><a href="#纵向合并" class="headerlink" title="纵向合并"></a>纵向合并</h2><p>当参数 axis = 0 时，表示纵向合并。ignore_index= True 表示忽略df1 和 df2 的原先的行索引，合并后重新排列索引。</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pd.concat([df1,df2],ignore_index=True,axis=<span class="number">0</span>)</span><br><span class="line"><span class="keyword">Out</span>[<span class="number">43</span>]: </span><br><span class="line">  col1 col2  id</span><br><span class="line"><span class="number">0</span>    a  <span class="meta">NaN</span>   <span class="number">1</span></span><br><span class="line"><span class="number">1</span>    b  <span class="meta">NaN</span>   <span class="number">2</span></span><br><span class="line"><span class="number">2</span>    c  <span class="meta">NaN</span>   <span class="number">3</span></span><br><span class="line"><span class="number">3</span>  <span class="meta">NaN</span>   aa   <span class="number">1</span></span><br><span class="line"><span class="number">4</span>  <span class="meta">NaN</span>   bb   <span class="number">2</span></span><br><span class="line"><span class="number">5</span>  <span class="meta">NaN</span>   cc   <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>去除重复行</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pd.concat([df1,df2],ignore_index=True,axis=<span class="number">0</span>).drop_duplicates()</span><br><span class="line"></span><br><span class="line"><span class="keyword">Out</span>[<span class="number">44</span>]: </span><br><span class="line">  col1 col2  id</span><br><span class="line"><span class="number">0</span>    a  <span class="meta">NaN</span>   <span class="number">1</span></span><br><span class="line"><span class="number">1</span>    b  <span class="meta">NaN</span>   <span class="number">2</span></span><br><span class="line"><span class="number">2</span>    c  <span class="meta">NaN</span>   <span class="number">3</span></span><br><span class="line"><span class="number">3</span>  <span class="meta">NaN</span>   aa   <span class="number">1</span></span><br><span class="line"><span class="number">4</span>  <span class="meta">NaN</span>   bb   <span class="number">2</span></span><br><span class="line"><span class="number">5</span>  <span class="meta">NaN</span>   cc   <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>按照学生成绩降序排列数据，第一个参数表示排序的依据，ascending = False 代表降序排列，na_position=’last’表示缺失值数据排列在数据的最后位置。</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sample = pd.DataFrame(&#123;<span class="string">'name'</span>:[<span class="string">'Bob'</span>,<span class="string">'Lindy'</span>,<span class="string">'Mark'</span>,<span class="string">"Miki"</span>,<span class="string">'Sully'</span>,<span class="string">'Rose'</span>],</span><br><span class="line">                       <span class="string">'score'</span>:[<span class="number">98</span>,<span class="number">78</span>,<span class="number">88</span>,<span class="number">77</span>,<span class="number">69</span>,np.nan],</span><br><span class="line">                       <span class="string">'group'</span>:[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>]&#125;)</span><br><span class="line">sample</span><br><span class="line">###</span><br><span class="line">sample.sort_values(<span class="string">'score'</span>,ascending= <span class="literal">False</span>,na_position=<span class="string">'last'</span>)</span><br><span class="line">Out[<span class="number">46</span>]: </span><br><span class="line">    name  score  group</span><br><span class="line"><span class="number">0</span>    Bob   <span class="number">98.0</span>      <span class="number">1</span></span><br><span class="line"><span class="number">2</span>   Mark   <span class="number">88.0</span>      <span class="number">1</span></span><br><span class="line"><span class="number">1</span>  Lindy   <span class="number">78.0</span>      <span class="number">1</span></span><br><span class="line"><span class="number">3</span>   Miki   <span class="number">77.0</span>      <span class="number">2</span></span><br><span class="line"><span class="number">4</span>  Sully   <span class="number">69.0</span>      <span class="number">1</span></span><br><span class="line"><span class="number">5</span>   Rose    NaN      <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h2 id="分组汇总"><a href="#分组汇总" class="headerlink" title="分组汇总"></a>分组汇总</h2><p>数据准备</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sample = pd.read_csv('./sample.csv',encoding='utf-8')</span><br><span class="line">sample</span><br><span class="line">Out[58]: </span><br><span class="line">   chinese   class  grade  math   name</span><br><span class="line">0       <span class="number"> 88 </span>    <span class="number"> 1 </span>    <span class="number"> 1 </span> 98.0    Bob</span><br><span class="line">1       <span class="number"> 78 </span>    <span class="number"> 1 </span>    <span class="number"> 1 </span> 78.0  Lindy</span><br><span class="line">2       <span class="number"> 68 </span>    <span class="number"> 1 </span>    <span class="number"> 1 </span> 78.0   Miki</span><br><span class="line">3       <span class="number"> 56 </span>    <span class="number"> 2 </span>    <span class="number"> 2 </span> 77.0   Mark</span><br><span class="line">4       <span class="number"> 77 </span>    <span class="number"> 1 </span>    <span class="number"> 2 </span> 77.0  Sully</span><br><span class="line">5       <span class="number"> 56 </span>    <span class="number"> 2 </span>    <span class="number"> 2 </span>  NaN   Rose</span><br></pre></td></tr></table></figure>
+<p>分组汇总操作中，会涉及分组变量，度量变量和汇总统计量。pandas 提供了 groupby 方法进行分组汇总。</p>
+<p>在sample数据中，grade为分组变量，math 为度量变量，现需要查询grade 为1，2中数学成绩最高。</p>
+<h3 id="分组变量"><a href="#分组变量" class="headerlink" title="分组变量"></a>分组变量</h3><p>在进行分组汇总时，分组变量可以有多个。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sample</span><span class="selector-class">.groupby</span>(<span class="selector-attr">['grade','class']</span>)<span class="selector-attr">['math']</span><span class="selector-class">.max</span>()</span><br><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[65]</span>: </span><br><span class="line"><span class="selector-tag">grade</span>  <span class="selector-tag">class</span></span><br><span class="line">1      1        98<span class="selector-class">.0</span></span><br><span class="line">2      1        77<span class="selector-class">.0</span></span><br><span class="line">       2        77<span class="selector-class">.0</span></span><br><span class="line"><span class="selector-tag">Name</span>: <span class="selector-tag">math</span>, <span class="selector-tag">dtype</span>: <span class="selector-tag">float64</span></span><br></pre></td></tr></table></figure>
+<h3 id="汇总变量"><a href="#汇总变量" class="headerlink" title="汇总变量"></a>汇总变量</h3><p>在进行分组汇总时，汇总变量也可以多个。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sample</span><span class="selector-class">.groupby</span>(<span class="string">'grade'</span>,)<span class="selector-attr">['math','chinese']</span><span class="selector-class">.mean</span>()</span><br><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[75]</span>: </span><br><span class="line">            <span class="selector-tag">math</span>  <span class="selector-tag">chinese</span></span><br><span class="line"><span class="selector-tag">grade</span>                    </span><br><span class="line"><span class="selector-tag">1</span>      <span class="selector-tag">84</span><span class="selector-class">.666667</span>       <span class="selector-tag">78</span></span><br><span class="line"><span class="selector-tag">2</span>      <span class="selector-tag">77</span><span class="selector-class">.000000</span>       <span class="selector-tag">63</span></span><br></pre></td></tr></table></figure>
+<h3 id="汇总统计量"><a href="#汇总统计量" class="headerlink" title="汇总统计量"></a>汇总统计量</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>解释</th>
+<th>方法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mean</td>
+<td>均值</td>
+<td>mad</td>
+<td>平均绝对偏差</td>
+</tr>
+<tr>
+<td>max</td>
+<td>最大值</td>
+<td>count</td>
+<td>计数</td>
+</tr>
+<tr>
+<td>min</td>
+<td>最小值</td>
+<td>skew</td>
+<td>偏度</td>
+</tr>
+<tr>
+<td>median</td>
+<td>中位数</td>
+<td>quantile</td>
+<td>指定分位数</td>
+</tr>
+<tr>
+<td>std</td>
+<td>标准差</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>以上统计量方法可以直接接 groupby 对象使用，agg方法提供了一次汇总多个统计量的方法，例如，汇总各个班级的数学成绩的均值，最大值，最小值。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sample</span><span class="selector-class">.groupby</span>(<span class="string">'class'</span>)<span class="selector-attr">['math']</span><span class="selector-class">.agg</span>([<span class="string">'mean'</span>,<span class="string">'min'</span>,<span class="string">'max'</span>])</span><br><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[78]</span>: </span><br><span class="line">        <span class="selector-tag">mean</span>   <span class="selector-tag">min</span>   <span class="selector-tag">max</span></span><br><span class="line"><span class="selector-tag">class</span>                   </span><br><span class="line"><span class="selector-tag">1</span>      <span class="selector-tag">82</span><span class="selector-class">.75</span>  <span class="selector-tag">77</span><span class="selector-class">.0</span>  <span class="selector-tag">98</span><span class="selector-class">.0</span></span><br><span class="line"><span class="selector-tag">2</span>      <span class="selector-tag">77</span><span class="selector-class">.00</span>  <span class="selector-tag">77</span><span class="selector-class">.0</span>  <span class="selector-tag">77</span><span class="selector-class">.0</span></span><br></pre></td></tr></table></figure>
+<h3 id="多重索引"><a href="#多重索引" class="headerlink" title="多重索引"></a>多重索引</h3><p>以年级，班级对学生的数学，语文成绩进行分组汇总，汇总统计量为均值。此时df中有两个行索引和两个列索引。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">df=sample.groupby([<span class="string">'class'</span>,<span class="string">'grade'</span>])[<span class="string">'math'</span>,<span class="string">'chinese'</span>].agg([<span class="string">'mean'</span>,<span class="string">'min'</span>,<span class="string">'max'</span>])</span><br><span class="line">Out[<span class="number">80</span>]: </span><br><span class="line">                  <span class="built_in">math</span>             chinese        </span><br><span class="line">                  mean   <span class="built_in">min</span>   <span class="built_in">max</span>    mean <span class="built_in">min</span> <span class="built_in">max</span></span><br><span class="line">class grade                                       </span><br><span class="line"><span class="number">1</span>     <span class="number">1</span>      <span class="number">84.666667</span>  <span class="number">78.0</span>  <span class="number">98.0</span>      <span class="number">78</span>  <span class="number">68</span>  <span class="number">88</span></span><br><span class="line">      <span class="number">2</span>      <span class="number">77.000000</span>  <span class="number">77.0</span>  <span class="number">77.0</span>      <span class="number">77</span>  <span class="number">77</span>  <span class="number">77</span></span><br><span class="line"><span class="number">2</span>     <span class="number">2</span>      <span class="number">77.000000</span>  <span class="number">77.0</span>  <span class="number">77.0</span>      <span class="number">56</span>  <span class="number">56</span>  <span class="number">56</span></span><br></pre></td></tr></table></figure>
+<p>查询各个年级、班级的数学成绩的最小值。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'math'</span>][<span class="symbol">'min'</span>]</span><br><span class="line">Out[84]: </span><br><span class="line">class  grade</span><br><span class="line">1      1        78.0</span><br><span class="line"><span class="code">       2        77.0</span></span><br><span class="line">2      2        77.0</span><br><span class="line">Name: min, dtype: float64</span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ethan2lee">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://anne2bin.top">anne2bin</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: 'data_integration',
+        owner: 'ethan2lee',
+        repo: 'ethan2lee.github.io',
+        oauth: {
+            client_id: 'f89dcdd89e52d0081cc6',
+            client_secret: 'a8a684a5024e2f9c74f39cef20f7ed1c22ebed05',
+        },
+    })
+    gitment.render('comment-container')
+</script>
+
+
+</html>
