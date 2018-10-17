@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="李逸炫的博客">
+    <meta name="keyword"  content="盈盛">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        RFM模型分析用户行为 - Ethan Lee | ethan | ethan2lee
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ethan Lee</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RFM模型分析用户行为"><span class="toc-text">RFM模型分析用户行为</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        RFM模型分析用户行为
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-10-17 08:02:14</span></span>
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="RFM模型分析用户行为"><a href="#RFM模型分析用户行为" class="headerlink" title="RFM模型分析用户行为"></a>RFM模型分析用户行为</h1><p>根据美国数据库营销研究所Arthur Hughes的研究，客户数据库中有三个神奇的要素，这三个要素构成了数据分析最好的指标：最近一次消费(Recency)、消费频率(Frequency)、消费金额(Monetary)。</p>
+<p>RFM模型：</p>
+<ul>
+<li><p>R(Recency)表示客户最近一次购买的时间有多远，对消费时间越近的客户，提供即时的商品或服务也最有可能有所反应。</p>
+</li>
+<li><p>F(Frequency)表示客户在最近一段时间内购买的次数，经常买的客户也是满意度最高的客户。</p>
+</li>
+<li><p>M  (Monetary)表示客户在最近一段时间内购买的金额，消费金额是最近消费的平均金额，是体现客户短期价值的中重要变量。如果预算不多，那么我们酒的将服务信息提供给收入贡献较高的那些人。</p>
+</li>
+</ul>
+<p>一般原始数据为3个字段：客户ID、购买时间（日期格式）、购买金额，用数据挖掘软件处理，加权（考虑权重）得到RFM得分，进而可以进行客户细分，客户等级分类，Customer Level Value得分排序等，实现数据库营销！</p>
+<p><img src="\image\RFM.png" alt=""></p>
+<p>（编号次序RFM,1代表高，0代表低）</p>
+<p>重要价值客户（111）：最近消费时间近、消费频次和消费金额都很高，必须是VIP啊！</p>
+<p>重要保持客户（011）：最近消费时间较远，但消费频次和金额都很高，说明这是个一段时间没来的忠实客户，我们需要主动和他保持联系。</p>
+<p>重要发展客户（101）：最近消费时间较近、消费金额高，但频次不高，忠诚度不高，很有潜力的用户，必须重点发展。</p>
+<p>重要挽留客户（001）：最近消费时间较远、消费频次不高，但消费金额高的用户，可能是将要流失或者已经要流失的用户，应当基于挽留措施。</p>
+<p>RFM模型的应用在于建立一个用户行为报告，这个报告会成为维系顾客的一个重要指标。</p>
+<p>现在我们以某淘宝店家做客户激活为案例，<a href="/data/RFM_TRAD_FLOW.csv">RFM_TRAD_FLOW.csv</a> 为某段时间内客户消费记录</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="title">trad_flow</span> = pd.read_csv('<span class="class"><span class="keyword">data</span>/<span class="type">RFM_TRAD_FLOW</span>.csv', encoding='gbk')</span></span><br><span class="line"><span class="title">trad_flow</span>.head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p>数据部分展示：</p>
+<table>
+<thead>
+<tr>
+<th>transID</th>
+<th>cumid</th>
+<th>time</th>
+<th>amount</th>
+<th>type_label</th>
+<th>type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9407</td>
+<td>10001</td>
+<td>14JUN09:17:58:34</td>
+<td>199</td>
+<td>正常</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>9625</td>
+<td>10001</td>
+<td>16JUN09:15:09:13</td>
+<td>369</td>
+<td>正常</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>11837</td>
+<td>10001</td>
+<td>01JUL09:14:50:36</td>
+<td>369</td>
+<td>正常</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>26629</td>
+<td>10001</td>
+<td>14DEC09:18:05:32</td>
+<td>359</td>
+<td>正常</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>30850</td>
+<td>10001</td>
+<td>12APR10:13:02:20</td>
+<td>399</td>
+<td>正常</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>32007</td>
+<td>10001</td>
+<td>04MAY10:16:45:58</td>
+<td>269</td>
+<td>正常</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>36637</td>
+<td>10001</td>
+<td>04JUN10:20:03:06</td>
+<td>0</td>
+<td>赠送</td>
+<td>Presented</td>
+</tr>
+<tr>
+<td>43108</td>
+<td>10001</td>
+<td>06JUL10:16:56:40</td>
+<td>381</td>
+<td>正常</td>
+<td>Normal</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>计算F 反应顾客对打折的偏好程度</li>
+</ol>
+<p>通过计算F反应客户对打折产品的偏好</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">F=trad_flow.groupby([<span class="string">'cumid'</span>,<span class="string">'type'</span>])<span class="string">[['transID']]</span>.count()</span><br><span class="line">F.head()</span><br></pre></td></tr></table></figure>
+<p>建立数据透视表</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">F_trans=pd.pivot_table(F,<span class="keyword">index</span>=<span class="string">'cumid'</span>,columns=<span class="string">'type'</span>,<span class="keyword">values</span>=<span class="string">'transID'</span>)</span><br><span class="line">F_trans.head()</span><br></pre></td></tr></table></figure>
+<p>对缺失的数据填补为零</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">F_trans</span>[<span class="string">'Special_offer'</span>]= <span class="symbol">F_trans</span>[<span class="string">'Special_offer'</span>].fillna(<span class="number">0</span>)</span><br><span class="line"><span class="symbol">F_trans</span>.head()</span><br></pre></td></tr></table></figure>
+<p>计算兴趣用户比例</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">F_trans</span>[<span class="string">"interest"</span>]=<span class="symbol">F_trans</span>[<span class="string">'Special_offer'</span>]/(<span class="symbol">F_trans</span>[<span class="string">'Special_offer'</span>]+<span class="symbol">F_trans</span>[<span class="string">'Normal'</span>])</span><br><span class="line"><span class="symbol">F_trans</span>.head()</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>计算M反应客户的价值信息</li>
+</ol>
+<p>通过计算M反应客户的价值信息</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">M=trad_flow.groupby([<span class="string">'cumid'</span>,<span class="string">'type'</span>])<span class="string">[['amount']]</span>.sum()</span><br><span class="line">M.head()</span><br></pre></td></tr></table></figure>
+<p>数据透视，缺失值补零，计算价值用户</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">M_trans</span>=pd.pivot_table(<span class="symbol">M</span>,index=<span class="string">'cumid'</span>,columns=<span class="string">'type'</span>,values=<span class="string">'amount'</span>)</span><br><span class="line"><span class="symbol">M_trans</span>[<span class="string">'Special_offer'</span>]= <span class="symbol">M_trans</span>[<span class="string">'Special_offer'</span>].fillna(<span class="number">0</span>)</span><br><span class="line"><span class="symbol">M_trans</span>[<span class="string">'returned_goods'</span>]= <span class="symbol">M_trans</span>[<span class="string">'returned_goods'</span>].fillna(<span class="number">0</span>)</span><br><span class="line"><span class="symbol">M_trans</span>[<span class="string">"value"</span>]=<span class="symbol">M_trans</span>[<span class="string">'Normal'</span>]+<span class="symbol">M_trans</span>[<span class="string">'Special_offer'</span>]+<span class="symbol">M_trans</span>[<span class="string">'returned_goods'</span>]</span><br><span class="line"><span class="symbol">M_trans</span>.head()</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>通过计算R反应客户是否为沉默客户</li>
+</ol>
+<p>定义一个从文本转化为时间的函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">to_time</span><span class="params">(t)</span>:</span></span><br><span class="line">    out_t=time.mktime(time.strptime(t, <span class="string">'%d%b%y:%H:%M:%S'</span>))  </span><br><span class="line">    <span class="keyword">return</span> out_t</span><br></pre></td></tr></table></figure>
+<p>将时间进行转化</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rad_flow[<span class="string">"time_new"</span>]= trad_flow<span class="selector-class">.time</span><span class="selector-class">.apply</span>(to_time)</span><br></pre></td></tr></table></figure>
+<p>获取高频消费客户</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">R=trad_flow.groupby([<span class="string">'cumid'</span>])<span class="string">[['time_new']]</span>.<span class="built_in">max</span>()</span><br><span class="line">R.head()</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>构建模型，筛选目标客户</li>
+</ol>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># In[12]</span></span><br><span class="line">from sklearn import preprocessing</span><br><span class="line">threshold = pd.qcut(F_trans[<span class="string">'interest'</span>], 2, retbins=True)[<span class="string">1</span>][<span class="symbol">1</span>]</span><br><span class="line">binarizer = preprocessing.Binarizer(threshold=threshold)</span><br><span class="line">interest<span class="emphasis">_q = pd.DataFrame(binarizer.transform(F_</span>trans['interest'].values.reshape(-1, 1)))</span><br><span class="line">interest<span class="emphasis">_q.index=F_</span>trans.index</span><br><span class="line">interest_q.columns=["interest"]</span><br><span class="line"><span class="section"># In[12]</span></span><br><span class="line">threshold = pd.qcut(M_trans[<span class="string">'value'</span>], 2, retbins=True)[<span class="string">1</span>][<span class="symbol">1</span>]</span><br><span class="line">binarizer = preprocessing.Binarizer(threshold=threshold)</span><br><span class="line">value<span class="emphasis">_q = pd.DataFrame(binarizer.transform(M_</span>trans['value'].values.reshape(-1, 1)))</span><br><span class="line">value<span class="emphasis">_q.index=M_</span>trans.index</span><br><span class="line">value_q.columns=["value"]</span><br><span class="line"><span class="section"># In[12]</span></span><br><span class="line">threshold = pd.qcut(R[<span class="string">"time_new"</span>], 2, retbins=True)[<span class="string">1</span>][<span class="symbol">1</span>]</span><br><span class="line">binarizer = preprocessing.Binarizer(threshold=threshold)</span><br><span class="line">time<span class="emphasis">_new_</span>q = pd.DataFrame(binarizer.transform(R["time_new"].values.reshape(-1, 1)))</span><br><span class="line">time<span class="emphasis">_new_</span>q.index=R.index</span><br><span class="line">time<span class="emphasis">_new_</span>q.columns=["time"]</span><br><span class="line"><span class="section"># In[12]</span></span><br><span class="line">analysis=pd.concat([interest<span class="emphasis">_q, value_</span>q,time<span class="emphasis">_new_</span>q], axis=1)</span><br><span class="line"><span class="section"># In[12]</span></span><br><span class="line"><span class="section">#analysis['rank']=analysis.interest_q+analysis.interest_q</span></span><br><span class="line">analysis = analysis[['interest','value','time']]</span><br><span class="line">analysis.head()</span><br><span class="line"></span><br><span class="line">label = &#123;</span><br><span class="line"><span class="code">    (0,0,0):'无兴趣-低价值-沉默',</span></span><br><span class="line"><span class="code">    (1,0,0):'有兴趣-低价值-沉默',</span></span><br><span class="line"><span class="code">    (1,0,1):'有兴趣-低价值-活跃',</span></span><br><span class="line"><span class="code">    (0,0,1):'无兴趣-低价值-活跃',</span></span><br><span class="line"><span class="code">    (0,1,0):'无兴趣-高价值-沉默',</span></span><br><span class="line"><span class="code">    (1,1,0):'有兴趣-高价值-沉默',</span></span><br><span class="line"><span class="code">    (1,1,1):'有兴趣-高价值-活跃',</span></span><br><span class="line"><span class="code">    (0,1,1):'无兴趣-高价值-活跃'</span></span><br><span class="line">&#125;</span><br><span class="line">analysis['label'] = analysis[['interest','value','time']].apply(lambda x: label[(x[0],x[1],x[2])], axis = 1)</span><br><span class="line">analysis.head()</span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 你的支持是我写作的莫大鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ethan2lee">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://anne2bin.top">anne2bin</a></span>
+        <span>/</span>
+        
+        <span><a href="https://blog.ywandy.top/">yewei_andy</a></span>
+        <span>/</span>
+        
+        <span><a href="https://wwb.colonp.top/">wwb</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://ethan2lee.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+</html>

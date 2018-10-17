@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="李逸炫的博客">
+    <meta name="keyword"  content="盈盛">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        data_clearning - Ethan Lee | ethan | ethan2lee
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ethan Lee</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据清洗"><span class="toc-text">数据清洗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#去除重复数据"><span class="toc-text">去除重复数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺失值处理"><span class="toc-text">缺失值处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#已指定值填补"><span class="toc-text">已指定值填补</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺失值指示变量"><span class="toc-text">缺失值指示变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#噪声处理"><span class="toc-text">噪声处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#盖帽法"><span class="toc-text">盖帽法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分箱法"><span class="toc-text">分箱法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#等宽分箱"><span class="toc-text">等宽分箱</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#等深分箱"><span class="toc-text">等深分箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多变量异常值处理-聚类法"><span class="toc-text">多变量异常值处理-聚类法</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        data_clearning
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-10-17 08:13:27</span></span>
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h1><blockquote>
+<p>数据清洗， 是整个数据分析过程中不可缺少的一个环节，其结果质量直接关系到模型效果和最终结论。在实际操作中，数据清洗通常会占据分析过程的50%—80%的时间。</p>
+</blockquote>
+<h2 id="去除重复数据"><a href="#去除重复数据" class="headerlink" title="去除重复数据"></a>去除重复数据</h2><p>在获取到的数据中，我们发现会有重复数据。我们使用Pandas 提供的方法 duplicated 和 drop_duplicates来去重。</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sample =  pd.<span class="symbol">DataFrame</span>(&#123;<span class="string">'id'</span>:[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">                        <span class="string">'name'</span>:[<span class="string">'Bob'</span>,<span class="string">'Bob'</span>,<span class="string">'Mark'</span>,<span class="string">'Miki'</span>,<span class="string">'Sully'</span>,<span class="string">'Rose'</span>],</span><br><span class="line">                        <span class="string">'score'</span>:[<span class="number">99</span>,<span class="number">99</span>,<span class="number">87</span>,<span class="number">77</span>,<span class="number">77</span>,np.nan],</span><br><span class="line">                        <span class="string">'group'</span>:[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>]&#125;)</span><br><span class="line">sample</span><br><span class="line"><span class="symbol">Out</span>[<span class="number">85</span>]: </span><br><span class="line">   id   name  score  group</span><br><span class="line"><span class="number">0</span>   <span class="number">1</span>    <span class="symbol">Bob</span>   <span class="number">99.0</span>      <span class="number">1</span></span><br><span class="line"><span class="number">1</span>   <span class="number">1</span>    <span class="symbol">Bob</span>   <span class="number">99.0</span>      <span class="number">1</span></span><br><span class="line"><span class="number">2</span>   <span class="number">1</span>   <span class="symbol">Mark</span>   <span class="number">87.0</span>      <span class="number">1</span></span><br><span class="line"><span class="number">3</span>   <span class="number">3</span>   <span class="symbol">Miki</span>   <span class="number">77.0</span>      <span class="number">2</span></span><br><span class="line"><span class="number">4</span>   <span class="number">4</span>  <span class="symbol">Sully</span>   <span class="number">77.0</span>      <span class="number">1</span></span><br><span class="line"><span class="number">5</span>   <span class="number">5</span>   <span class="symbol">Rose</span>    <span class="symbol">NaN</span>      <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>查找重复数据：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sample[sample.duplicated()]</span><br><span class="line">Out[86]: </span><br><span class="line">   id name  score  group</span><br><span class="line">1   1  Bob   99.0      1</span><br></pre></td></tr></table></figure>
+<p>需要去重时：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sample.drop_duplicates()</span><br><span class="line">Out[87]: </span><br><span class="line">   id   name  score  group</span><br><span class="line">0   1    Bob   99.0      1</span><br><span class="line">2   1   Mark   87.0      1</span><br><span class="line">3   3   Miki   77.0      2</span><br><span class="line">4   4  Sully   77.0      1</span><br><span class="line">5   5   Rose    NaN      2</span><br></pre></td></tr></table></figure>
+<p>按列去重时，需要加入列索引：</p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sample.drop_duplicates(<span class="string">'id'</span>)</span><br><span class="line">Out[<span class="number">88</span>]: </span><br><span class="line">   id   <span class="built_in">name</span>  <span class="built_in">score</span>  <span class="built_in">group</span></span><br><span class="line"><span class="number">0</span>   <span class="number">1</span>    Bob   <span class="number">99.0</span>      <span class="number">1</span></span><br><span class="line"><span class="number">3</span>   <span class="number">3</span>   Miki   <span class="number">77.0</span>      <span class="number">2</span></span><br><span class="line"><span class="number">4</span>   <span class="number">4</span>  Sully   <span class="number">77.0</span>      <span class="number">1</span></span><br><span class="line"><span class="number">5</span>   <span class="number">5</span>   Rose    NaN      <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h2 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h2><p>在数据挖掘中，面对数据中存在缺失值时，我们一般采取以下几种办法：</p>
+<ol>
+<li>缺失值较多的特征处理</li>
+</ol>
+<p>当缺失值处于20%~80%，每个缺失值可以生成一个指示哑变量，参与后续的建模。</p>
+<p>2.缺失较少时</p>
+<p>首先需要根据业务理解处理缺失值，弄清楚缺失值产生的原因，是故意缺失还是随机缺失。可以依靠业务经验进行填补。连续变量可以使用均值或中位数进行填补。</p>
+<ul>
+<li>把 NaN 直接作为一个特征，假设0表示</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.fillna</span>(0)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>用均值填充</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 将所有行用各自的均值填充 </span><br><span class="line"><span class="selector-tag">df</span><span class="selector-class">.fillna</span>(<span class="selector-tag">df</span><span class="selector-class">.mean</span>())  </span><br><span class="line"># 将所有行用各自的均值填充 </span><br><span class="line"><span class="selector-tag">df</span><span class="selector-class">.fillna</span>(<span class="selector-tag">df</span><span class="selector-class">.mean</span>()<span class="selector-attr">['collum_name]</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>用上下数据填充</li>
+</ul>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 用前一个数据替代NaN</span><br><span class="line">df.fillnan(<span class="function"><span class="keyword">method</span>="<span class="title">pad</span>")</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"># 与<span class="title">pad</span>相反，<span class="title">bfill</span>表示用后一个数据代替<span class="title">NaN</span></span></span><br><span class="line"><span class="function"><span class="title">df</span>.<span class="title">fillna</span><span class="params">(<span class="keyword">method</span>=)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>用插值填充</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 插值法就是通过两点（<span class="selector-tag">x0</span>,<span class="selector-tag">y0</span>）,(x1,y1)估计中间点的值</span><br><span class="line"><span class="selector-tag">df</span><span class="selector-class">.interpolate</span>()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看数据值缺失情况，我们可有构造一个lambda 函数来查看缺失值。</li>
+</ul>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sample =  pd.DataFrame(&#123;<span class="string">'id'</span>:[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,np.nan],</span><br><span class="line">                        <span class="string">'name'</span>:[<span class="string">'Bob'</span>,<span class="string">'Bob'</span>,<span class="string">'Mark'</span>,<span class="string">'Miki'</span>,<span class="string">'Sully'</span>,np.nan],</span><br><span class="line">                        <span class="string">'score'</span>:[<span class="number">99</span>,<span class="number">99</span>,<span class="number">87</span>,<span class="number">77</span>,<span class="number">77</span>,np.nan],</span><br><span class="line">                        <span class="string">'group'</span>:[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,np.nan]&#125;)</span><br><span class="line">sample</span><br><span class="line">sample.<span class="built_in">apply</span>(lambda col:sum(col.<span class="built_in">isnull</span>())/col.<span class="built_in">size</span>)</span><br><span class="line">Out[<span class="number">91</span>]: </span><br><span class="line">id       <span class="number">0.166667</span></span><br><span class="line"><span class="built_in">name</span>     <span class="number">0.166667</span></span><br><span class="line"><span class="built_in">score</span>    <span class="number">0.166667</span></span><br><span class="line"><span class="built_in">group</span>    <span class="number">0.166667</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<h3 id="已指定值填补"><a href="#已指定值填补" class="headerlink" title="已指定值填补"></a>已指定值填补</h3><p>均值</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sample</span><span class="selector-class">.score</span><span class="selector-class">.fillna</span>(<span class="selector-tag">sample</span><span class="selector-class">.score</span><span class="selector-class">.mean</span>())</span><br><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[93]</span>: </span><br><span class="line">0    99<span class="selector-class">.0</span></span><br><span class="line">1    99<span class="selector-class">.0</span></span><br><span class="line">2    87<span class="selector-class">.0</span></span><br><span class="line">3    77<span class="selector-class">.0</span></span><br><span class="line">4    77<span class="selector-class">.0</span></span><br><span class="line">5    87<span class="selector-class">.8</span></span><br><span class="line"><span class="selector-tag">Name</span>: <span class="selector-tag">score</span>, <span class="selector-tag">dtype</span>: <span class="selector-tag">float64</span></span><br></pre></td></tr></table></figure>
+<p>中位数</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sample</span><span class="selector-class">.score</span><span class="selector-class">.fillna</span>(<span class="selector-tag">sample</span><span class="selector-class">.score</span><span class="selector-class">.median</span>())</span><br><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[94]</span>: </span><br><span class="line">0    99<span class="selector-class">.0</span></span><br><span class="line">1    99<span class="selector-class">.0</span></span><br><span class="line">2    87<span class="selector-class">.0</span></span><br><span class="line">3    77<span class="selector-class">.0</span></span><br><span class="line">4    77<span class="selector-class">.0</span></span><br><span class="line">5    87<span class="selector-class">.0</span></span><br><span class="line"><span class="selector-tag">Name</span>: <span class="selector-tag">score</span>, <span class="selector-tag">dtype</span>: <span class="selector-tag">float64</span></span><br></pre></td></tr></table></figure>
+<h3 id="缺失值指示变量"><a href="#缺失值指示变量" class="headerlink" title="缺失值指示变量"></a>缺失值指示变量</h3><p>Panda DataFrame 对象可以直接调用方法isnull 产生缺失值指示变量，例如产生score变量的缺失值变量：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指示变量</span></span><br><span class="line"><span class="string">sample.score.isnull()</span></span><br><span class="line"><span class="string">Out[95]:</span> </span><br><span class="line"><span class="number">0</span>    <span class="literal">False</span></span><br><span class="line"><span class="number">1</span>    <span class="literal">False</span></span><br><span class="line"><span class="number">2</span>    <span class="literal">False</span></span><br><span class="line"><span class="number">3</span>    <span class="literal">False</span></span><br><span class="line"><span class="number">4</span>    <span class="literal">False</span></span><br><span class="line"><span class="number">5</span>     <span class="literal">True</span></span><br><span class="line"><span class="attr">Name:</span> <span class="string">score,</span> <span class="attr">dtype:</span> <span class="string">bool</span></span><br></pre></td></tr></table></figure>
+<p>若想转化为数据0，1型指示变量，可以使用apply方法，int表示将该列替换为 int 类型：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sample</span><span class="selector-class">.score</span><span class="selector-class">.isnull</span>()<span class="selector-class">.apply</span>(<span class="selector-tag">int</span>)</span><br><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[97]</span>: </span><br><span class="line">0    0</span><br><span class="line">1    0</span><br><span class="line">2    0</span><br><span class="line">3    0</span><br><span class="line">4    0</span><br><span class="line">5    1</span><br></pre></td></tr></table></figure>
+<h2 id="噪声处理"><a href="#噪声处理" class="headerlink" title="噪声处理"></a>噪声处理</h2><p>噪声值是指数据中有一个或多个数据与其他数值相比差异性比较大，又称异常值，离群值。</p>
+<p>对于单变量，我们可以采用盖帽法，分箱法；</p>
+<p>对于多变量，我们可以采用就聚类。</p>
+<h3 id="盖帽法"><a href="#盖帽法" class="headerlink" title="盖帽法"></a>盖帽法</h3><p>盖帽法将连续变量均值上下三倍标准差范围外的记录替换为均值上下三倍标准差值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cap</span><span class="params">(df,quantile=[<span class="number">0.01</span>,<span class="number">0.99</span>])</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    盖帽法处理异常值</span></span><br><span class="line"><span class="string">    :param df: pd.Series 列，连续变量</span></span><br><span class="line"><span class="string">    :param quantile: 指定盖帽法的上下分位数范围</span></span><br><span class="line"><span class="string">    :return: </span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    Q01 ,Q99 = df.quantile(quantile).values.tolist() <span class="comment"># 生成分位数</span></span><br><span class="line">    <span class="comment"># 替代异常值</span></span><br><span class="line">    <span class="keyword">if</span> Q01 &gt; df.min():</span><br><span class="line">        x = df.copy()</span><br><span class="line">        x.loc[x&lt;Q01] = Q01</span><br><span class="line">    <span class="keyword">if</span> Q99 &lt; df.max():</span><br><span class="line">        x = df.copy()</span><br><span class="line">        x.loc[x &gt; Q99] = Q99</span><br><span class="line">    <span class="keyword">return</span>(x)</span><br></pre></td></tr></table></figure>
+<p>生成一组服从正态分布的随机数，sample.hsit 为直方图。</p>
+<figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot as plt</span><br><span class="line">sample = pd.DataFrame(&#123;'<span class="attribute">normall'</span>:np<span class="variable">.random</span><span class="variable">.randn</span>(1000)&#125;)</span><br><span class="line">sample<span class="variable">.hist</span>(bins =50)</span><br><span class="line">plt<span class="variable">.show</span>()</span><br></pre></td></tr></table></figure>
+<p><img src="\image\before_handle.png" alt="处理前"></p>
+<p>对 sample 数据所有列进行盖帽法转换，，下图可以看出盖帽后极端值频数的变化。</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> =sample.apply(cap,<span class="built_in">quantile</span>=[<span class="number">0.001</span>,<span class="number">0.99</span>])</span><br><span class="line"><span class="keyword">new</span>.<span class="built_in">hist</span>(bins=<span class="number">50</span>)</span><br><span class="line">plt.<span class="keyword">show</span>()</span><br></pre></td></tr></table></figure>
+<p><img src="\image\after_handle.png" alt=""></p>
+<h3 id="分箱法"><a href="#分箱法" class="headerlink" title="分箱法"></a>分箱法</h3><p>分箱法通过考察数据的”近邻”来光滑有序数据的值。有序值分布到一些桶或箱中。</p>
+<p>深分箱，即每个分箱中的样本量一致；</p>
+<p>等宽分箱，即每个分箱中的取值范围一致。直方图就是首先对数据进行了等宽分箱，再计算频数画图。</p>
+<p>分箱法可以将异常数据包含再箱子中，在进行建模的时候，不直接进行到模型中，因而可以达到处理异常值的目的。</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 生成<span class="number">10</span>个标准正态分布的随机数</span><br><span class="line">sample = pd.DataFrame(&#123;"normal":np.random.randn(<span class="number">10</span>)&#125;)</span><br><span class="line">sample</span><br><span class="line">Out[<span class="number">118</span>]: </span><br><span class="line">     normal</span><br><span class="line"><span class="number">0</span> -<span class="number">0.028929</span></span><br><span class="line"><span class="number">1</span>  <span class="number">0.327508</span></span><br><span class="line"><span class="number">2</span> -<span class="number">0.596384</span></span><br><span class="line"><span class="number">3</span> -<span class="number">2.036334</span></span><br><span class="line"><span class="number">4</span>  <span class="number">1.452605</span></span><br><span class="line"><span class="number">5</span> -<span class="number">0.403936</span></span><br><span class="line"><span class="number">6</span>  <span class="number">0.315138</span></span><br><span class="line"><span class="number">7</span>  <span class="number">0.252127</span></span><br><span class="line"><span class="number">8</span> -<span class="number">0.775113</span></span><br><span class="line"><span class="number">9</span>  <span class="number">0.171641</span></span><br></pre></td></tr></table></figure>
+<h4 id="等宽分箱"><a href="#等宽分箱" class="headerlink" title="等宽分箱"></a>等宽分箱</h4><p>现将sample 按照宽度分位5份，下限中，cut 函数自动选择小于列最小值的一个数值未下限，最大值为上限，等分为5份。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">pd</span><span class="selector-class">.cut</span>(<span class="selector-tag">sample</span><span class="selector-class">.normal</span>,5)</span><br><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[119]</span>: </span><br><span class="line">0     (<span class="selector-tag">-0</span><span class="selector-class">.641</span>, 0<span class="selector-class">.057</span>]</span><br><span class="line">1      (0<span class="selector-class">.057</span>, 0<span class="selector-class">.755</span>]</span><br><span class="line">2     (<span class="selector-tag">-0</span><span class="selector-class">.641</span>, 0<span class="selector-class">.057</span>]</span><br><span class="line">3     (<span class="selector-tag">-2</span><span class="selector-class">.04</span>, <span class="selector-tag">-1</span><span class="selector-class">.339</span>]</span><br><span class="line">4      (0<span class="selector-class">.755</span>, 1<span class="selector-class">.453</span>]</span><br><span class="line">5     (<span class="selector-tag">-0</span><span class="selector-class">.641</span>, 0<span class="selector-class">.057</span>]</span><br><span class="line">6      (0<span class="selector-class">.057</span>, 0<span class="selector-class">.755</span>]</span><br><span class="line">7      (0<span class="selector-class">.057</span>, 0<span class="selector-class">.755</span>]</span><br><span class="line">8    (<span class="selector-tag">-1</span><span class="selector-class">.339</span>, <span class="selector-tag">-0</span><span class="selector-class">.641</span>]</span><br><span class="line">9      (0<span class="selector-class">.057</span>, 0<span class="selector-class">.755</span>]</span><br><span class="line"><span class="selector-tag">Name</span>: <span class="selector-tag">normal</span>, <span class="selector-tag">dtype</span>: <span class="selector-tag">category</span></span><br><span class="line"><span class="selector-tag">Categories</span> (5, <span class="selector-tag">interval</span><span class="selector-attr">[float64]</span>): <span class="selector-attr">[(-2.04, -1.339]</span> &lt; (<span class="selector-tag">-1</span><span class="selector-class">.339</span>, <span class="selector-tag">-0</span><span class="selector-class">.641</span>] &lt; (<span class="selector-tag">-0</span><span class="selector-class">.641</span>, 0<span class="selector-class">.057</span>] &lt;</span><br><span class="line">                                    (0<span class="selector-class">.057</span>, 0<span class="selector-class">.755</span>] &lt; (0<span class="selector-class">.755</span>, 1<span class="selector-class">.453</span>]]</span><br></pre></td></tr></table></figure>
+<p>使用labels参数指定分箱后的各个水平的标签，</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">pd</span><span class="selector-class">.cut</span>(sample.normal,bins=<span class="number">5</span>,labels=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[120]</span>: </span><br><span class="line"><span class="selector-tag">0</span>    <span class="selector-tag">3</span></span><br><span class="line"><span class="selector-tag">1</span>    <span class="selector-tag">4</span></span><br><span class="line"><span class="selector-tag">2</span>    <span class="selector-tag">3</span></span><br><span class="line"><span class="selector-tag">3</span>    <span class="selector-tag">1</span></span><br><span class="line"><span class="selector-tag">4</span>    <span class="selector-tag">5</span></span><br><span class="line"><span class="selector-tag">5</span>    <span class="selector-tag">3</span></span><br><span class="line"><span class="selector-tag">6</span>    <span class="selector-tag">4</span></span><br><span class="line"><span class="selector-tag">7</span>    <span class="selector-tag">4</span></span><br><span class="line"><span class="selector-tag">8</span>    <span class="selector-tag">2</span></span><br><span class="line"><span class="selector-tag">9</span>    <span class="selector-tag">4</span></span><br><span class="line"><span class="selector-tag">Name</span>: <span class="selector-tag">normal</span>, <span class="selector-tag">dtype</span>: <span class="selector-tag">category</span></span><br><span class="line"><span class="selector-tag">Categories</span> (<span class="number">5</span>, int64): <span class="selector-attr">[1 &lt; 2 &lt; 3 &lt; 4 &lt; 5]</span></span><br></pre></td></tr></table></figure>
+<h3 id="等深分箱"><a href="#等深分箱" class="headerlink" title="等深分箱"></a>等深分箱</h3><p>等深分箱中，各个箱的宽度可能不一，但频数是几乎相等，所以可以采用数据的分位数来分箱。现对sample数据进行等深度分二箱，首先要找到2箱的分位数：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sample</span><span class="selector-class">.normal</span><span class="selector-class">.quantile</span>(<span class="selector-attr">[0,0.5,1]</span>)</span><br><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[121]</span>: </span><br><span class="line">0<span class="selector-class">.0</span>   <span class="selector-tag">-2</span><span class="selector-class">.036334</span></span><br><span class="line">0<span class="selector-class">.5</span>    0<span class="selector-class">.071356</span></span><br><span class="line">1<span class="selector-class">.0</span>    1<span class="selector-class">.452605</span></span><br><span class="line"><span class="selector-tag">Name</span>: <span class="selector-tag">normal</span>, <span class="selector-tag">dtype</span>: <span class="selector-tag">float64</span></span><br></pre></td></tr></table></figure>
+<p>在bins参数中设定分位数区间，为将下边界包含，include_lowest= True，完成等深分箱：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pd.cut(sample<span class="selector-class">.normal</span>,bins=sample<span class="selector-class">.normal</span><span class="selector-class">.quantile</span>([<span class="number">0</span>,<span class="number">0.5</span>,<span class="number">1</span>]),include_lowest=True)</span><br><span class="line">Out[<span class="number">124</span>]: </span><br><span class="line"><span class="number">0</span>    (-<span class="number">2.037</span>, <span class="number">0.0714</span>]</span><br><span class="line"><span class="number">1</span>     (<span class="number">0.0714</span>, <span class="number">1.453</span>]</span><br><span class="line"><span class="number">2</span>    (-<span class="number">2.037</span>, <span class="number">0.0714</span>]</span><br><span class="line"><span class="number">3</span>    (-<span class="number">2.037</span>, <span class="number">0.0714</span>]</span><br><span class="line"><span class="number">4</span>     (<span class="number">0.0714</span>, <span class="number">1.453</span>]</span><br><span class="line"><span class="number">5</span>    (-<span class="number">2.037</span>, <span class="number">0.0714</span>]</span><br><span class="line"><span class="number">6</span>     (<span class="number">0.0714</span>, <span class="number">1.453</span>]</span><br><span class="line"><span class="number">7</span>     (<span class="number">0.0714</span>, <span class="number">1.453</span>]</span><br><span class="line"><span class="number">8</span>    (-<span class="number">2.037</span>, <span class="number">0.0714</span>]</span><br><span class="line"><span class="number">9</span>     (<span class="number">0.0714</span>, <span class="number">1.453</span>]</span><br><span class="line">Name: <span class="attribute">normal</span>, dtype: category</span><br><span class="line">Categories (<span class="number">2</span>, interval[float64]): [(-<span class="number">2.037</span>, <span class="number">0.0714</span>] &lt; (<span class="number">0.0714</span>, <span class="number">1.453</span>]]</span><br></pre></td></tr></table></figure>
+<p>可以对分组进行标签化。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">pd.cut(sample.<span class="keyword">normal</span>,bins=sample.<span class="keyword">normal</span>.quantile([<span class="number">0</span>,<span class="number">0.5</span>,<span class="number">1</span>]),include_lowest=True,labels=[<span class="string">'bad'</span>,<span class="string">'good'</span>])</span><br><span class="line">Out[<span class="number">125</span>]: </span><br><span class="line"><span class="number">0</span>     <span class="keyword">bad</span></span><br><span class="line"><span class="number">1</span>    good</span><br><span class="line"><span class="number">2</span>     <span class="keyword">bad</span></span><br><span class="line"><span class="number">3</span>     <span class="keyword">bad</span></span><br><span class="line"><span class="number">4</span>    good</span><br><span class="line"><span class="number">5</span>     <span class="keyword">bad</span></span><br><span class="line"><span class="number">6</span>    good</span><br><span class="line"><span class="number">7</span>    good</span><br><span class="line"><span class="number">8</span>     <span class="keyword">bad</span></span><br><span class="line"><span class="number">9</span>    good</span><br><span class="line">Name: <span class="keyword">normal</span>, dtype: category</span><br><span class="line">Categories (<span class="number">2</span>, object): [<span class="keyword">bad</span> &lt; good]</span><br></pre></td></tr></table></figure>
+<h3 id="多变量异常值处理-聚类法"><a href="#多变量异常值处理-聚类法" class="headerlink" title="多变量异常值处理-聚类法"></a>多变量异常值处理-聚类法</h3><p>通过快速聚类法将数据对象分组成为多个簇，在同一个簇中的对象具有较高的相似度，而不同簇之间的对象差别较大。聚类分析可以挖掘孤立点以发现噪声数据，因为噪声本身就是孤立点。</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 你的支持是我写作的莫大鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ethan2lee">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://anne2bin.top">anne2bin</a></span>
+        <span>/</span>
+        
+        <span><a href="https://blog.ywandy.top/">yewei_andy</a></span>
+        <span>/</span>
+        
+        <span><a href="https://wwb.colonp.top/">wwb</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://ethan2lee.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+</html>
