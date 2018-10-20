@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="李逸炫的博客">
+    <meta name="keyword"  content="盈盛">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        shadowsocks_config - Ethan Lee | ethan | ethan2lee
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ethan Lee</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#搭建shadowsocks-server-和-client端"><span class="toc-text">搭建shadowsocks server 和 client端</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#sever-端"><span class="toc-text">sever 端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#client端"><span class="toc-text">client端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#proxychains"><span class="toc-text">proxychains</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        shadowsocks_config
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-10-20 05:32:49</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#linux" title="linux">linux</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#shadowsocks" title="shadowsocks">shadowsocks</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#vpn" title="vpn">vpn</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="搭建shadowsocks-server-和-client端"><a href="#搭建shadowsocks-server-和-client端" class="headerlink" title="搭建shadowsocks server 和 client端"></a>搭建shadowsocks server 和 client端</h1><h2 id="sever-端"><a href="#sever-端" class="headerlink" title="sever 端"></a>sever 端</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">update</span></span><br><span class="line">sudo apt <span class="keyword">install</span> shadowsocks</span><br></pre></td></tr></table></figure>
+<p>下载完成后，配置shadowsocks 文件，</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/shadowsocks/<span class="built_in">config</span>.json</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"server"</span>:<span class="string">"ethan2lee.online"</span>, #you<span class="built_in"> server </span>ip</span><br><span class="line">    <span class="string">"server_port"</span>:8888,</span><br><span class="line">    <span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="string">"local_port"</span>:1080,</span><br><span class="line">    <span class="string">"password"</span>:<span class="string">"your_password"</span>,</span><br><span class="line">    <span class="string">"timeout"</span>:300,</span><br><span class="line">    <span class="string">"method"</span>:<span class="string">"aes-256-cfb"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一般来说，我们只需要更改“server”和“password”字段的值即可，根据自己实际情况配置。更改完后，保存。</p>
+<p>接下来就是启动server端了，先设置开机自启，再启动。</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo systemctl enable  shadowsocks.service</span><br><span class="line"></span><br><span class="line">shadowsocks.service is not a native service, redirecting to systemd-sysv-install</span><br><span class="line">Executing /<span class="class"><span class="keyword">lib</span>/<span class="title">systemd</span>/<span class="title">systemd</span>-<span class="title">sysv</span>-<span class="title">install</span> <span class="title">enable</span> <span class="title">shadowsocks</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo systemctl <span class="literal">start</span>   shadowsocks.service</span><br></pre></td></tr></table></figure>
+<p>查看服务状态：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sudo systemctl status  shadowsocks.service</span><br><span class="line">● shadowsocks.service - LSB: Fast tunnel<span class="built_in"> proxy </span>that helps you bypass firewalls</span><br><span class="line">   Loaded: loaded (/etc/init.d/shadowsocks; bad; vendor preset: enabled)</span><br><span class="line">   Active: active (exited) since Sat 2018-10-20 04:59:16 UTC; 4s ago</span><br><span class="line">​     Docs: man:systemd-sysv-generator(8)</span><br><span class="line">  Process: 634 <span class="attribute">ExecStart</span>=/etc/init.d/shadowsocks start (<span class="attribute">code</span>=exited, <span class="attribute">status</span>=0/SUCCESS)</span><br><span class="line">​    Tasks: 0</span><br><span class="line">   Memory: 0B</span><br><span class="line">​      CPU: 0</span><br><span class="line"></span><br><span class="line">Oct 20 04:59:16 ethan systemd[1]: Starting LSB: Fast tunnel<span class="built_in"> proxy </span>that helps you bypass firewalls<span class="built_in">..</span>.</span><br><span class="line">Oct 20 04:59:16 ethan systemd[1]: Started LSB: Fast tunnel<span class="built_in"> proxy </span>that helps you bypass firewalls.</span><br></pre></td></tr></table></figure>
+<p>这样我们shadowsocks的server端就配置完成了。</p>
+<h2 id="client端"><a href="#client端" class="headerlink" title="client端"></a>client端</h2><p>在需要用shadowsocks的server服务的机子也安装shaodowsocks。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">update</span></span><br><span class="line">sudo apt <span class="keyword">install</span> shadowsocks</span><br></pre></td></tr></table></figure>
+<p>同样需要配置一下shadowsocks的配置文件，一般跟server端的配置差不多，但是需要自行更改“local_port”的字段值。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/shadowsocks/<span class="built_in">config</span>.json</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"server"</span>:<span class="string">"ethan2lee.online"</span>, #you<span class="built_in"> server </span>ip</span><br><span class="line">    <span class="string">"server_port"</span>:8888,</span><br><span class="line">    <span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="string">"local_port"</span>:1080, ### 在clien端可以自主配置的</span><br><span class="line">    <span class="string">"password"</span>:<span class="string">"your_password"</span>,</span><br><span class="line">    <span class="string">"timeout"</span>:300,</span><br><span class="line">    <span class="string">"method"</span>:<span class="string">"aes-256-cfb"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置完成之手进行保存。</p>
+<p>开启client 端，这样我们只要使用sock5协议通过代理端口1080访问网络，就可以完全使用server的网络环境了。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ sslocal -c /etc/shadowsocks/config.json</span><br><span class="line">INFO: loading<span class="built_in"> config </span><span class="keyword">from</span> /etc/shadowsocks/config.json</span><br><span class="line">shadowsocks 2.1.0</span><br><span class="line">2018-10-20 05:10:08 <span class="builtin-name">INFO</span>     starting local at 127.0.0.1:1080</span><br></pre></td></tr></table></figure>
+<p>打开之后，shadowsocks的client 端是运行在前台的。我们先按Ctr +c 终止进行，再输入以下命令，让它在后台运行：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ nohup sslocal -c /etc/shadowsocks/<span class="built_in">config</span>.json &amp;</span><br><span class="line">[<span class="number">1</span>] <span class="number">9479</span></span><br><span class="line">nohup: ignoring <span class="built_in">input</span> <span class="keyword">and</span> appending <span class="built_in">output</span> to <span class="string">'nohup.out'</span></span><br></pre></td></tr></table></figure>
+<p>这样它就作为守护进程在运行着了。</p>
+<h2 id="proxychains"><a href="#proxychains" class="headerlink" title="proxychains"></a>proxychains</h2><p>安装完shadowsocks之后，如果想让终端命令也经常代理，那么我们就需要proxychains来帮忙了。</p>
+<p>安装proxychains</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> proxychains</span><br></pre></td></tr></table></figure>
+<p>修改proxychains 配置文件，直接找到最后一行。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ <span class="keyword">vim</span> /etc/proxychains.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure>
+<p>将<code>socks4 127.0.0.1 9095</code>改为</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socks5 <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">1080</span></span><br></pre></td></tr></table></figure>
+<p>1080 为你刚刚配置shadowsocks client端的“local_host”字段的值，配置完成后保存。</p>
+<p>经过以上所有步骤，我们可以通过一下命令来查看我们是否配置正确了：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains wget www<span class="selector-class">.google</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure>
+<p>如果有一下输出，那么就证明你配置成功了：</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ proxychains wget www.google.com</span><br><span class="line">ProxyChains<span class="number">-3.1</span> (http:<span class="comment">//proxychains.sf.net)</span></span><br><span class="line">-<span class="number">-2018</span><span class="number">-10</span><span class="number">-20</span> <span class="number">05</span>:<span class="number">28</span>:<span class="number">01</span>--  http:<span class="comment">//www.google.com/</span></span><br><span class="line">Resolving www.google.com (www.google.com)... |DNS-request| www.google.com</span><br><span class="line">|S-chain|-&lt;&gt;<span class="number">-127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">1080</span>-&lt;&gt;&lt;&gt;<span class="number">-4.2</span><span class="number">.2</span><span class="number">.2</span>:<span class="number">53</span>-&lt;&gt;&lt;&gt;-OK</span><br><span class="line">|DNS-response| www.google.com is <span class="number">74.125</span><span class="number">.20</span><span class="number">.103</span></span><br><span class="line"><span class="number">74.125</span><span class="number">.20</span><span class="number">.103</span></span><br><span class="line">Connecting to www.google.com (www.google.com)|<span class="number">74.125</span><span class="number">.20</span><span class="number">.103</span>|:<span class="number">80.</span>.. |S-chain|-&lt;&gt;<span class="number">-127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">1080</span>-&lt;&gt;&lt;&gt;<span class="number">-74.125</span><span class="number">.20</span><span class="number">.103</span>:<span class="number">80</span>-&lt;&gt;&lt;&gt;-OK</span><br><span class="line">connected.</span><br><span class="line">HTTP request sent, awaiting response... <span class="number">200</span> OK</span><br><span class="line">Length: unspecified [text/html]</span><br><span class="line">Saving to: ‘index.html’</span><br><span class="line"></span><br><span class="line">index.html                        [ &lt;=&gt;                                           ]  <span class="number">11.05</span>K  --.-KB/s    <span class="keyword">in</span> <span class="number">0</span>s</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span><span class="number">-10</span><span class="number">-20</span> <span class="number">05</span>:<span class="number">28</span>:<span class="number">02</span> (<span class="number">63.6</span> MB/s) - ‘index.html’ saved [<span class="number">11319</span>]</span><br></pre></td></tr></table></figure>
+<p>如果没有，就只能继续百度了。</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 你的支持是我写作的莫大鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ethan2lee">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://anne2bin.top">anne2bin</a></span>
+        <span>/</span>
+        
+        <span><a href="https://blog.ywandy.top/">yewei_andy</a></span>
+        <span>/</span>
+        
+        <span><a href="https://wwb.colonp.top/">wwb</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://ethan2lee.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+</html>

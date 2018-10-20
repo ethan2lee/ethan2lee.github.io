@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="李逸炫的博客">
+    <meta name="keyword"  content="盈盛">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        统计量分析示例 - Ethan Lee | ethan | ethan2lee
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ethan Lee</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#描述性统计分析基础"><span class="toc-text">描述性统计分析基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#描述性统计与探索型数据分析"><span class="toc-text">描述性统计与探索型数据分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分类变量分析"><span class="toc-text">分类变量分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#连续变量分析"><span class="toc-text">连续变量分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据的集中趋势"><span class="toc-text">数据的集中趋势</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ARPU的均值与中位数"><span class="toc-text">ARPU的均值与中位数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据的离散程度"><span class="toc-text">数据的离散程度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据的偏度与峰度"><span class="toc-text">数据的偏度与峰度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#apply-map-groupby及其它相关"><span class="toc-text">apply\map\groupby及其它相关</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        统计量分析示例
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-10-19 15:27:52</span></span>
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p># </p>
+<h1 id="描述性统计分析基础"><a href="#描述性统计分析基础" class="headerlink" title="描述性统计分析基础"></a>描述性统计分析基础</h1><ul>
+<li><p>数据集描述与属性说明</p>
+</li>
+<li><p>ID 客户编号</p>
+</li>
+<li><p>Suc_flag   成功入网标识</p>
+</li>
+<li><p>ARPU   入网后ARPU</p>
+</li>
+<li><p>PromCnt12  12个月内的营销次数</p>
+</li>
+<li><p>PromCnt36  36个月内的营销次数</p>
+</li>
+<li><p>PromCntMsg12   12个月内发短信的次数</p>
+</li>
+<li><p>PromCntMsg36   36个月内发短信的次数</p>
+</li>
+<li><p>Class  客户重要性等级(根据前运营商消费情况)</p>
+</li>
+<li><p>Age    年龄</p>
+</li>
+<li><p>Gender 性别</p>
+</li>
+<li><p>HomeOwner  是否拥有住房</p>
+</li>
+<li><p>AvgARPU    当地平均ARPU</p>
+</li>
+<li><p>AvgHomeValue   当地房屋均价</p>
+</li>
+<li><p>AvgIncome  当地人均收入</p>
+</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="title">pd</span>.set_option('display.max_columns', <span class="type">None</span>)</span><br><span class="line"><span class="meta">#os.chdir('Q:/data')</span></span><br><span class="line"><span class="meta">#os.getcwd()</span></span><br></pre></td></tr></table></figure>
+<p>读取数据</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">camp</span>= pd.read_csv(<span class="string">'teleco_camp.csv'</span>)</span><br><span class="line">camp.head(10)</span><br></pre></td></tr></table></figure>
+<p>数据预处理</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">camp</span><span class="selector-class">.dtypes</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ID</span>                 <span class="built_in">int64</span></span><br><span class="line"><span class="type">Suc_flag</span>        category</span><br><span class="line"><span class="type">ARPU</span>             <span class="built_in">float64</span></span><br><span class="line"><span class="type">PromCnt12</span>        <span class="built_in">float64</span></span><br><span class="line"><span class="type">PromCnt36</span>        <span class="built_in">float64</span></span><br><span class="line"><span class="type">PromCntMsg12</span>     <span class="built_in">float64</span></span><br><span class="line"><span class="type">PromCntMsg36</span>     <span class="built_in">float64</span></span><br><span class="line"><span class="type">Class</span>           category</span><br><span class="line"><span class="type">Age</span>              <span class="built_in">float64</span></span><br><span class="line"><span class="type">Gender</span>            <span class="keyword">object</span></span><br><span class="line"><span class="type">HomeOwner</span>         <span class="keyword">object</span></span><br><span class="line"><span class="type">AvgARPU</span>          <span class="built_in">float64</span></span><br><span class="line"><span class="type">AvgHomeValue</span>     <span class="built_in">float64</span></span><br><span class="line"><span class="type">AvgIncome</span>        <span class="built_in">float64</span></span><br><span class="line">dtype: <span class="keyword">object</span></span><br></pre></td></tr></table></figure>
+<p>camp.describe(include=’all’)</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ID</th>
+<th>Suc_flag</th>
+<th>ARPU</th>
+<th>PromCnt12</th>
+<th>PromCnt36</th>
+<th>PromCntMsg12</th>
+<th>PromCntMsg36</th>
+<th>Class</th>
+<th>Age</th>
+<th>Gender</th>
+<th>HomeOwner</th>
+<th>AvgARPU</th>
+<th>AvgHomeValue</th>
+<th>AvgIncome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>count</td>
+<td>9686.000000</td>
+<td>9686.0</td>
+<td>4843.000000</td>
+<td>9686.000000</td>
+<td>9686.000000</td>
+<td>9686.000000</td>
+<td>9686.000000</td>
+<td>9686.0</td>
+<td>7279.000000</td>
+<td>9686</td>
+<td>9686</td>
+<td>9686.000000</td>
+<td>9583.000000</td>
+<td>7329.000000</td>
+</tr>
+<tr>
+<td>unique</td>
+<td>NaN</td>
+<td>2.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>4.0</td>
+<td>NaN</td>
+<td>3</td>
+<td>2</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>top</td>
+<td>NaN</td>
+<td>1.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2.0</td>
+<td>NaN</td>
+<td>F</td>
+<td>H</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>freq</td>
+<td>NaN</td>
+<td>4843.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>3303.0</td>
+<td>NaN</td>
+<td>5223</td>
+<td>5377</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>mean</td>
+<td>97975.474086</td>
+<td>NaN</td>
+<td>78.121722</td>
+<td>3.447212</td>
+<td>7.337059</td>
+<td>1.178402</td>
+<td>2.390935</td>
+<td>NaN</td>
+<td>59.150845</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>52.905156</td>
+<td>112179.202755</td>
+<td>53513.457361</td>
+</tr>
+<tr>
+<td>std</td>
+<td>56550.171120</td>
+<td>NaN</td>
+<td>62.225686</td>
+<td>1.231890</td>
+<td>1.952436</td>
+<td>0.287226</td>
+<td>0.914314</td>
+<td>NaN</td>
+<td>16.516400</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>4.993775</td>
+<td>98522.888583</td>
+<td>19805.168339</td>
+</tr>
+<tr>
+<td>min</td>
+<td>12.000000</td>
+<td>NaN</td>
+<td>5.000000</td>
+<td>0.750000</td>
+<td>1.000000</td>
+<td>0.200000</td>
+<td>0.400000</td>
+<td>NaN</td>
+<td>0.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>46.138968</td>
+<td>7500.000000</td>
+<td>2499.000000</td>
+</tr>
+<tr>
+<td>25%</td>
+<td>48835.500000</td>
+<td>NaN</td>
+<td>50.000000</td>
+<td>2.900000</td>
+<td>6.250000</td>
+<td>1.000000</td>
+<td>1.400000</td>
+<td>NaN</td>
+<td>47.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>49.760116</td>
+<td>53200.000000</td>
+<td>40389.000000</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>99106.000000</td>
+<td>NaN</td>
+<td>65.000000</td>
+<td>3.250000</td>
+<td>7.750000</td>
+<td>1.200000</td>
+<td>2.600000</td>
+<td>NaN</td>
+<td>60.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>50.876672</td>
+<td>77700.000000</td>
+<td>48699.000000</td>
+</tr>
+<tr>
+<td>75%</td>
+<td>148538.750000</td>
+<td>NaN</td>
+<td>100.000000</td>
+<td>3.650000</td>
+<td>8.250000</td>
+<td>1.400000</td>
+<td>3.200000</td>
+<td>NaN</td>
+<td>73.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>54.452822</td>
+<td>129350.000000</td>
+<td>62385.000000</td>
+</tr>
+<tr>
+<td>max</td>
+<td>191779.000000</td>
+<td>NaN</td>
+<td>1000.000000</td>
+<td>15.150000</td>
+<td>19.500000</td>
+<td>3.600000</td>
+<td>5.600000</td>
+<td>NaN</td>
+<td>87.000000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>99.444787</td>
+<td>600000.000000</td>
+<td>200001.000000</td>
+</tr>
+</tbody>
+</table>
+<h1 id="描述性统计与探索型数据分析"><a href="#描述性统计与探索型数据分析" class="headerlink" title="描述性统计与探索型数据分析"></a>描述性统计与探索型数据分析</h1><h2 id="分类变量分析"><a href="#分类变量分析" class="headerlink" title="分类变量分析"></a>分类变量分析</h2><p>可以查看列原因元素的种类</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">camp</span><span class="selector-attr">['Suc_flag']</span><span class="selector-class">.groupby</span>(<span class="selector-tag">camp</span><span class="selector-attr">['Suc_flag']</span>)<span class="selector-class">.count</span>()</span><br></pre></td></tr></table></figure>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Suc_flag</span></span><br><span class="line"><span class="number">0</span>    <span class="number">4843</span></span><br><span class="line"><span class="number">1</span>    <span class="number">4843</span></span><br><span class="line"><span class="type">Name</span>: <span class="type">Suc_flag</span>, d<span class="keyword">type</span>: int64</span><br></pre></td></tr></table></figure>
+<h2 id="连续变量分析"><a href="#连续变量分析" class="headerlink" title="连续变量分析"></a>连续变量分析</h2><h3 id="数据的集中趋势"><a href="#数据的集中趋势" class="headerlink" title="数据的集中趋势"></a>数据的集中趋势</h3><h4 id="ARPU的均值与中位数"><a href="#ARPU的均值与中位数" class="headerlink" title="ARPU的均值与中位数"></a>ARPU的均值与中位数</h4><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">fs = camp[<span class="string">'ARPU'</span>] <span class="comment"># 可以使用camp.ARPU </span></span><br><span class="line"><span class="keyword">print</span>(<span class="string">'mean = %6.4f'</span> %fs.mean())                     <span class="comment"># 求fs的均值</span></span><br><span class="line"><span class="keyword">print</span>(<span class="string">'median = %6.4f'</span> %fs.median() )                <span class="comment"># 求fs的中位数</span></span><br><span class="line"><span class="keyword">print</span>(<span class="string">'quantiles\n'</span>, fs.quantile([<span class="number">0</span>.<span class="number">25</span>, <span class="number">0</span>.<span class="number">5</span>, <span class="number">0</span>.<span class="number">75</span>])) <span class="comment"># 求a的上下四分位数与中位数</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mad</span> = <span class="number">38.1896</span></span><br><span class="line"><span class="attr">range</span> = <span class="number">995.0000</span></span><br><span class="line"><span class="attr">var</span> = <span class="number">3872.0359</span></span><br><span class="line"><span class="attr">std</span> = <span class="number">62.2257</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">get_ipython</span><span class="params">()</span></span>.run_line_magic(<span class="string">'matplotlib'</span>, <span class="string">'inline'</span>）</span><br><span class="line"></span><br><span class="line">fs.plot(kind=<span class="string">'hist'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(array([<span class="number">2.510e+03</span>, <span class="number">1.978e+03</span>, <span class="number">2.160e+02</span>, <span class="number">9.800e+01</span>, <span class="number">4.000e+00</span>, <span class="number">7.000e+00</span>,</span><br><span class="line">        <span class="number">0.000e+00</span>, <span class="number">2.500e+01</span>, <span class="number">0.000e+00</span>, <span class="number">0.000e+00</span>, <span class="number">0.000e+00</span>, <span class="number">1.000e+00</span>,</span><br><span class="line">        <span class="number">0.000e+00</span>, <span class="number">0.000e+00</span>, <span class="number">4.000e+00</span>]),</span><br><span class="line"> array([   <span class="number">5.</span>        ,   <span class="number">71.33333333</span>,  <span class="number">137.66666667</span>,  <span class="number">204.</span>        ,</span><br><span class="line">         <span class="number">270.33333333</span>,  <span class="number">336.66666667</span>,  <span class="number">403.</span>        ,  <span class="number">469.33333333</span>,</span><br><span class="line">         <span class="number">535.66666667</span>,  <span class="number">602.</span>        ,  <span class="number">668.33333333</span>,  <span class="number">734.66666667</span>,</span><br><span class="line">         <span class="number">801.</span>        ,  <span class="number">867.33333333</span>,  <span class="number">933.66666667</span>, <span class="number">1000.</span>        ]),</span><br><span class="line"> &lt;a <span class="type">list</span> of <span class="number">15</span> Patch objects&gt;)</span><br></pre></td></tr></table></figure>
+<p><img src="image/output_11_1.png" alt=""></p>
+<h3 id="数据的离散程度"><a href="#数据的离散程度" class="headerlink" title="数据的离散程度"></a>数据的离散程度</h3><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> ('mad = <span class="symbol">%</span><span class="number">6.</span>4f' %fs.mad())      # 求平均绝对偏差 mad = <span class="built_in">np</span>.<span class="built_in">abs</span>(fs - fs.<span class="built_in">mean</span>()).<span class="built_in">mean</span>()</span><br><span class="line"><span class="built_in">print</span> ('<span class="built_in">range</span> = <span class="symbol">%</span><span class="number">6.</span>4f' <span class="symbol">%</span>(fs.<span class="built_in">max</span>(skipna=True) - fs.<span class="built_in">min</span>(skipna=True))) # 求极差</span><br><span class="line"><span class="built_in">print</span> ('<span class="built_in">var</span> = <span class="symbol">%</span><span class="number">6.</span>4f' %fs.<span class="built_in">var</span>())   # 求方差</span><br><span class="line"><span class="built_in">print</span> ('<span class="built_in">std</span> = <span class="symbol">%</span><span class="number">6.</span>4f' %fs.<span class="built_in">std</span>())   # 求标准差</span><br></pre></td></tr></table></figure>
+<h3 id="数据的偏度与峰度"><a href="#数据的偏度与峰度" class="headerlink" title="数据的偏度与峰度"></a>数据的偏度与峰度</h3><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="title">plt</span>.hist(fs.dropna(), bins=<span class="number">15</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="image/output_15_1.png" alt=""></p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print ('skewness = %<span class="number">6.4</span>f' %fs.skew(<span class="name">skipna=True</span>))</span><br><span class="line">print ('kurtosis = %<span class="number">6.4</span>f' %fs.kurt(<span class="name">skipna=True</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">skewness</span> = <span class="number">5.1695</span></span><br><span class="line"><span class="attr">kurtosis</span> = <span class="number">52.8509</span></span><br></pre></td></tr></table></figure>
+<h3 id="apply-map-groupby及其它相关"><a href="#apply-map-groupby及其它相关" class="headerlink" title="apply\map\groupby及其它相关"></a>apply\map\groupby及其它相关</h3><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span> = pd.<span class="type">DataFrame</span>(<span class="title">data</span>=&#123;'<span class="title">a'</span>:<span class="title">range</span>(1,11), 'b':np.random.randn(10)&#125;)</span></span><br><span class="line"><span class="class"><span class="keyword">data</span>.<span class="type">T</span></span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>1.000000</td>
+<td>2.000000</td>
+<td>3.000000</td>
+<td>4.000000</td>
+<td>5.000000</td>
+<td>6.000000</td>
+<td>7.000000</td>
+<td>8.0000</td>
+<td>9.000000</td>
+<td>10.000000</td>
+</tr>
+<tr>
+<td>b</td>
+<td>-0.087919</td>
+<td>0.903531</td>
+<td>0.603965</td>
+<td>0.203005</td>
+<td>0.282077</td>
+<td>-1.420298</td>
+<td>0.283303</td>
+<td>-0.0565</td>
+<td>1.047595</td>
+<td>-0.787566</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">data</span>.apply(<span class="title">np</span>.<span class="title">mean</span>) # 等价于<span class="keyword">data</span>.mean()，是其完整形式</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span>    <span class="number">5.500000</span></span><br><span class="line"><span class="selector-tag">b</span>    <span class="number">0.097119</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">data</span>.apply(lambda x: x.<span class="keyword">as</span><span class="keyword">type</span>('str')).dtypes # <span class="type">DataFrame</span>没有astype方法，只有<span class="type">Series</span>有</span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 你的支持是我写作的莫大鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ethan2lee">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://anne2bin.top">anne2bin</a></span>
+        <span>/</span>
+        
+        <span><a href="https://blog.ywandy.top/">yewei_andy</a></span>
+        <span>/</span>
+        
+        <span><a href="https://wwb.colonp.top/">wwb</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://ethan2lee.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+</html>
