@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="李逸炫的博客">
+    <meta name="keyword"  content="盈盛">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        计算函数运行效率 - Ethan Lee | ethan | ethan2lee
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ethan Lee</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        计算函数运行效率
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-10-21 15:14:29</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#算法" title="算法">算法</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <p>计算函数时间</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>要捕获我们的每个函数执行所需的时间，我们将使用 Python 的 timeit 模块。timeit 模块旨在允许 Python 开发人员通过在一致的环境中运行函数并使用尽可能相似的操作系统的时序机制来进行跨平台时序测量。<br>要使用 timeit，你需要创建一个 Timer 对象，其参数是两个 Python 语句。第一个参数是一个你想要执行时间的 Python 语句; 第二个参数是一个将运行一次以设置测试的语句。然后 timeit 模块将计算执行语句所需的时间。默认情况下，timeit 将尝试运行语句一百万次。 当它完成时，它返回时间作为表示总秒数的浮点值。由于它执行语句一百万次，可以读取结果作为执行测试一次的微秒数。你还可以传递 timeit 一个参数名字为 number，允许你指定执行测试语句的次数。以下显示了运行我们的每个测试功能 1000 次需要多长时间。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test1</span><span class="params">()</span>:</span></span><br><span class="line">    l = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">        l = l + [i]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test2</span><span class="params">()</span>:</span></span><br><span class="line">    l = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">        l.append(i)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test3</span><span class="params">()</span>:</span></span><br><span class="line">    l = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>)]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test4</span><span class="params">()</span>:</span></span><br><span class="line">    l = list(range(<span class="number">1000</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> timeit</span><br><span class="line"><span class="keyword">from</span> timeit <span class="keyword">import</span> Timer</span><br><span class="line">t1 = Timer(<span class="string">"test1()"</span>, <span class="string">"from __main__ import test1"</span>)</span><br><span class="line">print(<span class="string">"concat "</span>,t1.timeit(number=<span class="number">1000</span>), <span class="string">"milliseconds"</span>)</span><br><span class="line">t2 = Timer(<span class="string">"test2()"</span>, <span class="string">"from __main__ import test2"</span>)</span><br><span class="line">print(<span class="string">"append "</span>,t2.timeit(number=<span class="number">1000</span>), <span class="string">"milliseconds"</span>)</span><br><span class="line">t3 = Timer(<span class="string">"test3()"</span>, <span class="string">"from __main__ import test3"</span>)</span><br><span class="line">print(<span class="string">"comprehension "</span>,t3.timeit(number=<span class="number">1000</span>), <span class="string">"milliseconds"</span>)</span><br><span class="line">t4 = Timer(<span class="string">"test4()"</span>, <span class="string">"from __main__ import test4"</span>)</span><br><span class="line">print(<span class="string">"list range "</span>,t4.timeit(number=<span class="number">1000</span>), <span class="string">"milliseconds"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">concat  <span class="number">1.0196415490549953</span> milliseconds</span><br><span class="line">append  <span class="number">0.08268737967887319</span> milliseconds</span><br><span class="line">comprehension  <span class="number">0.03390247851893946</span> milliseconds</span><br><span class="line"><span class="type">list</span> range  <span class="number">0.013240015113296977</span> milliseconds</span><br></pre></td></tr></table></figure>
+<p>作为一种演示性能差异的方法，我们用 timeit 来做一个实验。我们的目标是验证从列表从末尾 pop 元素和从开始 pop 元b素的性能。同样，我们也想测量不同列表大小对这个时间的影响。我们期望看到的是，从列表末尾处弹出所需时间将保持不变，即使列表不断增长。而从列表开始处弹出元素时间将随列表增长而增加。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">popzero = Timer(<span class="string">"x.pop(0)"</span>,</span><br><span class="line">                <span class="string">"from __main__ import x"</span>)</span><br><span class="line">popend = Timer(<span class="string">"x.pop()"</span>,</span><br><span class="line">               <span class="string">"from __main__ import x"</span>)</span><br><span class="line">data=[]</span><br><span class="line">print(<span class="string">"pop(0)   pop()"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000000</span>,<span class="number">100000001</span>,<span class="number">1000000</span>):</span><br><span class="line">    x = list(range(i))</span><br><span class="line">    pt = popend.timeit(number=<span class="number">1000</span>)</span><br><span class="line">    x = list(range(i))</span><br><span class="line">    pz = popzero.timeit(number=<span class="number">1000</span>)</span><br><span class="line">    print(<span class="string">"%15.5f, %15.5f"</span> %(pz,pt))</span><br><span class="line">    one_data=&#123;&#125;</span><br><span class="line">    one_data[<span class="string">'time'</span>]=i</span><br><span class="line">    one_data[<span class="string">'pop(0)'</span>]=pz</span><br><span class="line">    one_data[<span class="string">'pop()'</span>]=pt</span><br><span class="line">    data.append(one_data)</span><br></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">pop(<span class="number">0</span>)   pop()</span><br><span class="line">        <span class="number">0.56428</span>,         <span class="number">0.00026</span></span><br><span class="line">        <span class="number">1.46132</span>,         <span class="number">0.00009</span></span><br><span class="line">        <span class="number">2.27953</span>,         <span class="number">0.00007</span></span><br><span class="line">        <span class="number">3.11111</span>,         <span class="number">0.00025</span></span><br><span class="line">        <span class="number">4.03941</span>,         <span class="number">0.00007</span></span><br><span class="line">        <span class="number">5.01496</span>,         <span class="number">0.00011</span></span><br><span class="line">        <span class="number">5.72766</span>,         <span class="number">0.00008</span></span><br><span class="line">        <span class="number">6.41760</span>,         <span class="number">0.00007</span></span><br><span class="line">        <span class="number">6.98101</span>,         <span class="number">0.00016</span></span><br><span class="line">        <span class="number">7.69488</span>,         <span class="number">0.00009</span></span><br><span class="line">        <span class="number">8.59127</span>,         <span class="number">0.00008</span></span><br><span class="line">        <span class="number">9.39142</span>,         <span class="number">0.00008</span></span><br><span class="line">       <span class="number">10.03456</span>,         <span class="number">0.00007</span></span><br><span class="line">       <span class="number">10.85724</span>,         <span class="number">0.00011</span></span><br><span class="line">       <span class="number">11.69828</span>,         <span class="number">0.00008</span></span><br><span class="line">       <span class="number">12.37023</span>,         <span class="number">0.00008</span></span><br><span class="line">       <span class="number">13.12709</span>,         <span class="number">0.00010</span></span><br><span class="line">       <span class="number">13.89727</span>,         <span class="number">0.00008</span></span><br><span class="line">       <span class="number">14.65594</span>,         <span class="number">0.00007</span></span><br><span class="line">       <span class="number">15.49640</span>,         <span class="number">0.00008</span></span><br><span class="line">       <span class="number">16.35027</span>,         <span class="number">0.00008</span></span><br><span class="line">       <span class="number">17.00838</span>,         <span class="number">0.00010</span></span><br><span class="line">       <span class="number">17.72517</span>,         <span class="number">0.00008</span></span><br><span class="line">       <span class="number">19.29465</span>,         <span class="number">0.00010</span></span><br><span class="line">       <span class="number">21.02476</span>,         <span class="number">0.00008</span></span><br><span class="line">       <span class="number">21.60967</span>,         <span class="number">0.00008</span></span><br><span class="line">       <span class="number">22.32767</span>,         <span class="number">0.00008</span></span><br><span class="line">       <span class="number">22.62550</span>,         <span class="number">0.00008</span></span><br><span class="line">       <span class="number">25.15527</span>,         <span class="number">0.00009</span></span><br><span class="line">       <span class="number">24.14118</span>,         <span class="number">0.00008</span></span><br><span class="line">       <span class="number">25.48768</span>,         <span class="number">0.00009</span></span><br><span class="line">       <span class="number">24.84720</span>,         <span class="number">0.00007</span></span><br><span class="line">       <span class="number">26.40644</span>,         <span class="number">0.00008</span></span><br><span class="line">       <span class="number">26.62662</span>,         <span class="number">0.00008</span></span><br><span class="line">       <span class="number">28.86800</span>,         <span class="number">0.00008</span></span><br><span class="line">       <span class="number">27.79692</span>,         <span class="number">0.00008</span></span><br></pre></td></tr></table></figure>
+<p>将比较列表和字典之间的 contains 操作的性能。在此过程中，我们将确认列表的 contains 操作符是 O(n)，字典的 contains 操作符是 O(1)。我们将在实验中列出一系列数字。然后随机选择数字，并检查数字是否在列表中。如果我们的性能表是正确的，列表越大，确定列表中是否包含任意一个数字应该花费的时间越长。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> timeit</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line">data=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10000</span>,<span class="number">1000001</span>,<span class="number">20000</span>):</span><br><span class="line">    t = timeit.Timer(<span class="string">"random.randrange(%d) in x"</span>%i,</span><br><span class="line">                     <span class="string">"from __main__ import random,x"</span>)</span><br><span class="line">    x = list(range(i))</span><br><span class="line">    lst_time = t.timeit(number=<span class="number">1000</span>)</span><br><span class="line">    x = &#123;j:<span class="keyword">None</span> <span class="keyword">for</span> j <span class="keyword">in</span> range(i)&#125;</span><br><span class="line">    d_time = t.timeit(number=<span class="number">1000</span>)</span><br><span class="line">    print(<span class="string">"%d,%10.3f,%10.3f"</span> % (i, lst_time, d_time))</span><br><span class="line">    one_data=&#123;&#125;</span><br><span class="line">    one_data[<span class="string">'time'</span>]=i</span><br><span class="line">    one_data[<span class="string">'lis_contains'</span>]=lst_time</span><br><span class="line">    one_data[<span class="string">'dict_contains'</span>]=d_time</span><br><span class="line">    data.append(one_data)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10000</span>,     <span class="number">0.075</span>,     <span class="number">0.001</span></span><br><span class="line"><span class="number">30000</span>,     <span class="number">0.149</span>,     <span class="number">0.001</span></span><br><span class="line"><span class="number">50000</span>,     <span class="number">0.235</span>,     <span class="number">0.001</span></span><br><span class="line"><span class="number">70000</span>,     <span class="number">0.353</span>,     <span class="number">0.001</span></span><br><span class="line"><span class="number">90000</span>,     <span class="number">0.449</span>,     <span class="number">0.001</span></span><br><span class="line"><span class="number">110000</span>,     <span class="number">0.526</span>,     <span class="number">0.001</span></span><br><span class="line"><span class="number">130000</span>,     <span class="number">0.614</span>,     <span class="number">0.001</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line">row_data=pd.DataFrame.from_dict(data=data)</span><br><span class="line">row_data.head()</span><br></pre></td></tr></table></figure>
+<table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>dict_contains</th><br>      <th>lis_contains</th><br>      <th>time</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>0.000865</td><br>      <td>0.074577</td><br>      <td>10000</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>0.000848</td><br>      <td>0.149025</td><br>      <td>30000</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>0.000817</td><br>      <td>0.235177</td><br>      <td>50000</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>0.001056</td><br>      <td>0.352916</td><br>      <td>70000</td><br>    </tr><br>    <tr><br>      <th>4</th><br>      <td>0.000893</td><br>      <td>0.448741</td><br>      <td>90000</td><br>    </tr><br>  </tbody><br></table>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.pivot_table(data=row_data,index=<span class="string">'time'</span>).plot()</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;matplotlib<span class="selector-class">.axes</span>._subplots<span class="selector-class">.AxesSubplot</span> at <span class="number">0</span>x1a28403b4a8&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/image/output_10_1.png" alt="png"></p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 你的支持是我写作的莫大鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+	
+
+
+
+    <ul class="list-inline text-center">
+
+
+	
+
+
+
+
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ethan2lee">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://anne2bin.top">anne2bin</a></span>
+        <span>/</span>
+        
+        <span><a href="https://blog.ywandy.top/">yewei_andy</a></span>
+        <span>/</span>
+        
+        <span><a href="https://wwb.colonp.top/">wwb</a></span>
+        <span>/</span>
+        
+    </p>
+    
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://ethan2lee.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+</html>

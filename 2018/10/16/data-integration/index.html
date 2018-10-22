@@ -139,7 +139,7 @@
 </span>
 </span>
     </div>
-    <div class="post-content ">
+    <div class="post-content no-indent">
         <h1 id="数据整合"><a href="#数据整合" class="headerlink" title="数据整合"></a>数据整合</h1><h2 id="行列操作"><a href="#行列操作" class="headerlink" title="行列操作"></a>行列操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">sample = pd.DataFrame(np.random.randn(<span class="number">4</span>,<span class="number">5</span>),columns=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>])</span><br><span class="line">sample</span><br></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Out</span><span class="selector-attr">[2]</span>: </span><br><span class="line">          <span class="selector-tag">a</span>         <span class="selector-tag">b</span>         <span class="selector-tag">c</span>         <span class="selector-tag">d</span>         <span class="selector-tag">e</span></span><br><span class="line">0 <span class="selector-tag">-0</span><span class="selector-class">.776807</span>  2<span class="selector-class">.355071</span> <span class="selector-tag">-0</span><span class="selector-class">.940921</span>  0<span class="selector-class">.164487</span> <span class="selector-tag">-1</span><span class="selector-class">.025772</span></span><br><span class="line">1  0<span class="selector-class">.596704</span>  0<span class="selector-class">.962625</span>  1<span class="selector-class">.848441</span> <span class="selector-tag">-1</span><span class="selector-class">.122676</span> <span class="selector-tag">-0</span><span class="selector-class">.359290</span></span><br><span class="line">2 <span class="selector-tag">-0</span><span class="selector-class">.092755</span> <span class="selector-tag">-0</span><span class="selector-class">.124250</span> <span class="selector-tag">-0</span><span class="selector-class">.259899</span> <span class="selector-tag">-0</span><span class="selector-class">.111997</span> <span class="selector-tag">-1</span><span class="selector-class">.816197</span></span><br><span class="line">3  0<span class="selector-class">.372941</span>  0<span class="selector-class">.297850</span> <span class="selector-tag">-0</span><span class="selector-class">.409256</span>  0<span class="selector-class">.485376</span> <span class="selector-tag">-2</span><span class="selector-class">.790929</span></span><br></pre></td></tr></table></figure>
 <h3 id="选择单列"><a href="#选择单列" class="headerlink" title="选择单列"></a>选择单列</h3><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sample[<span class="string">'a'</span>]</span><br></pre></td></tr></table></figure>
@@ -277,7 +277,18 @@
 
 
 <footer class="footer">
+	
+
+
+
     <ul class="list-inline text-center">
+
+
+	
+
+
+
+
         
         
 
@@ -313,14 +324,6 @@
         
     </p>
     
-    <p>
-        <span id="busuanzi_container_site_pv">
-            <span id="busuanzi_value_site_pv"></span>PV
-        </span>
-        <span id="busuanzi_container_site_uv">
-            <span id="busuanzi_value_site_uv"></span>UV
-        </span>
-        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
 </footer>
 
 

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="李逸炫的博客">
+    <meta name="keyword"  content="盈盛">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        栈应用 - Ethan Lee | ethan | ethan2lee
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ethan Lee</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#栈应用"><span class="toc-text">栈应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#栈数据结构的定义"><span class="toc-text">栈数据结构的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的符号匹配"><span class="toc-text">简单的符号匹配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#符号匹配"><span class="toc-text">符号匹配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十进制转二进制"><span class="toc-text">十进制转二进制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十进制转化为多进制"><span class="toc-text">十进制转化为多进制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中缀转后缀通用法"><span class="toc-text">中缀转后缀通用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后缀表达式求值"><span class="toc-text">后缀表达式求值</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        栈应用
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-10-21 15:34:49</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#算法" title="算法">算法</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h1 id="栈应用"><a href="#栈应用" class="headerlink" title="栈应用"></a>栈应用</h1><h2 id="栈数据结构的定义"><a href="#栈数据结构的定义" class="headerlink" title="栈数据结构的定义"></a>栈数据结构的定义</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>:</span></span><br><span class="line">     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">         self.items = []</span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></span><br><span class="line">         <span class="keyword">return</span> self.items == []</span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, item)</span>:</span></span><br><span class="line">         self.items.append(item)</span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">         <span class="keyword">return</span> self.items.pop()</span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">def</span> <span class="title">peek</span><span class="params">(self)</span>:</span></span><br><span class="line">         <span class="keyword">return</span> self.items[len(self.items)<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></span><br><span class="line">         <span class="keyword">return</span> len(self.items)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">s=Stack()</span><br><span class="line"></span><br><span class="line">print(s.isEmpty())</span><br><span class="line">s.push(<span class="number">4</span>)</span><br><span class="line">s.push(<span class="string">'dog'</span>)</span><br><span class="line">print(s.peek())</span><br><span class="line">s.push(<span class="keyword">True</span>)</span><br><span class="line">print(s.size())</span><br><span class="line">print(s.isEmpty())</span><br><span class="line">s.push(<span class="number">8.4</span>)</span><br><span class="line">print(s.pop())</span><br><span class="line">print(s.pop())</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="string">dog</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="number">8.4</span></span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<h2 id="简单的符号匹配"><a href="#简单的符号匹配" class="headerlink" title="简单的符号匹配"></a>简单的符号匹配</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parChecker</span><span class="params">(symbolString)</span>:</span></span><br><span class="line">    s = Stack()</span><br><span class="line">    balanced = <span class="keyword">True</span></span><br><span class="line">    index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> index &lt; len(symbolString) <span class="keyword">and</span> balanced:</span><br><span class="line">        symbol = symbolString[index]</span><br><span class="line">        <span class="keyword">if</span> symbol == <span class="string">"("</span>:</span><br><span class="line">            s.push(symbol)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> s.isEmpty():</span><br><span class="line">                balanced = <span class="keyword">False</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                s.pop()</span><br><span class="line"></span><br><span class="line">        index = index + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> balanced <span class="keyword">and</span> s.isEmpty():</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">print(parChecker(<span class="string">'((()))'</span>))</span><br><span class="line">print(parChecker(<span class="string">'(()'</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<h2 id="符号匹配"><a href="#符号匹配" class="headerlink" title="符号匹配"></a>符号匹配</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parChecker</span><span class="params">(symbolString)</span>:</span></span><br><span class="line">    s = Stack()</span><br><span class="line">    balanced = <span class="keyword">True</span></span><br><span class="line">    index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> index &lt; len(symbolString) <span class="keyword">and</span> balanced:</span><br><span class="line">        symbol = symbolString[index]</span><br><span class="line">        <span class="keyword">if</span> symbol <span class="keyword">in</span> <span class="string">"([&#123;"</span>:</span><br><span class="line">            s.push(symbol)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> s.isEmpty():</span><br><span class="line">                balanced = <span class="keyword">False</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                top = s.pop()</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> matches(top,symbol):</span><br><span class="line">                       balanced = <span class="keyword">False</span></span><br><span class="line">        index = index + <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> balanced <span class="keyword">and</span> s.isEmpty():</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">matches</span><span class="params">(open,close)</span>:</span></span><br><span class="line">    opens = <span class="string">"([&#123;"</span></span><br><span class="line">    closers = <span class="string">")]&#125;"</span></span><br><span class="line">    <span class="keyword">return</span> opens.index(open) == closers.index(close)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(parChecker(<span class="string">'&#123;&#123;([][])&#125;()&#125;'</span>))</span><br><span class="line">print(parChecker(<span class="string">'[&#123;()]'</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<h2 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">divideBy2</span><span class="params">(decNumber)</span>:</span></span><br><span class="line">    remstack = Stack()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> decNumber &gt; <span class="number">0</span>:</span><br><span class="line">        rem = decNumber % <span class="number">2</span></span><br><span class="line">        remstack.push(rem)</span><br><span class="line">        decNumber = decNumber // <span class="number">2</span></span><br><span class="line"></span><br><span class="line">    binString = <span class="string">""</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> remstack.isEmpty():</span><br><span class="line">        binString = binString + str(remstack.pop())</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> binString</span><br><span class="line"></span><br><span class="line">print(divideBy2(<span class="number">42</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">101010</span></span><br></pre></td></tr></table></figure>
+<h2 id="十进制转化为多进制"><a href="#十进制转化为多进制" class="headerlink" title="十进制转化为多进制"></a>十进制转化为多进制</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">baseConverter</span><span class="params">(decNumber,base)</span>:</span></span><br><span class="line">    digits = <span class="string">"0123456789ABCDEF"</span></span><br><span class="line"></span><br><span class="line">    remstack = Stack()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> decNumber &gt; <span class="number">0</span>:</span><br><span class="line">        rem = decNumber % base</span><br><span class="line">        remstack.push(rem)</span><br><span class="line">        decNumber = decNumber // base</span><br><span class="line"></span><br><span class="line">    newString = <span class="string">""</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> remstack.isEmpty():</span><br><span class="line">        newString = newString + digits[remstack.pop()]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> newString</span><br><span class="line"></span><br><span class="line">print(baseConverter(<span class="number">25</span>,<span class="number">2</span>))</span><br><span class="line">print(baseConverter(<span class="number">25</span>,<span class="number">16</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">11001</span></span><br><span class="line"><span class="number">19</span></span><br></pre></td></tr></table></figure>
+<h2 id="中缀转后缀通用法"><a href="#中缀转后缀通用法" class="headerlink" title="中缀转后缀通用法"></a>中缀转后缀通用法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">infixToPostfix</span><span class="params">(infixexpr)</span>:</span></span><br><span class="line">    prec = &#123;&#125;</span><br><span class="line">    prec[<span class="string">"*"</span>] = <span class="number">3</span></span><br><span class="line">    prec[<span class="string">"/"</span>] = <span class="number">3</span></span><br><span class="line">    prec[<span class="string">"+"</span>] = <span class="number">2</span></span><br><span class="line">    prec[<span class="string">"-"</span>] = <span class="number">2</span></span><br><span class="line">    prec[<span class="string">"("</span>] = <span class="number">1</span></span><br><span class="line">    opStack = Stack()</span><br><span class="line">    postfixList = []</span><br><span class="line">    tokenList = infixexpr.split()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> token <span class="keyword">in</span> tokenList:</span><br><span class="line">        <span class="keyword">if</span> token <span class="keyword">in</span> <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span> <span class="keyword">or</span> token <span class="keyword">in</span> <span class="string">"0123456789"</span>:</span><br><span class="line">            postfixList.append(token)</span><br><span class="line">        <span class="keyword">elif</span> token == <span class="string">'('</span>:</span><br><span class="line">            opStack.push(token)</span><br><span class="line">        <span class="keyword">elif</span> token == <span class="string">')'</span>:</span><br><span class="line">            topToken = opStack.pop()</span><br><span class="line">            <span class="keyword">while</span> topToken != <span class="string">'('</span>:</span><br><span class="line">                postfixList.append(topToken)</span><br><span class="line">                topToken = opStack.pop()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">not</span> opStack.isEmpty()) <span class="keyword">and</span> \</span><br><span class="line">               (prec[opStack.peek()] &gt;= prec[token]):</span><br><span class="line">                  postfixList.append(opStack.pop())</span><br><span class="line">            opStack.push(token)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> opStack.isEmpty():</span><br><span class="line">        postfixList.append(opStack.pop())</span><br><span class="line">    <span class="keyword">return</span> <span class="string">" "</span>.join(postfixList)</span><br><span class="line"></span><br><span class="line">print(infixToPostfix(<span class="string">"A * B + C * D"</span>))</span><br><span class="line">print(infixToPostfix(<span class="string">"( A + B ) * C - ( D - E ) * ( F + G )"</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A B * <span class="keyword">C</span> <span class="keyword">D</span> * +</span><br><span class="line">A B + <span class="keyword">C</span> * <span class="keyword">D</span> <span class="keyword">E</span> - F G + * -</span><br></pre></td></tr></table></figure>
+<h2 id="后缀表达式求值"><a href="#后缀表达式求值" class="headerlink" title="后缀表达式求值"></a>后缀表达式求值</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">postfixEval</span><span class="params">(postfixExpr)</span>:</span></span><br><span class="line">    operandStack = Stack()</span><br><span class="line">    tokenList = postfixExpr.split()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> token <span class="keyword">in</span> tokenList:</span><br><span class="line">        <span class="keyword">if</span> token <span class="keyword">in</span> <span class="string">"0123456789"</span>:</span><br><span class="line">            operandStack.push(int(token))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            operand2 = operandStack.pop()</span><br><span class="line">            operand1 = operandStack.pop()</span><br><span class="line">            result = doMath(token,operand1,operand2)</span><br><span class="line">            operandStack.push(result)</span><br><span class="line">    <span class="keyword">return</span> operandStack.pop()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">doMath</span><span class="params">(op, op1, op2)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> op == <span class="string">"*"</span>:</span><br><span class="line">        <span class="keyword">return</span> op1 * op2</span><br><span class="line">    <span class="keyword">elif</span> op == <span class="string">"/"</span>:</span><br><span class="line">        <span class="keyword">return</span> op1 / op2</span><br><span class="line">    <span class="keyword">elif</span> op == <span class="string">"+"</span>:</span><br><span class="line">        <span class="keyword">return</span> op1 + op2</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> op1 - op2</span><br><span class="line"></span><br><span class="line">print(postfixEval(<span class="string">'7 8 + 3 2 + /'</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3<span class="selector-class">.0</span></span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 你的支持是我写作的莫大鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+	
+
+
+
+    <ul class="list-inline text-center">
+
+
+	
+
+
+
+
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ethan2lee">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://anne2bin.top">anne2bin</a></span>
+        <span>/</span>
+        
+        <span><a href="https://blog.ywandy.top/">yewei_andy</a></span>
+        <span>/</span>
+        
+        <span><a href="https://wwb.colonp.top/">wwb</a></span>
+        <span>/</span>
+        
+    </p>
+    
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://ethan2lee.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+</html>

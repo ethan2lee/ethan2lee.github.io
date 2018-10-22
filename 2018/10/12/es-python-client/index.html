@@ -139,7 +139,7 @@
 </span>
 </span>
     </div>
-    <div class="post-content ">
+    <div class="post-content no-indent">
         <h1 id="python-操作-Elasticsearch"><a href="#python-操作-Elasticsearch" class="headerlink" title="python 操作 Elasticsearch"></a>python 操作 Elasticsearch</h1><h2 id="安装-Elasticsearch-模块"><a href="#安装-Elasticsearch-模块" class="headerlink" title="安装 Elasticsearch 模块"></a>安装 Elasticsearch 模块</h2><p><code>pip install elasticsearch</code></p>
 <h2 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from elasticsearch import Elasticsearch</span><br><span class="line"></span><br><span class="line"># 默认host为localhost,port为<span class="number">9200</span>.但也可以指定host与port</span><br><span class="line">es = Elasticsearch([&#123;<span class="string">'host'</span>: <span class="string">'192.168.10.21'</span>, <span class="string">'port'</span>: <span class="number">9200</span>&#125;])</span><br><span class="line">doc = &#123;</span><br><span class="line">     <span class="string">'author'</span>: <span class="string">'kimchy'</span>,</span><br><span class="line">    <span class="string">'text'</span>: <span class="string">'Elasticsearch: cool. bonsai cool.'</span>,</span><br><span class="line">     <span class="string">'timestamp'</span>: <span class="built_in">localtime</span>(),</span><br><span class="line">      &#125;</span><br><span class="line"><span class="keyword">res</span> = es.<span class="built_in">index</span>(<span class="built_in">index</span>=<span class="string">"test-index"</span>, doc_type=<span class="string">'tweet'</span>, id=<span class="number">1</span>, body=doc)</span><br><span class="line"><span class="keyword">print</span>(<span class="keyword">res</span>)</span><br></pre></td></tr></table></figure>
 <p>如果创建成功会返回以下结果<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">'_index'</span>: <span class="string">'test-index'</span>, <span class="string">'_type'</span>: <span class="string">'tweet'</span>, <span class="string">'_id'</span>: <span class="string">'1'</span>, <span class="string">'_version'</span>: <span class="number">1</span>, <span class="string">'result'</span>: <span class="string">'created'</span>, <span class="string">'_shards'</span>: &#123;<span class="string">'total'</span>: <span class="number">2</span>, <span class="string">'successful'</span>: <span class="number">2</span>, <span class="string">'failed'</span>: <span class="number">0</span>&#125;, <span class="string">'_seq_no'</span>: <span class="number">0</span>, <span class="string">'_primary_term'</span>: <span class="number">1</span>&#125;</span><br></pre></td></tr></table></figure></p>
@@ -176,7 +176,18 @@
 
 
 <footer class="footer">
+	
+
+
+
     <ul class="list-inline text-center">
+
+
+	
+
+
+
+
         
         
 
@@ -212,14 +223,6 @@
         
     </p>
     
-    <p>
-        <span id="busuanzi_container_site_pv">
-            <span id="busuanzi_value_site_pv"></span>PV
-        </span>
-        <span id="busuanzi_container_site_uv">
-            <span id="busuanzi_value_site_uv"></span>UV
-        </span>
-        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
 </footer>
 
 

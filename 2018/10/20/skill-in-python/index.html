@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="李逸炫的博客">
+    <meta name="keyword"  content="盈盛">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        skill_in_python - Ethan Lee | ethan | ethan2lee
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ethan Lee</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python编程技巧"><span class="toc-text">python编程技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#可变类型和不可变类型"><span class="toc-text">可变类型和不可变类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#避免对不同类型的对象使用同一个变量名"><span class="toc-text">避免对不同类型的对象使用同一个变量名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单行描述单行代码"><span class="toc-text">单行描述单行代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#技巧"><span class="toc-text">技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问字典元素"><span class="toc-text">访问字典元素</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        skill_in_python
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-10-20 15:27:09</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#python" title="python">python</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h1 id="python编程技巧"><a href="#python编程技巧" class="headerlink" title="python编程技巧"></a>python编程技巧</h1><h2 id="可变类型和不可变类型"><a href="#可变类型和不可变类型" class="headerlink" title="可变类型和不可变类型"></a>可变类型和不可变类型</h2><p>Python提供两种内置或用户定义的类型。可变类型允许内容的内部修改。典型的动态类型 包括列表与字典：列表都有可变方法，如 <code>list.append()</code> 和 <code>list.pop()</code>， 并且能就地修改。字典也是一样。不可变类型没有修改自身内容的方法。比如，赋值为整数 6的变量 x 并没有 “自增” 方法，如果需要计算 x + 1，必须创建另一个整数变量并给其命名。</p>
+<p>这种差异导致的一个后果就是，可变类型是不 ‘稳定 ‘的，因而不能作为字典的键使用。合理地 使用可变类型与不可变类型有助于阐明代码的意图。例如与列表相似的不可变类型是元组， 创建方式为 <code>(1, 2)</code>。元组是不可修改的，并能作为字典的键使用。</p>
+<p>Python 中一个可能会让初学者惊讶的特性是：字符串是不可变类型。这意味着当需要组合一个 字符串时，将每一部分放到一个可变列表里，使用字符串时再组合 (‘join’) 起来的做法更高效。 值得注意的是，使用列表推导的构造方式比在循环中调用 <code>append()</code> 来构造列表更好也更快。</p>
+<p>差</p>
+<figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 创建将<span class="number">0</span>到<span class="number">19</span>连接起来的字符串 (例 <span class="meta-string">"012..1819"</span>)</span></span><br><span class="line">nums = <span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> n in range(<span class="number">20</span>):</span><br><span class="line">    nums += <span class="keyword">str</span>(n)   <span class="meta"># 慢且低效</span></span><br><span class="line"><span class="keyword">print</span> nums</span><br></pre></td></tr></table></figure>
+<p>好</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 创建将<span class="number">0</span>到<span class="number">19</span>连接起来的字符串 (例 <span class="string">"012..1819"</span>)</span><br><span class="line">nums = []</span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">    nums.<span class="built_in">append</span>(str(n))</span><br><span class="line"><span class="built_in">print</span> <span class="string">""</span>.<span class="built_in">join</span>(nums)  # 更高效</span><br></pre></td></tr></table></figure>
+<h2 id="避免对不同类型的对象使用同一个变量名"><a href="#避免对不同类型的对象使用同一个变量名" class="headerlink" title="避免对不同类型的对象使用同一个变量名"></a>避免对不同类型的对象使用同一个变量名</h2><p>差</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">a = <span class="string">'a string'</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">a</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">pass</span>  <span class="comment"># 实现代码</span></span><br></pre></td></tr></table></figure>
+<p>好</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">count = <span class="number">1</span></span><br><span class="line">msg = <span class="string">'a string'</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">pass</span>  <span class="comment"># 实现代码</span></span><br></pre></td></tr></table></figure>
+<p>更好</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 创建将<span class="number">0</span>到<span class="number">19</span>连接起来的字符串 (例 <span class="string">"012..1819"</span>)</span><br><span class="line">nums = [str(n) <span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>)]</span><br><span class="line"><span class="built_in">print</span> <span class="string">""</span>.<span class="built_in">join</span>(nums)</span><br></pre></td></tr></table></figure>
+<p>极佳</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 创建将<span class="number">0</span>到<span class="number">19</span>连接起来的字符串 (例 <span class="string">"012..1819"</span>)</span><br><span class="line">nums = <span class="built_in">map</span>(str, <span class="built_in">range</span>(<span class="number">20</span>))</span><br><span class="line"><span class="built_in">print</span> <span class="string">""</span>.<span class="built_in">join</span>(nums)</span><br></pre></td></tr></table></figure>
+<p>最后关于字符串的说明的一点是，使用 <code>join()</code> 并不总是最好的选择。比如当用预先 确定数量的字符串创建一个新的字符串时，使用加法操作符确实更快，但在上文提到的情况 下或添加到已存在字符串的情况下，使用 <code>join()</code> 是更好</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">foo = 'foo'</span><br><span class="line">bar = 'bar'</span><br><span class="line"></span><br><span class="line">foobar = foo + bar  <span class="comment"># 好的做法</span></span><br><span class="line">foo += 'ooo'  <span class="comment"># 不好的做法, 应该这么做:</span></span><br><span class="line">foo = ''.join([foo, 'ooo'])</span><br></pre></td></tr></table></figure>
+<p>除了 <a href="https://docs.python.org/3/library/stdtypes.html#str.join" target="_blank" rel="noopener"><code>str.join()</code></a> 和 <code>+</code>，您也可以使用 <a href="https://docs.python.org/3/library/string.html#string-formatting" target="_blank" rel="noopener">%</a> 格式运算符来连接确定数量的字符串，但 <a href="https://www.python.org/dev/peps/pep-3101" target="_blank" rel="noopener"><strong>PEP 3101</strong></a> 建议使用 <a href="https://docs.python.org/3/library/stdtypes.html#str.format" target="_blank" rel="noopener"><code>str.format()</code></a> 替代 <code>%</code> 操作符。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">foo</span> = <span class="string">'foo'</span></span><br><span class="line"><span class="attr">bar</span> = <span class="string">'bar'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">foobar</span> = <span class="string">'%s%s'</span> % (foo, bar) # 可行</span><br><span class="line"><span class="attr">foobar</span> = <span class="string">'&#123;0&#125;&#123;1&#125;'</span>.format(foo, bar) # 更好</span><br><span class="line"><span class="attr">foobar</span> = <span class="string">'&#123;foo&#125;&#123;bar&#125;'</span>.format(foo=foo, bar=bar) # 最好</span><br></pre></td></tr></table></figure>
+<p>使用简短的函数或方法能降低对不相关对象使用同一个名称的风险。即使是相关的不同 类型的对象，也更建议</p>
+<p>使用不同命名：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">items</span> = <span class="string">'a b c d'</span>  <span class="comment"># 首先指向字符串...</span></span><br><span class="line"><span class="keyword">items</span> = <span class="keyword">items</span>.<span class="built_in">split</span>(<span class="string">' '</span>)  <span class="comment"># ...变为列表</span></span><br><span class="line"><span class="keyword">items</span> = <span class="built_in">set</span>(<span class="keyword">items</span>)  <span class="comment"># ...再变为集合</span></span><br></pre></td></tr></table></figure>
+<p>重复使用命名对效率并没有提升：赋值时无论如何都要创建新的对象。然而随着复杂度的 提升，赋值语句被其他代码包括 ‘if’ 分支和循环分开，使得更难查明指定变量的类型。 在某些代码的做法中，例如函数编程，推荐的是从不重复对同一个变量命名赋值。Java 内的实现方式是使用 ‘final’ 关键字。Python并没有 ‘final’ 关键字而且这与它的哲学 相悖。尽管如此，避免给同一个变量命名重复赋值仍是是个好的做法，并且有助于掌握 可变与不可变类型的概念。</p>
+<h2 id="单行描述单行代码"><a href="#单行描述单行代码" class="headerlink" title="单行描述单行代码"></a>单行描述单行代码</h2><p>每一行一个语句，尤其在复杂的逻辑表达式的时候，这样会清晰很容易阅读。</p>
+<p>差</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">print</span> <span class="string">"one"</span>;<span class="builtin-name">print</span> <span class="string">"two"</span></span><br><span class="line"><span class="keyword">if</span> x == 1;<span class="builtin-name">print</span> <span class="string">"one"</span></span><br></pre></td></tr></table></figure>
+<p>好</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">print</span> <span class="string">"one"</span></span><br><span class="line"><span class="builtin-name">print</span> <span class="string">"two"</span></span><br><span class="line"><span class="keyword">if</span> x == 1:</span><br><span class="line">	<span class="builtin-name">print</span> <span class="string">"one"</span></span><br></pre></td></tr></table></figure>
+<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><p>使用enumerate() 将列表中的每个项提供两个元素的元组，一个是下标，一个是值。</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> <span class="keyword">index</span> , iteme <span class="keyword">in</span> enumerate(sorted_list):</span><br><span class="line">	print(<span class="keyword">index</span>,iteme)</span><br></pre></td></tr></table></figure>
+<p>交换变量</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span>,b=<span class="selector-tag">b</span>,a</span><br></pre></td></tr></table></figure>
+<h2 id="访问字典元素"><a href="#访问字典元素" class="headerlink" title="访问字典元素"></a><strong>访问字典元素</strong></h2><p>不要使用该dict.has_key()方法。相反使用语法或传递默认参数 比如x in dict ，dict.get(k,default_value)</p>
+<p>差</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;“hello”: <span class="string">"world"</span>&#125;</span><br><span class="line"><span class="keyword">if</span> d.<span class="built_in">has_key</span>(<span class="string">"hello"</span>):</span><br><span class="line">	<span class="keyword">print</span>(d[<span class="string">'hello'</span>])</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="keyword">print</span>(<span class="string">"fault values"</span>)</span><br></pre></td></tr></table></figure>
+<p>好</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;“hello”: <span class="string">"world"</span>&#125;</span><br><span class="line"><span class="builtin-name">print</span>(d.<span class="builtin-name">get</span>(<span class="string">"hello"</span>),<span class="string">"fault vluse"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># or</span></span><br><span class="line"><span class="keyword">if</span> <span class="string">"hello"</span> <span class="keyword">in</span> d:</span><br><span class="line">	<span class="builtin-name">print</span>(d[“hello”])</span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 你的支持是我写作的莫大鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+	
+
+
+
+    <ul class="list-inline text-center">
+
+
+	
+
+
+
+
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ethan2lee">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://anne2bin.top">anne2bin</a></span>
+        <span>/</span>
+        
+        <span><a href="https://blog.ywandy.top/">yewei_andy</a></span>
+        <span>/</span>
+        
+        <span><a href="https://wwb.colonp.top/">wwb</a></span>
+        <span>/</span>
+        
+    </p>
+    
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://ethan2lee.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+</html>
