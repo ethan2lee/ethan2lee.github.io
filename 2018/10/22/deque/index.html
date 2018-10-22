@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="李逸炫的博客">
+    <meta name="keyword"  content="盈盛">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        deque - Ethan Lee | ethan | ethan2lee
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ethan Lee</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Deque抽象数据类型"><span class="toc-text">Deque抽象数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python实现Deque"><span class="toc-text">Python实现Deque</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#回文检查"><span class="toc-text">回文检查</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        deque
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-10-22 17:20:01</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#算法" title="算法">算法</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h1 id="Deque抽象数据类型"><a href="#Deque抽象数据类型" class="headerlink" title="Deque抽象数据类型"></a>Deque抽象数据类型</h1><p>deque 抽象数据类型由以下结构和操作定义。如上所述，deque 被构造为项的有序集合，其中项从首部或尾部的任一端添加和移除。下面给出了 deque 操作。</p>
+<ol>
+<li>Deque() 创建一个空的新 deque。它不需要参数，并返回空的 deque。</li>
+<li>addFront(item) 将一个新项添加到 deque 的首部。它需要 item 参数 并不返回任何内容。</li>
+<li>addRear(item) 将一个新项添加到 deque 的尾部。它需要 item 参数并不返回任何内容。</li>
+<li>removeFront() 从 deque 中删除首项。它不需要参数并返回 item。deque 被修改。</li>
+<li>removeRear() 从 deque 中删除尾项。它不需要参数并返回 item。deque 被修改。</li>
+<li>isEmpty() 测试 deque 是否为空。它不需要参数，并返回布尔值。</li>
+<li>size() 返回 deque 中的项数。它不需要参数，并返回一个整数。</li>
+</ol>
+<h2 id="Python实现Deque"><a href="#Python实现Deque" class="headerlink" title="Python实现Deque"></a>Python实现Deque</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Deque</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.items = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.items == []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">addFront</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        self.items.append(item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">addRear</span><span class="params">(self, item)</span>:</span></span><br><span class="line">        self.items.insert(<span class="number">0</span>,item)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeFront</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.items.pop()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeRear</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.items.pop(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self.items)</span><br></pre></td></tr></table></figure>
+<p>在 removeFront 中，我们使用 pop 方法从列表中删除最后一个元素。 但是，在removeRear中，pop(0)方法必须删除列表的第一个元素。同样，我们需要在 addRear 中使用insert方法（第12行），因为 append 方法在列表的末尾添加一个新元素。<br>你可以看到许多与栈和队列中描述的 Python 代码相似之处。你也可能观察到，在这个实现中，从前面添加和删除项是 O(1)，而从后面添加和删除是 O(n)。 考虑到添加和删除项是出现的常见操作，这是可预期的。 同样，重要的是要确定我们知道在实现中前后都分配在哪里。</p>
+<h2 id="回文检查"><a href="#回文检查" class="headerlink" title="回文检查"></a>回文检查</h2><p>使用 deque 数据结构可以容易地解决经典回文问题。回文是一个字符串，读取首尾相同的字符，例如，radar toot madam。 我们想构造一个算法输入一个字符串，并检查它是否是一个回文。<br>该问题的解决方案将使用 deque 来存储字符串的字符。我们从左到右处理字符串，并将每个字符添加到 deque 的尾部。在这一点上，deque 像一个普通的队列。然而，我们现在可以利用 deque 的双重功能。 deque 的首部保存字符串的第一个字符，deque 的尾部保存最后一个字符<br><img src="https://xidianwlc.gitbooks.io/python-data-structrue-and-algrothms/content/3.%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/3.18.%E5%9B%9E%E6%96%87%E6%A3%80%E6%9F%A5/assets/3.18.%E5%9B%9E%E6%96%87%E6%A3%80%E6%9F%A5.figure2.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">palchecker</span><span class="params">(aString)</span>:</span></span><br><span class="line">    chardeque = Deque()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> ch <span class="keyword">in</span> aString:</span><br><span class="line">        chardeque.addRear(ch)</span><br><span class="line"></span><br><span class="line">    stillEqual = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> chardeque.size() &gt; <span class="number">1</span> <span class="keyword">and</span> stillEqual:</span><br><span class="line">        first = chardeque.removeFront()</span><br><span class="line">        last = chardeque.removeRear()</span><br><span class="line">        <span class="keyword">if</span> first != last:</span><br><span class="line">            stillEqual = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> stillEqual</span><br><span class="line"></span><br><span class="line">print(palchecker(<span class="string">"lsdkjfskf"</span>))</span><br><span class="line">print(palchecker(<span class="string">"radar"</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 你的支持是我写作的莫大鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+	
+
+
+
+    <ul class="list-inline text-center">
+
+
+	
+
+
+
+
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ethan2lee">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://anne2bin.top">anne2bin</a></span>
+        <span>/</span>
+        
+        <span><a href="https://blog.ywandy.top/">yewei_andy</a></span>
+        <span>/</span>
+        
+        <span><a href="https://wwb.colonp.top/">wwb</a></span>
+        <span>/</span>
+        
+    </p>
+    
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://ethan2lee.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+</html>
