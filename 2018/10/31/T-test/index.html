@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="李逸炫的博客">
+    <meta name="keyword"  content="盈盛">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        T-test - Ethan Lee | ethan | ethan2lee
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ethan Lee</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#单样本T检验-ttest-1samp"><span class="toc-text">单样本T检验-ttest_1samp</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#两独立样本t检验-ttest-ind"><span class="toc-text">两独立样本t检验-ttest_ind</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配对样本t检验"><span class="toc-text">配对样本t检验</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        T-test
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-10-31 08:57:09</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#数据挖掘" title="数据挖掘">数据挖掘</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h1 id="单样本T检验-ttest-1samp"><a href="#单样本T检验-ttest-1samp" class="headerlink" title="单样本T检验-ttest_1samp"></a>单样本T检验-ttest_1samp</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">np.random.seed(<span class="number">7654567</span>)</span><br><span class="line">rvs = stats.norm.rvs(loc=<span class="number">5</span>,scale=<span class="number">10</span>,size=(<span class="number">100</span>,<span class="number">2</span>))  <span class="comment"># 均值为5，方差为10</span></span><br><span class="line">r</span><br></pre></td></tr></table></figure>
+<p>检验两列数的均值与1和2的差异是否显著</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stats.ttest_1samp(rvs, [<span class="number">1</span>, <span class="number">2</span>])   </span><br><span class="line"><span class="comment"># 分别显示两列数的t统计量和p值。</span></span><br><span class="line"><span class="comment"># 由p值分别为0.042和0.018，</span></span><br><span class="line"><span class="comment">#  当p值小于0.05时，认为差异显著，即第一列数的均值不等于1，第二列数的均值不等于2。</span></span><br></pre></td></tr></table></figure>
+<pre><code>Ttest_1sampResult(statistic=array([3.71134343, 2.85084277]), pvalue=array([0.00034072, 0.00530677]))
+</code></pre><p>不拒绝原假设——均值等于5</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stats.ttest_1samp(rvs, <span class="number">5.0</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Ttest_1sampResult(statistic=array([-0.01631806, -0.25538594]), pvalue=array([0.98701349, 0.79895486]))
+</code></pre><p>拒绝原假设——均值不等于5</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stats.ttest_1samp(rvs, <span class="number">0.0</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Ttest_1sampResult(statistic=array([4.6432588 , 4.92166191]), pvalue=array([1.05510059e-05, 3.42688414e-06]))
+</code></pre><p>第一行数均值等于5，第二行数均值不等于0<br>axis=0按列运算，axis=1按行运算</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stats.ttest_1samp(rvs.T,[<span class="number">5.0</span>,<span class="number">0.0</span>],axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Ttest_1sampResult(statistic=array([-0.01631806,  4.92166191]), pvalue=array([9.87013492e-01, 3.42688414e-06]))
+</code></pre><h1 id="两独立样本t检验-ttest-ind"><a href="#两独立样本t检验-ttest-ind" class="headerlink" title="两独立样本t检验-ttest_ind"></a>两独立样本t检验-ttest_ind</h1><p>生成数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(<span class="number">12345678</span>)</span><br><span class="line"><span class="comment">#loc:平均值  scale：方差</span></span><br><span class="line">rvs1 = stats.norm.rvs(loc=<span class="number">5</span>,scale=<span class="number">10</span>,size=<span class="number">500</span>)  </span><br><span class="line">rvs2 = stats.norm.rvs(loc=<span class="number">5</span>,scale=<span class="number">10</span>,size=<span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+<p>当两总体方差相等时，即具有“方差齐性”，可以直接检验<br>不拒绝原假设——两总体均值相等</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stats.ttest_ind(rvs1,rvs2)</span><br></pre></td></tr></table></figure>
+<pre><code>Ttest_indResult(statistic=0.26833823296238857, pvalue=0.788494433695651)
+</code></pre><p>当不确定两总体方差是否相等时，应先利用levene检验，检验两总体是否具有方差齐性。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stats.levene(rvs1, rvs2)</span><br></pre></td></tr></table></figure>
+<pre><code>LeveneResult(statistic=0.9775501222315258, pvalue=0.323044034693146)
+</code></pre><p>p值远大于0.05，认为两总体具有方差齐性。</p>
+<p>如果两总体不具有方差齐性，需要将equal_val参数设定为“False”。</p>
+<p>需注意的情况：</p>
+<p>如果两总体具有方差齐性，错将equal_var设为False，p值变大</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stats.ttest_ind(rvs1,rvs2, equal_var = <span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Ttest_indResult(statistic=0.26833823296238857, pvalue=0.7884945274950106)
+</code></pre><p>两总体方差不等时，若没有将equal_var参数设定为False，则函数会默认equal_var为True，这样会低估p值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rvs3 = stats.norm.rvs(loc=<span class="number">5</span>, scale=<span class="number">20</span>, size=<span class="number">500</span>)</span><br><span class="line">stats.ttest_ind(rvs1, rvs3, equal_var = <span class="keyword">False</span>)</span><br><span class="line"><span class="comment"># 正确的p值</span></span><br></pre></td></tr></table></figure>
+<pre><code>Ttest_indResult(statistic=-0.46580283298287956, pvalue=0.6414964624656874)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stats.ttest_ind(rvs1, rvs3)</span><br><span class="line"><span class="comment">#  被低估的p值</span></span><br></pre></td></tr></table></figure>
+<pre><code>Ttest_indResult(statistic=-0.46580283298287956, pvalue=0.6414582741343561)
+</code></pre><p>当两样本数量不等时，equal_val的变化会导致t统计量变化<br>rvs1：来自总体——均值5，方差10，样本数500<br>rvs4：来自总体——均值5，方差20，样本数100<br>两总体不具有方差齐性，应设定equal_var=False</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rvs4 = stats.norm.rvs(loc=<span class="number">5</span>, scale=<span class="number">20</span>, size=<span class="number">100</span>)</span><br><span class="line">stats.ttest_ind(rvs1, rvs4)</span><br><span class="line"><span class="comment"># 错误的t统计量</span></span><br></pre></td></tr></table></figure>
+<pre><code>Ttest_indResult(statistic=-0.9988253944278285, pvalue=0.3182832709103878)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stats.ttest_ind(rvs1, rvs4, equal_var = <span class="keyword">False</span>) <span class="comment"># 错误的t统计量</span></span><br></pre></td></tr></table></figure>
+<pre><code>Ttest_indResult(statistic=-0.6971257058465435, pvalue=0.4871692772540187)
+</code></pre><p>不同均值，不同方差，不同样本量的t检验<br>错误的检验：未将equal_var设定为False</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rvs5 = stats.norm.rvs(loc=<span class="number">8</span>, scale=<span class="number">20</span>, size=<span class="number">100</span>)</span><br><span class="line">stats.ttest_ind(rvs1, rvs5)</span><br></pre></td></tr></table></figure>
+<pre><code>Ttest_indResult(statistic=-1.467966985449067, pvalue=0.14263895620529113)
+</code></pre><p>正确的检验：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stats.ttest_ind(rvs1, rvs5, equal_var = <span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Ttest_indResult(statistic=-0.9436597361713308, pvalue=0.3474417033479409)
+</code></pre><h1 id="配对样本t检验"><a href="#配对样本t检验" class="headerlink" title="配对样本t检验"></a>配对样本t检验</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(<span class="number">12345678</span>)</span><br></pre></td></tr></table></figure>
+<p>不拒绝原假设，认为rvs1 与 rvs2 所代表的总体均值相等</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rvs1 = stats.norm.rvs(loc=<span class="number">5</span>,scale=<span class="number">10</span>,size=<span class="number">500</span>)</span><br><span class="line">rvs2 = (stats.norm.rvs(loc=<span class="number">5</span>,scale=<span class="number">10</span>,size=<span class="number">500</span>) + stats.norm.rvs(scale=<span class="number">0.2</span>,size=<span class="number">500</span>))</span><br><span class="line">stats.ttest_rel(rvs1,rvs2)</span><br></pre></td></tr></table></figure>
+<pre><code>Ttest_relResult(statistic=0.24101764965300979, pvalue=0.8096404344581155)
+</code></pre><p>拒绝原假设，认为rvs1 与 rvs3所代表的总体均值不相等</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rvs3 = (stats.norm.rvs(loc=<span class="number">8</span>,scale=<span class="number">10</span>,size=<span class="number">500</span>) + stats.norm.rvs(scale=<span class="number">0.2</span>,size=<span class="number">500</span>))</span><br><span class="line">stats.ttest_rel(rvs1,rvs3)</span><br></pre></td></tr></table></figure>
+<pre><code>Ttest_relResult(statistic=-3.9995108708727924, pvalue=7.308240219166128e-05)
+</code></pre>
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 你的支持是我写作的莫大鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+	
+
+
+
+    <ul class="list-inline text-center">
+
+
+	
+
+
+
+
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ethan2lee">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://anne2bin.top">anne2bin</a></span>
+        <span>/</span>
+        
+        <span><a href="https://blog.ywandy.top/">yewei_andy</a></span>
+        <span>/</span>
+        
+        <span><a href="https://wwb.colonp.top/">wwb</a></span>
+        <span>/</span>
+        
+    </p>
+    
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://ethan2lee.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+</html>

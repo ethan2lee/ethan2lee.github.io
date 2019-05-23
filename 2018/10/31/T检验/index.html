@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="李逸炫的博客">
+    <meta name="keyword"  content="盈盛">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        T检验 - Ethan Lee | ethan | ethan2lee
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ethan Lee</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#均值差异性的检验方法：T检验"><span class="toc-text">均值差异性的检验方法：T检验</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        T检验
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-10-31 09:02:22</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#数据挖掘" title="数据挖掘">数据挖掘</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h1 id="均值差异性的检验方法：T检验"><a href="#均值差异性的检验方法：T检验" class="headerlink" title="均值差异性的检验方法：T检验"></a>均值差异性的检验方法：T检验</h1><p>  数据分析中有一块很大的版图是属于均值对比的，应用广泛。例如，对比试验前后病人的症状，证明某种药是否有效；对比某个班级两次语文成绩，验证是否有提高；对比某个产品在投放广告前后的销量，看广告是否有效。这些都属于两均值对比的应用。</p>
+<p>  均值对比的假设检验方法主要有Z检验和T检验，它们的区别在于Z检验面向总体数据和大样本数据，而T检验适用于小规模抽样样本。下面分别介绍Z检验和T检验。</p>
+<p>  Z检验虽然能够进行均值差异性检验，但是，它要求总体标准差已知或者样本容量足够大，这是很难做到甚至无法达成的。这时候t检验就粉墨登场了，只需从正态总体中抽取小规模的样本数据，并计算均值与标准差，用来代替正态总体的均值和标准差即可，t值计算公式如下：</p>
+<p><img src="http://mmbiz.qpic.cn/mmbiz_jpg/YJotEuBMe44mx3ssxoRZOJm8gm3iabbb2Du5IibbRLHljoJhekG7RyW2SHd6lGicZRXMMTtE4iaPhUKPSBeZYO3wyg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>  样本数据计算得到的所有t值就组成了新的数据序列，这个新的数据形态就是t分布。t分布是曲线族，曲线与自由度密切相关，自由度为n-k-1（这里n是样本容量，k是样本中已知变量个数），自由度越小，曲线越低平，三自由度越大，曲线越接近正态分布。</p>
+<p>  有了t分布和t值计算公式，我们就能够进行T检验了，T检验在数据分析中的用途非常广，它是针对满足正态分布的数据所采取的均值差异显著性的检验方法。</p>
+<p>  T检验在使用前有三个应用的注意点：</p>
+<p>1、分析的数据对象需要满足正态分布，T检验前需判断样本是否正态分布；</p>
+<p>2、分析对比的统计量是均值；</p>
+<p>3、对比对象是两个，可以是两个样本；也可以是一个样本和一个常数；</p>
+<p>T检验有四种类别：</p>
+<p>1、配对样本的T检验；</p>
+<p>2、等方差的独立样本T检验；</p>
+<p>3、异方差的独立样本T检验；</p>
+<p>4、单样本的T检验。T检验与Z检验不同，需要考虑样本方差是否相同，这是因为自由度决定了T分布曲线，同时，自由度也影响样本方差。下面分别介绍四种T检验的检验公式。</p>
+<p>1、配对样本的T检验</p>
+<p>  所谓配对样本的T检验，是指参与对比的两列数据都是满足正态分布，而且两列数据之间存在一一对应关系。要想判断这种数据序列之间的差异是否显著，就可以使用配对样本T检验。处于待检验状态的两列配对样本，应该具有相同的数据个数，而且两列数据在语义上有一一对应关系。例如对同一个班级的两次考试成绩，这两次成绩都按照学号顺序存放，具有明确的对应关系。T检验公式如下：</p>
+<p><img src="http://mmbiz.qpic.cn/mmbiz_jpg/YJotEuBMe44mx3ssxoRZOJm8gm3iabbb2qUP5qLfervUjMkLNXIPicqWzByRduB463j2CEAzHoQ8gPXkTr0Ie4tw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>独立样本T检验</p>
+<p>   独立样本是两个没有对应关系的独立正态分布数据集合，可以有不同的数据个数，例如，对同一学校的某次考试，如果需要检验男生与女生的成绩之间有无显著性差异在总体成绩满足正态分布的情况下，则都可以使用独立样本的T检验，但是在进行T检验之前，需要明确两个样本的方差是否相同，然后根据方差齐性与否选择相应的计算方法。</p>
+<p>2、等方差独立样本T检验</p>
+<p><img src="http://mmbiz.qpic.cn/mmbiz_jpg/YJotEuBMe44mx3ssxoRZOJm8gm3iabbb2qARzh5ib2IhtcibRfNoVKKVJxqa1yCrgbLT8lGFtDficI4fpryBRmwgvg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>3、异方差独立样本T检验</p>
+<p><img src="http://mmbiz.qpic.cn/mmbiz_jpg/YJotEuBMe44mx3ssxoRZOJm8gm3iabbb2OJJT3qIUcmZHPhUQibjZINgfOgdyr3PiadUoeSUwfLQoykgQicBEstRCA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>4、单样本T检验</p>
+<p>除了针对两列正态分布数据的均值差异显著性检验，有时还经常需要判断单列正态分布数据是否与某一给定值有显著性差异，或单列正态分布数据是否来自满足某一均值的总体。例如，判断某班语文成绩的均值是否与80分有显著性差别。T检验公式为：</p>
+<p><img src="http://mmbiz.qpic.cn/mmbiz_jpg/YJotEuBMe44mx3ssxoRZOJm8gm3iabbb2wU5G5u6VJ31sRqb2et6GIfC5qRXxQZ3yLBlpBDzVGSsAicHxOJY2GPg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 你的支持是我写作的莫大鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+	
+
+
+
+    <ul class="list-inline text-center">
+
+
+	
+
+
+
+
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ethan2lee">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://anne2bin.top">anne2bin</a></span>
+        <span>/</span>
+        
+        <span><a href="https://blog.ywandy.top/">yewei_andy</a></span>
+        <span>/</span>
+        
+        <span><a href="https://wwb.colonp.top/">wwb</a></span>
+        <span>/</span>
+        
+    </p>
+    
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://ethan2lee.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+</html>
