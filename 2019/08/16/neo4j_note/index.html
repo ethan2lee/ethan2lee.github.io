@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="李逸炫的博客">
+    <meta name="keyword"  content="盈盛">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        neo4j 学习笔记 - Ethan Lee | ethan | ethan2lee
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ethan Lee</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Neo4j的特点"><span class="toc-text">Neo4j的特点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Neo4j的优势"><span class="toc-text">Neo4j的优势</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建节点"><span class="toc-text">创建节点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个简单的“雇员”节点"><span class="toc-text">创建一个简单的“雇员”节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个简单的“部门”节点"><span class="toc-text">创建一个简单的“部门”节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Neo4j的CQL创建节点具有属性"><span class="toc-text">Neo4j的CQL创建节点具有属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个部门节点的一些属性（DEPTNO，DNAME，位置）"><span class="toc-text">创建一个部门节点的一些属性（DEPTNO，DNAME，位置）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建具有某些属性（ID，姓名，SAL，DEPTNO）劳动者节点"><span class="toc-text">创建具有某些属性（ID，姓名，SAL，DEPTNO）劳动者节点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#match命令"><span class="toc-text">match命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MATCH命令语法："><span class="toc-text">MATCH命令语法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#return子句"><span class="toc-text">return子句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#返回的命令语法："><span class="toc-text">返回的命令语法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MATCH及return"><span class="toc-text">MATCH及return</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#匹配返回命令语法："><span class="toc-text">匹配返回命令语法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#返回的命令语法：-1"><span class="toc-text">返回的命令语法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CREATE-MATCH-RETURN"><span class="toc-text">CREATE + MATCH + RETURN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤："><span class="toc-text">步骤：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建客户节点"><span class="toc-text">创建客户节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建信用卡式节点"><span class="toc-text">创建信用卡式节点</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        neo4j 学习笔记
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-08-16 16:51:02</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#数据库" title="数据库">数据库</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h1 id="Neo4j的特点"><a href="#Neo4j的特点" class="headerlink" title="Neo4j的特点"></a>Neo4j的特点</h1><p>SQL一样容易查询语言的Neo4j CQL</p>
+<p>它遵循属性图数据模型</p>
+<p>它通过使用Apache Lucence支持索引</p>
+<p>它支持UNIQUE约束</p>
+<p>它包含一个UI执行CQL指令：Neo4j的数据浏览器</p>
+<p>它支持完整的ACID（原子性，一致性，隔离性和持久性）规则</p>
+<p>它采用原生图形库与本地GPE（图形处理引擎）</p>
+<p>它支持查询的数据导出到JSON和XLS格式</p>
+<p>它提供了REST API由如Java，春天，斯卡拉等任何编程语言进行访问</p>
+<p>它提供了Java Script支持以任何UI MVC框架如Node JS进行访问。</p>
+<p>它支持两种类型的Java API：Cypher支架API和本地Java API来开发Java应用程序。</p>
+<h1 id="Neo4j的优势"><a href="#Neo4j的优势" class="headerlink" title="Neo4j的优势"></a>Neo4j的优势</h1><p>这是很容易以表示连接数据。</p>
+<p>这是很容易和更快的检索更多的数据/遍历/导航。</p>
+<p>它表示半结构化数据变得非常容易。</p>
+<p>Neo4j的CQL查询语言命令在人性化的可读格式，非常简单易学。</p>
+<p>它使用简单，功能强大的数据模型。</p>
+<p>它不需要复杂的连接来获取连接/相关的数据，因为它是非常方便地检索它的相邻节点或关系的细节没有加入或索引。</p>
+<h1 id="创建节点"><a href="#创建节点" class="headerlink" title="创建节点"></a><a href="http://neo4j.com.cn/public/cypher/neo4j_cql_create_node.html" target="_blank" rel="noopener">创建节点</a></h1><p>Neo4j的CQL“Create”命令使用不带属性来创建节点。 它只是创造没有任何数据的节点。</p>
+<p>CREATE命令语法<br>CREATE (<node-name>:<label-name>)<br>语法说明</label-name></node-name></p>
+<p>语法元素    描述<br>创建    这是一个Neo4j的定制列表命令。<br>&lt;节点名称&gt;    这是我们要创建一个节点名称。<br>&lt;标签名称&gt;    这是一个节点的标签名称<br>要记住的事情 -</p>
+<p>Neo4j的数据库服务器使用该&lt;节点名称&gt;以存储Database.As一个Neo4j的DBA或开发该节点的详细信息，我们不能用它来访问节点的详细信息。</p>
+<p>Neo4j的数据库服务器创建一个&lt;标签名称&gt;作为别名到内部节点name.As一个Neo4j的DBA或开发人员，我们应该利用这个标签名称访问节点的详细信息。</p>
+<h2 id="创建一个简单的“雇员”节点"><a href="#创建一个简单的“雇员”节点" class="headerlink" title="创建一个简单的“雇员”节点"></a>创建一个简单的“雇员”节点</h2><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE (<span class="name">emp</span><span class="symbol">:Employee</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="创建一个简单的“部门”节点"><a href="#创建一个简单的“部门”节点" class="headerlink" title="创建一个简单的“部门”节点"></a>创建一个简单的“部门”节点</h2><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE (<span class="name">dept</span><span class="symbol">:Dept</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Neo4j的CQL创建节点具有属性"><a href="#Neo4j的CQL创建节点具有属性" class="headerlink" title="Neo4j的CQL创建节点具有属性"></a>Neo4j的CQL创建节点具有属性</h2><p>Neo4j的CQL“Create”命令用于创建具有属性节点。 它创建了一些属性（键 - 值对）来存储数据的节点。</p>
+<p>CREATE命令语法：<br>CREATE (<br>   <node-name>:<label-name><br>   {<br>      <property1-name>:<property1-value><br>      ……..<br>      <propertyn-name>:<propertyn-value><br>   }<br>)<br>语法说明</propertyn-value></propertyn-name></property1-value></property1-name></label-name></node-name></p>
+<p>语法元素    描述<br>&lt;节点名称&gt;    这是我们要创建一个节点名称。<br>&lt;标签名称&gt;    这是一个节点的标签名称</p>
+<p>&lt;Property1名&gt; … &lt;propertyN中名称&gt;    属性是键 - 值对。 定义了将要分配给创建节点的属性的名称</p>
+<p>&lt;Property1值&gt; … &lt;propertyN中值&gt;    属性是键 - 值对。 定义了将要分配给一个创建节点的属性的值</p>
+<h2 id="创建一个部门节点的一些属性（DEPTNO，DNAME，位置）"><a href="#创建一个部门节点的一些属性（DEPTNO，DNAME，位置）" class="headerlink" title="创建一个部门节点的一些属性（DEPTNO，DNAME，位置）"></a>创建一个部门节点的一些属性（DEPTNO，DNAME，位置）</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">CREATE</span> (<span class="selector-tag">dept</span><span class="selector-pseudo">:Dept</span> &#123; <span class="attribute">deptno</span>:<span class="number">10</span>,dname:<span class="string">"Accounting"</span>,location:<span class="string">"Hyderabad"</span> &#125;)</span><br></pre></td></tr></table></figure>
+<p>在这里，属性名称是DEPTNO，DNAME，位置</p>
+<p>属性值是10，“会计学”，“海得拉巴”</p>
+<p>正如我们所讨论的，属性的名称 - 值对。</p>
+<p>属性= DEPTNO：10</p>
+<p>由于DEPTNO是一个整数属性，所以我们没有使用单引号或双引号来界定它的价值10。</p>
+<p>由于DNAME和位置都是String类型的属性，所以我们使用了单引号或双引号来界定它的价值10。</p>
+<h2 id="创建具有某些属性（ID，姓名，SAL，DEPTNO）劳动者节点"><a href="#创建具有某些属性（ID，姓名，SAL，DEPTNO）劳动者节点" class="headerlink" title="创建具有某些属性（ID，姓名，SAL，DEPTNO）劳动者节点"></a>创建具有某些属性（ID，姓名，SAL，DEPTNO）劳动者节点</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">CREATE</span> (<span class="selector-tag">emp</span><span class="selector-pseudo">:Employee</span>&#123;<span class="attribute">id</span>:<span class="number">123</span>,name:<span class="string">"Lokesh"</span>,sal:<span class="number">35000</span>,deptno:<span class="number">10</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>这里是EMP节点名称</p>
+<p>员工是部门节点的标签名称<br>新增1标签，创建1个节点，设置4个属性，返回0行</p>
+<p>此命令创建一个节点“EMP”有4个属性（“ID”，“姓名”，“萨尔”，“DEPTNO”），并分配一个标签“雇员”。</p>
+<h1 id="match命令"><a href="#match命令" class="headerlink" title="match命令"></a>match命令</h1><p>Neo4j的CQL MATCH命令用于 -</p>
+<p>要获取有关数据库节点和属性数据<br>要获得有关节点，从数据库中的关系和属性数据</p>
+<h2 id="MATCH命令语法："><a href="#MATCH命令语法：" class="headerlink" title="MATCH命令语法："></a>MATCH命令语法：</h2><p>MATCH<br>(<br>   <node-name>:<label-name><br>)<br>语法说明</label-name></node-name></p>
+<p>语法元素    描述<br>&lt;节点名称&gt;    这是我们要创建一个节点名称。<br>&lt;标签名称&gt;    这是一个节点的标签名称<br>要记住的事情 -</p>
+<p>Neo4j的数据库服务器使用该&lt;节点名称&gt;以存储Database.As一个Neo4j的DBA或开发该节点的详细信息，我们不能用它来访问节点的详细信息。</p>
+<p>Neo4j的数据库服务器创建一个&lt;标签名称&gt;作为别名到内部节点name.As一个Neo4j的DBA或开发人员，我们应该利用这个标签名称访问节点的详细信息。</p>
+<p>注-我们不能用match命令只身从数据库中检索数据。 如果我们只使用它，那么我们将InvalidSyntax错误。</p>
+<h1 id="return子句"><a href="#return子句" class="headerlink" title="return子句"></a>return子句</h1><p>Neo4j的CQL RETURN子句用于 -</p>
+<p>要检索节点的一些特性<br>要检索节点的所有属性<br>要检索节点和关联关系的一些性质<br>要检索节点和关联关系的所有属性</p>
+<h2 id="返回的命令语法："><a href="#返回的命令语法：" class="headerlink" title="返回的命令语法："></a>返回的命令语法：</h2><p>RETURN<br>   <node-name>.<property1-name>,<br>   ……..<br>   <node-name>.<propertyn-name><br>语法说明</propertyn-name></node-name></property1-name></node-name></p>
+<p>语法元素    描述<br>&lt;节点名称&gt;    这是我们要创建一个节点名称。</p>
+<p>&lt;Property1名&gt; … &lt;propertyN中名称&gt;    属性是键 - 值对。 &lt;属性名称&gt;定义了将要分配给创建节点的属性的名称</p>
+<h1 id="MATCH及return"><a href="#MATCH及return" class="headerlink" title="MATCH及return"></a>MATCH及return</h1><p>在Neo4j的CQL，我们不能用MATCH或RETURN单独命令，所以我们要结合这两个命令来检索数据库中的数据。</p>
+<p>Neo4j的CQL MATCH + RETURN命令用于 -</p>
+<p>要检索节点的一些特性<br>要检索节点的所有属性<br>要检索节点和关联关系的一些性质<br>要检索节点和关联关系的所有属性</p>
+<h2 id="匹配返回命令语法："><a href="#匹配返回命令语法：" class="headerlink" title="匹配返回命令语法："></a>匹配返回命令语法：</h2><p>MATCH Command<br>RETURN Command<br>语法说明</p>
+<p>语法元素    描述<br>match命令    这是Neo4j的CQL MATCH命令。<br>返回指令    这是Neo4j的CQL RETURN命令。<br>MATCH命令语法：<br>MATCH<br>(<br>   <node-name>:<label-name><br>)<br>语法说明</label-name></node-name></p>
+<p>语法元素    描述<br>&lt;节点名称&gt;    这是我们要创建一个节点名称。<br>&lt;标签名称&gt;    这是一个节点的标签名称<br>要点 -</p>
+<p>Neo4j的数据库服务器使用该&lt;节点名称&gt;以存储Database.As一个Neo4j的DBA或开发该节点的详细信息，我们不能用它来访问节点的详细信息。</p>
+<p>Neo4j的数据库服务器创建一个&lt;标签名称&gt;作为别名到内部节点name.As一个Neo4j的DBA或开发人员，我们应该利用这个标签名称访问节点的详细信息。</p>
+<h2 id="返回的命令语法：-1"><a href="#返回的命令语法：-1" class="headerlink" title="返回的命令语法："></a>返回的命令语法：</h2><p>RETURN<br>   <node-name>.<property1-name>,<br>   …<br>   <node-name>.<propertyn-name><br>语法说明</propertyn-name></node-name></property1-name></node-name></p>
+<p>语法元素    描述<br>&lt;节点名称&gt;    这是我们要创建一个节点名称。</p>
+<p>&lt;Property1名&gt; … &lt;propertyN中名称&gt;    属性是键 - 值对。 定义了将要分配给创建节点的属性的名称</p>
+<p>检索一些属性（DEPTNO，DNAME）从数据库部节点的数据。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">MATCH</span> (<span class="selector-tag">dept</span>: <span class="selector-tag">Dept</span>)</span><br><span class="line"><span class="selector-tag">RETURN</span> <span class="selector-tag">dept</span><span class="selector-class">.deptno</span>,<span class="selector-tag">dept</span><span class="selector-class">.dname</span></span><br></pre></td></tr></table></figure>
+<p>dept是一个节点名<br>Dept是部节点标签名称<br>deptno是部门节点的属性名称<br>dname是部门节点的属性名称</p>
+<p>检索所有属性（DEPTNO，DNAME，位置）从数据库部节点的数据</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (dept: Dept)</span><br><span class="line">RETURN dept<span class="selector-class">.deptno</span>,dept<span class="selector-class">.dname</span>,dept.location</span><br></pre></td></tr></table></figure>
+<p>dept是一个节点名<br>Dept是部节点标签名称<br>DEPTNO是部门节点的属性名称<br>DNAME是部门节点的属性名称<br>location是部门节点的属性名称</p>
+<p>如何在没有指定其属性从数据库中检索部节点的数据</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">MATCH</span> (dept: Dept)</span><br><span class="line"><span class="keyword">RETURN</span> dept</span><br></pre></td></tr></table></figure>
+<h1 id="CREATE-MATCH-RETURN"><a href="#CREATE-MATCH-RETURN" class="headerlink" title="CREATE + MATCH + RETURN"></a>CREATE + MATCH + RETURN</h1><p>创建两个节点与两个节点之间的属性和关系。</p>
+<p>我们将创建两个节点：客户和信用卡式人际关系。</p>
+<ul>
+<li><p>客户节点包含：ID，姓名，出生日期属性</p>
+</li>
+<li><p>信用卡式节点包括：身份证，号码，CVV，性能EXPIREDATE</p>
+</li>
+<li><p>客户信用卡式的关系：DO_SHOPPING_WITH</p>
+</li>
+<li><p>要的信用卡客户关系：ASSOCIATED_WITH</p>
+</li>
+</ul>
+<h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h2><ol>
+<li>创建客户节点</li>
+<li>创建信用卡式节点</li>
+<li>观察先前创建的两个节点：客户和信用卡式</li>
+<li>创建客户与信用卡式节点之间的关系</li>
+<li>查看新创建的关系的细节</li>
+<li>详细查看每个节点和关系属性</li>
+</ol>
+<h3 id="创建客户节点"><a href="#创建客户节点" class="headerlink" title="创建客户节点"></a>创建客户节点</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">CREATE</span> (<span class="selector-tag">e</span><span class="selector-pseudo">:Customer</span>&#123;<span class="attribute">id</span>:<span class="string">"1001"</span>,name:<span class="string">"Abc"</span>,dob:<span class="string">"01/10/1982"</span>&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>e 是一个节点名</li>
+<li>Custoomer 是一个节点的标签名称</li>
+<li>id,name，dob 是客户节点的属性名称</li>
+</ul>
+<h3 id="创建信用卡式节点"><a href="#创建信用卡式节点" class="headerlink" title="创建信用卡式节点"></a>创建信用卡式节点</h3><p>‘’’’<br>CREATE (c:CreditCard{id:”5001”,number:”1234567890”,cvv:”888”,expiredate:”20/17”})</p>
+<p>‘’’’</p>
+<ul>
+<li><p>c是一个节点名</p>
+</li>
+<li><p>CreditCard是一个节点的标签名称</p>
+</li>
+<li><p>身份证，号码，CVV和EXPIREDATE是信用卡式节点的属性名称</p>
+</li>
+</ul>
+<p>### </p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 你的支持是我写作的莫大鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+	
+
+
+
+    <ul class="list-inline text-center">
+
+
+	
+
+
+
+
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ethan2lee">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://anne2bin.top">anne2bin</a></span>
+        <span>/</span>
+        
+        <span><a href="https://blog.ywandy.top/">yewei_andy</a></span>
+        <span>/</span>
+        
+        <span><a href="https://wwb.colonp.top/">wwb</a></span>
+        <span>/</span>
+        
+    </p>
+    
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://ethan2lee.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+</html>
