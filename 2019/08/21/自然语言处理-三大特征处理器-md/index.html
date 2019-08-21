@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="李逸炫的博客">
+    <meta name="keyword"  content="盈盛">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        自然语言处理-三大特征处理器.md - Ethan Lee | ethan | ethan2lee
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ethan Lee</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        自然语言处理-三大特征处理器.md
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-08-21 08:22:06</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#nlp" title="nlp">nlp</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <p>nlp的输入往往是一句话，或者一篇文章，所以它有以下几个特点：</p>
+<ul>
+<li>输入是个一维线性序列。</li>
+<li>单次或者句子的相对位置关系很重要，两个单次位置互换可能导致完全不同的意思。</li>
+</ul>
+<p>对于特征抽取器来说，能够具备长距离特征捕获能力是解决NLP任务的关键点。</p>
+<p>一个特征提取器是否匹配问题领域的特点，有时候决定了它的成败，而很多模型改进的方向，其实就是改造得使它更匹配领域问题的特性。</p>
+<p>自然语言处理四大分类任务：</p>
+<ul>
+<li>序列标注： 分词，词性标注,tag,命名实体识别,语义角色标注</li>
+<li>分类任务： 文本分类，情感计算</li>
+<li>句子关系判断 ： Etailment ,  QA ,自然语言推理，语义改写</li>
+<li>生成式任务： 机器翻译 , 文本摘要，写诗造句，看图说话</li>
+</ul>
+<p>从模型角度来看，特征抽取器的能力决定了是否能接到解决以上这些任务。深度学习最大的优点是端到端，相比以前研发人员需要考虑设计抽取哪些特征，而到深度学习时代，这些细节都不需要考虑了，只需要吧原始输入扔给好的特征提取器，它自己会吧有用的特征提取出来。<br><img src="../image/rnn.png" alt=""></p>
+<p> RNN模型结构参数如上图，核心是每个输入对应隐层节点，而隐层节点之间形成了线性序列,信息由前向后再隐层之间逐步向后传递。但原始的RNN也存在问题，它采取线性序列结构不断从前往后收集输入信息，但这种线性序列结构在反向传播的时候存在优化困难问题，因为反向传播路径太长，容易导致严重的<code>梯度消失</code>或<code>梯度爆炸</code>问题。<br> 为了解决这个问题，后来引入了LSTM和GRU模型，通过增加中间状态信息直接向后传播，以此缓解梯度消失问题，获得了很好的效果，于是很快LSTM和GRU成为RNN的标准模型。<br> 经过不断优化，后来NLP又从图像领域借鉴并引入了attention机制,叠加网络层吧层深做深，以及引入Encoder-Decoder 框架，这些技术进展极大拓展了RNN的能力以及应用效果。</p>
+<p> RNN面临的两个问题：</p>
+<ol>
+<li>新的模型性能要比rnn模型效果更佳，比如经过特殊改造过的CNN模型，以及Transformer.</li>
+<li><p>RNN本身的序列依赖结构对于大规模并行计算来说相当不友好，不具备高效并行计算能力。</p>
+<p>RNN并行能力差的原因：<br>RNN在T时刻隐层状态的计算，依赖两个输入，一个是T时刻的句子输入单词，另一个输入是隐含层St还依赖 T-1时刻隐层状态S(t-1)的输出，<br>这是最能体现RNN本质特征的一点，RNN的历史信息是通过这个信息传输渠道往后传输的。这种循环依赖会限制rnn 在并行计算方面的能力。</p>
+<p>CNN模型<br><img src="../image/cnn.png" alt=""></p>
+<p>一般而言，输入的字或词用word Embedding 的方式表达，这样本来一维的文本信息输入就转化为二维的输入结构，假设，输入X包含n个字符，而每个字符的 word Embeding 的长度为d,那么输入就是d*n的二维向量。<br>卷积层本质上是一个特征提取层，可以设定超参数F来指定卷积层包含多少个卷积核（Filter).</p>
+<p>对于某个Filter来说，可以想象有一个d*k大小的移动窗口从输入矩阵的第一个字开始不断往后移动，其中k是Filter指定的窗口大小，d是Word Embedding长度。对于某个时刻的窗口，通过神经网络的非线性变换，将这个窗口内的输入值转换为某个特征值，随着窗口不断往后移动，这个Filter对应的特征值不断产生，形成这个Filter的特征向量。这就是卷积核抽取特征的过程。卷积层内每个Filter都如此操作，就形成了不同的特征序列。Pooling 层则对Filter的特征进行降维操作，形成最终的特征。一般在Pooling层之后连接全联接层神经网络，形成最后的分类过程。<br>CNN捕获到的是什么特征呢？从上述怀旧版本CNN卷积层的运作机制你大概看出来了，关键在于卷积核覆盖的那个滑动窗口，CNN能捕获到的特征基本都体现在这个滑动窗口里了。<br>大小为k的滑动窗口轻轻的穿过句子的一个个单词，荡起阵阵涟漪，那么它捕获了什么?其实它捕获到的是单词的k-gram片段信息，这些k-gram片段就是CNN捕获到的特征，k的大小决定了能捕获多远距离的特征。</p>
+<p><img src="../image/single_cnn.png" alt=""></p>
+<p>对于远距离特征，单层CNN是无法捕获到的，如果滑动窗口k最大为2，而如果有个远距离特征距离是5，那么无论上多少个卷积核，都无法覆盖到长度为5的距离的输入，所以它是无法捕获长距离特征的。</p>
+<p><img src="../image/long_distance_cnn.png" alt=""></p>
+<p>那么怎样才能捕获到长距离的特征呢？有两种典型的改进方法：一种是假设我们仍然用单个卷积层，滑动窗口大小k假设为3，就是只接收三个输入单词，但是我们想捕获距离为5的特征，怎么做才行？显然，如果卷积核窗口仍然覆盖连续区域，这肯定是完不成任务的。提示一下：你玩过跳一跳是吧？能采取类似策略吗？对，你可以跳着覆盖呀，是吧？这就是Dilated 卷积的基本思想，确实也是一种解决方法。</p>
+<p><img src="../image/deep_cnn.png" alt=""> </p>
+<p>第二种方法是把深度做起来。第一层卷积层，假设滑动窗口大小k是3，如果再往上叠一层卷积层，假设滑动窗口大小也是3，但是第二层窗口覆盖的是第一层窗口的输出特征，所以它其实能覆盖输入的距离达到了5。如果继续往上叠加卷积层，可以继续增大卷积核覆盖输入的长度。</p>
+</li>
+</ol>
+<p>  RNN因为是线性序列结构，所以很自然它天然就会把位置信息编码进去；那么，CNN是否能够保留原始输入的相对位置信息呢？我们前面说过对于NLP问题来说，位置信息是很有用的。其实CNN的卷积核是能保留特征之间的相对位置的，道理很简单，滑动窗口从左到右滑动，捕获到的特征也是如此顺序排列，所以它在结构上已经记录了相对位置信息了</p>
+<p>  但是如果卷积层后面立即接上Pooling层的话，Max Pooling的操作逻辑是：从一个卷积核获得的特征向量里只选中并保留最强的那一个特征，所以到了Pooling层，位置信息就被扔掉了，这在NLP里其实是有信息损失的。所以在NLP领域里，目前CNN的一个发展趋势是抛弃Pooling层，靠全卷积层来叠加网络深度，这背后是有原因的</p>
+<p>  目前主流NLP的cnn：</p>
+<p>  <img src="../image/main_flow_cnn.png" alt=""></p>
+<p>  上图展示了在NLP领域能够施展身手的摩登CNN的主体结构，通常由1-D卷积层来叠加深度，使用Skip Connection来辅助优化，也可以引入Dilated CNN等手段。<br>  比如ConvS2S主体就是上图所示结构，Encoder包含 15个卷积层，卷积核kernel size=3，覆盖输入长度为25。当然对于ConvS2S来说，卷积核里引入GLU门控非线性函数也有重要帮助，限于篇幅，这里不展开说了，GLU貌似是NLP里CNN模型必备的构件，值得掌握。</p>
+<p>  除此外，简单谈一下CNN的位置编码问题和并行计算能力问题。上面说了，CNN的卷积层其实是保留了相对位置信息的，只要你在设计模型的时候别手贱，中间层不要随手瞎插入Pooling层，问题就不大，不专门在输入部分对position进行编码也行。但是也可以类似ConvS2S那样，专门在输入部分给每个单词增加一个position embedding，将单词的position embedding和词向量embedding叠加起来形成单词输入，这样也可以，也是常规做法。</p>
+<p>   至于CNN的并行计算能力，那是非常强的，这其实很好理解。我们考虑单层卷积层，首先对于某个卷积核来说，每个滑动窗口位置之间没有依赖关系，所以完全可以并行计算；另外，不同的卷积核之间也没什么相互影响，所以也可以并行计算。CNN的并行度是非常自由也非常高的，这是CNN的一个非常好的优点。</p>
+<p>   Transformer 模型：</p>
+<p>   Transformer是谷歌在17年做机器翻译任务的“Attention is all you need”的论文中提出的，引起了相当大的反响。 每一位从事NLP研发的同仁都应该透彻搞明白Transformer，它的重要性毫无疑问。</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 你的支持是我写作的莫大鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+	
+
+
+
+    <ul class="list-inline text-center">
+
+
+	
+
+
+
+
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ethan2lee">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://anne2bin.top">anne2bin</a></span>
+        <span>/</span>
+        
+        <span><a href="https://blog.ywandy.top/">yewei_andy</a></span>
+        <span>/</span>
+        
+        <span><a href="https://wwb.colonp.top/">wwb</a></span>
+        <span>/</span>
+        
+    </p>
+    
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://ethan2lee.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+</html>

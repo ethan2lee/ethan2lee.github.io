@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Neo4j的特点"><span class="toc-text">Neo4j的特点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Neo4j的优势"><span class="toc-text">Neo4j的优势</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建节点"><span class="toc-text">创建节点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个简单的“雇员”节点"><span class="toc-text">创建一个简单的“雇员”节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个简单的“部门”节点"><span class="toc-text">创建一个简单的“部门”节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Neo4j的CQL创建节点具有属性"><span class="toc-text">Neo4j的CQL创建节点具有属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个部门节点的一些属性（DEPTNO，DNAME，位置）"><span class="toc-text">创建一个部门节点的一些属性（DEPTNO，DNAME，位置）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建具有某些属性（ID，姓名，SAL，DEPTNO）劳动者节点"><span class="toc-text">创建具有某些属性（ID，姓名，SAL，DEPTNO）劳动者节点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#match命令"><span class="toc-text">match命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MATCH命令语法："><span class="toc-text">MATCH命令语法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#return子句"><span class="toc-text">return子句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#返回的命令语法："><span class="toc-text">返回的命令语法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MATCH及return"><span class="toc-text">MATCH及return</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#匹配返回命令语法："><span class="toc-text">匹配返回命令语法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#返回的命令语法：-1"><span class="toc-text">返回的命令语法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CREATE-MATCH-RETURN"><span class="toc-text">CREATE + MATCH + RETURN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤："><span class="toc-text">步骤：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建客户节点"><span class="toc-text">创建客户节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建信用卡式节点"><span class="toc-text">创建信用卡式节点</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Neo4j的特点"><span class="toc-text">Neo4j的特点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Neo4j的优势"><span class="toc-text">Neo4j的优势</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建节点"><span class="toc-text">创建节点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个简单的“雇员”节点"><span class="toc-text">创建一个简单的“雇员”节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个简单的“部门”节点"><span class="toc-text">创建一个简单的“部门”节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Neo4j的CQL创建节点具有属性"><span class="toc-text">Neo4j的CQL创建节点具有属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个部门节点的一些属性（DEPTNO，DNAME，位置）"><span class="toc-text">创建一个部门节点的一些属性（DEPTNO，DNAME，位置）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建具有某些属性（ID，姓名，SAL，DEPTNO）劳动者节点"><span class="toc-text">创建具有某些属性（ID，姓名，SAL，DEPTNO）劳动者节点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#match命令"><span class="toc-text">match命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MATCH命令语法："><span class="toc-text">MATCH命令语法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#return子句"><span class="toc-text">return子句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#返回的命令语法："><span class="toc-text">返回的命令语法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MATCH及return"><span class="toc-text">MATCH及return</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#匹配返回命令语法："><span class="toc-text">匹配返回命令语法：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#返回的命令语法：-1"><span class="toc-text">返回的命令语法：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CREATE-MATCH-RETURN"><span class="toc-text">CREATE + MATCH + RETURN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤："><span class="toc-text">步骤：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建客户节点"><span class="toc-text">创建客户节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建信用卡式节点"><span class="toc-text">创建信用卡式节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#观察节点"><span class="toc-text">观察节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看信用卡式节点详细信息"><span class="toc-text">查看信用卡式节点详细信息</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基本关系"><span class="toc-text">基本关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#创建节点标签"><span class="toc-text">创建节点标签</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#单个标签到节点"><span class="toc-text">单个标签到节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多个标签节点"><span class="toc-text">多个标签节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单个标签有关系"><span class="toc-text">单个标签有关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何创建一个标签，一个关系"><span class="toc-text">如何创建一个标签，一个关系</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WHERE子句"><span class="toc-text">WHERE子句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建WHERE子句的关系"><span class="toc-text">创建WHERE子句的关系</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除"><span class="toc-text">删除</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#删除节点和关系子句语法"><span class="toc-text">删除节点和关系子句语法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#remove"><span class="toc-text">remove</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#set语法"><span class="toc-text">set语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#排序"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LIMIT-and-SKIP"><span class="toc-text">LIMIT and SKIP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MERGE"><span class="toc-text">MERGE</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#定向关系"><span class="toc-text">定向关系</span></a></li></ol>
 </div>
     
 </div>
@@ -244,7 +244,616 @@
 <li><p>身份证，号码，CVV和EXPIREDATE是信用卡式节点的属性名称</p>
 </li>
 </ul>
-<p>### </p>
+<h3 id="观察节点"><a href="#观察节点" class="headerlink" title="观察节点"></a>观察节点</h3><p>我们已经创建了两个节点：客户和信用卡式,我们需要通过使用带有RETURN子句的Neo4j CQL MATCH命令来查看这两个节点的详细信息<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">MATCH</span> (<span class="selector-tag">e</span><span class="selector-pseudo">:Customer)</span></span><br><span class="line"><span class="selector-tag">RETURN</span> <span class="selector-tag">e</span><span class="selector-class">.id</span>,<span class="selector-tag">e</span><span class="selector-class">.name</span>,<span class="selector-tag">e</span><span class="selector-class">.dob</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="查看信用卡式节点详细信息"><a href="#查看信用卡式节点详细信息" class="headerlink" title="查看信用卡式节点详细信息"></a>查看信用卡式节点详细信息</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (c:CreditCard)</span><br><span class="line">RETURN c<span class="selector-class">.id</span>,c<span class="selector-class">.number</span>,c<span class="selector-class">.cvv</span>,c.expiredate</span><br></pre></td></tr></table></figure>
+<h1 id="基本关系"><a href="#基本关系" class="headerlink" title="基本关系"></a>基本关系</h1><p>Neo4j的图形数据库如下属性图模型来存储和管理数据。</p>
+<p>按物业图模型，关系应该是方向性的。 否则，Neo4j的将抛出一个错误消息。</p>
+<p>基于方向性，Neo4j的关系被分为两种主要类型。</p>
+<p>单向关系<br>双向关系<br>我们可以用Neo4j的CQL create命令创建在以下情况下两个节点之间的关系。 这些方案都适用于两个单向及双向关系。</p>
+<p>创建两个现有节点之间没有特性的关系</p>
+<p>创建两个现有节点之间，属性关系</p>
+<p>创建两个新的节点之间没有特性的关系</p>
+<p>创建两个新的节点之间，属性关系</p>
+<p>用WHERE子句2退出节点之间创建/关系没有属性</p>
+<p>我们要创造客户和信用卡式如下之间的关系</p>
+<p><img src="../image/neo4j_create_relationship_example1.png" alt=""> </p>
+<p>关系是一种“传出的关系”向“信用卡式的”节点和相同的关系是“传入的关系”的“客户”节点。</p>
+<p>我们创建了“信用卡式”和“客户”之间的节点两个关系：一是由“信用卡式”的“客户”。 另一名来自“客户”向“信用卡式”。 这意味着它是双向的关系。</p>
+<p><img src="../image/neo4j_create_relationship_example2.png" alt=""> </p>
+<ul>
+<li><p>创建无属性的关系随着现有节点</p>
+</li>
+<li><p>创建关系具有属性随着现有节点</p>
+</li>
+<li><p>无属性有了新节点创建关系</p>
+</li>
+<li><p>创建关系具有属性有了新节点</p>
+</li>
+<li><p>检索相关节点的详细信息</p>
+</li>
+</ul>
+<h1 id="创建节点标签"><a href="#创建节点标签" class="headerlink" title="创建节点标签"></a>创建节点标签</h1><p>标签是一个名称或标识节点或在Neo4j的数据库的关系。</p>
+<p>我们可以说此标签名称为“关系类型”的关系。</p>
+<p>我们可以使用定制列表create命令创建一个标签节点或关系与多个标签节点。 这意味着Neo4j的支持两个节点之间只有单一的关系类型。</p>
+<p>我们可以在这两种UI模式和网格模式CQL数据浏览器中观察此节点的或关系的标签名称。 同时，我们也参照执行其命令CQL。</p>
+<p>到目前为止，我们只创建一个标签，一个节点或有关系，但是我们并没有讨论关于它的语法了。<br>Neo4j的CQL CREATE命令用于</p>
+<ul>
+<li><p>要创建一个单独的标签节点</p>
+</li>
+<li><p>要创建多个标签节点</p>
+</li>
+<li><p>要创建一个单独的标签有关系</p>
+</li>
+</ul>
+<p>如何在本章中创建一个节点一个或多个标签。 我们将讨论如何创建一个单一的标签，以在下一章节的关系。</p>
+<h2 id="单个标签到节点"><a href="#单个标签到节点" class="headerlink" title="单个标签到节点"></a>单个标签到节点</h2><p>句法<br>CREATE (<node-name>:<label-name>)</label-name></node-name></p>
+<table>
+<thead>
+<tr>
+<th>S.No.</th>
+<th>语法元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1。</td>
+<td>创建</td>
+<td>这是一个Neo4j的CQL关键字。</td>
+</tr>
+<tr>
+<td>2。</td>
+<td>&lt;节点名称&gt;</td>
+<td>它是一个节点的名称。</td>
+</tr>
+<tr>
+<td>3。</td>
+<td>&lt;标签名称&gt;</td>
+<td>这是一个节点的标签名称。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意</p>
+<ul>
+<li>我们应该用冒号（:)运营商的节点名称和标签名称分开。</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>Neo4j的数据库服务器使用此名称来存储这个节点细节Database.As一个Neo4j的DBA或开发人员，我们不能用它来访问节点的详细信息</p>
+</li>
+<li><p>Neo4j的数据库服务器创建一个标签名称作为别名到内部节点name.As一个Neo4j的DBA或开发人员，我们应该利用这个标签名称访问节点的详细信息。</p>
+</li>
+</ul>
+<p>例</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE (<span class="name">google1</span><span class="symbol">:GooglePlusProfile</span>)</span><br></pre></td></tr></table></figure>
+<p>我们可以观察到一个标签和一个节点在Neo4j的数据库中创建。</p>
+<h2 id="多个标签节点"><a href="#多个标签节点" class="headerlink" title="多个标签节点"></a>多个标签节点</h2><p>句法</p>
+<p>CREATE (<node-name>:<label-name1>:<label-name2>…..:<label-namen>)</label-namen></label-name2></label-name1></node-name></p>
+<table>
+<thead>
+<tr>
+<th>S.No.</th>
+<th>语法元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1。</td>
+<td>创建</td>
+<td>这是一个Neo4j的CQL关键字。</td>
+</tr>
+<tr>
+<td>2。</td>
+<td>&lt;节点名称&gt;</td>
+<td>它是一个节点的名称。</td>
+</tr>
+<tr>
+<td>3。</td>
+<td>&lt;标签名1&gt;，&lt;标签名2&gt;</td>
+<td>它是一个节点的标签名称的列表。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意 </p>
+<ul>
+<li>我们应该用冒号（:)运营商的节点名称和标签名称分开。</li>
+<li>我们应该用冒号（:)运营商一个标签名称分开到另一个标签名称。</li>
+</ul>
+</blockquote>
+<p>创建多个标签名称为“电影”节点。</p>
+<p>影院，影片，电影，图片：由我们的客户端提供多标签名称</p>
+<h2 id="单个标签有关系"><a href="#单个标签有关系" class="headerlink" title="单个标签有关系"></a>单个标签有关系</h2><p>句法</p>
+<p>CREATE (<node1-name>:<label1-name>)-<br>    [(<relationship-name>:<relationship-label-name>)]<br>    -&gt;(<node2-name>:<label2-name>)</label2-name></node2-name></relationship-label-name></relationship-name></label1-name></node1-name></p>
+<pre><code>语法说明
+</code></pre><table>
+<thead>
+<tr>
+<th>S.No.</th>
+<th>语法元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1。</td>
+<td>创建</td>
+<td>这是一个Neo4j的CQL关键字。</td>
+</tr>
+<tr>
+<td>2。</td>
+<td>&lt;节点1名&gt;</td>
+<td>这是一个从节点的名称。</td>
+</tr>
+<tr>
+<td>3。</td>
+<td>&lt;节点2名&gt;</td>
+<td>这是A到节点的名称。</td>
+</tr>
+<tr>
+<td>4。</td>
+<td>&lt;LABEL1名称&gt;</td>
+<td>这是一个从节点的标签名称。</td>
+</tr>
+<tr>
+<td>5。</td>
+<td>&lt;LABEL1名称&gt;</td>
+<td>这是一个到节点的标签名称。</td>
+</tr>
+<tr>
+<td>6。</td>
+<td>&lt;关系名称&gt;</td>
+<td>它是一个关系的一个名字。</td>
+</tr>
+<tr>
+<td>7。</td>
+<td>&lt;相关标签名称&gt;</td>
+<td>这是一个关系的标签名称。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p> 注意</p>
+<ul>
+<li>我们应该用冒号（:)运营商的节点名称和标签名称分开。</li>
+<li>我们应该用冒号（:)运营商的关系，名称和关系标签名称分开。<ul>
+<li>我们应该用冒号（:)运营商一个标签名称分开到另一个标签名称。</li>
+<li>Neo4j的数据库服务器使用此名称来存储这个节点细节Database.As一个Neo4j的DBA或开发人员，我们不能用它来访问节点的详细信息</li>
+<li>Neo4j的数据库服务器创建一个标签名称作为别名到内部节点name.As一个Neo4j的DBA或开发人员，我们应该利用这个标签名称访问节点的详细信息。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="如何创建一个标签，一个关系"><a href="#如何创建一个标签，一个关系" class="headerlink" title="如何创建一个标签，一个关系"></a>如何创建一个标签，一个关系</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">CREATE</span> (<span class="attribute">p1</span>:Profile1)<span class="selector-tag">-</span><span class="selector-attr">[r1:LIKES]</span><span class="selector-tag">-</span>&gt;(<span class="attribute">p2</span>:Profile2)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>p1和Profile1的都是“从节点”的节点名称和节点标签名称</li>
+<li>P2和Profile2的都是的“节点”节点名称和节点标签名称</li>
+<li>R1是有关系的名字,喜欢是有关系的标签名称</li>
+</ul>
+<h1 id="WHERE子句"><a href="#WHERE子句" class="headerlink" title="WHERE子句"></a>WHERE子句</h1><p>简单的WHERE子句语法<br>WHERE <condition><br>复杂的WHERE子句语法<br>WHERE <condition> <boolean-operator> <condition><br>我们可以通过使用布尔运算符将多个条件对同样的命令。 详情请参阅在Neo4j的CQL可用的布尔运算符下一节。</condition></boolean-operator></condition></condition></p>
+<p>&lt;条件&gt;的语法：</p>
+<p><property-name> <comparison-operator> <value><br>语法说明</value></comparison-operator></property-name></p>
+<table>
+<thead>
+<tr>
+<th>S.No.</th>
+<th>语法元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1。</td>
+<td>哪里</td>
+<td>这是一个Neo4j的CQL关键字。</td>
+</tr>
+<tr>
+<td>2。</td>
+<td>&lt;属性名称&gt;</td>
+<td>这是一个节点或关系的属性名。</td>
+</tr>
+<tr>
+<td>3。</td>
+<td>&lt;比较运算符&gt;</td>
+<td>这是Neo4j的CQL比较operators.Please的一个是指在Neo4j的CQL可用比较运营商下一节。</td>
+</tr>
+<tr>
+<td>4。</td>
+<td>&lt;值&gt;</td>
+<td>这就像一些文字，字符串文字等文本值</td>
+</tr>
+</tbody>
+</table>
+<p>何使用WHERE CQL在match命令子句检索基于员工的名字雇员的详细信息。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (emp:Employee)</span><br><span class="line">RETURN emp<span class="selector-class">.empid</span>,emp<span class="selector-class">.name</span>,emp<span class="selector-class">.salary</span>,emp.deptno</span><br></pre></td></tr></table></figure>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">MATCH</span> (emp:Employee) </span><br><span class="line"><span class="keyword">WHERE</span> emp.name = <span class="string">'Abc'</span></span><br><span class="line"><span class="keyword">RETURN</span> emp</span><br></pre></td></tr></table></figure>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">MATCH</span> (emp:Employee) </span><br><span class="line"><span class="keyword">WHERE</span> emp.name = <span class="string">'Abc'</span> <span class="literal">OR</span> emp.name = <span class="string">'Xyz'</span></span><br><span class="line"><span class="keyword">RETURN</span> emp</span><br></pre></td></tr></table></figure>
+<h2 id="创建WHERE子句的关系"><a href="#创建WHERE子句的关系" class="headerlink" title="创建WHERE子句的关系"></a>创建WHERE子句的关系</h2><p>在Neo4j的CQL，我们可以创建不同的方法拖车节点之间的关系。</p>
+<ul>
+<li><p>创建两个现有的节点之间的关系</p>
+</li>
+<li><p>一次创建它们之间的两个节点和关系</p>
+</li>
+<li><p>创建WHERE子句两个已存在节点之间的关系</p>
+</li>
+</ul>
+<p>我们已经讨论了在前面章节前两种方法。 现在，我们将在本章中的“创建具有WHERE子句两个已存在节点之间的关系”的讨论</p>
+<p>句法<br>MATCH (<node1-label-name>:<node1-name>),(<node2-label-name>:<node2-name>)<br>WHERE <condition><br>CREATE (<node1-label-name>)-[<relationship-label-name>:<relationship-name><br>       {<relationship-properties>}]-&gt;(<node2-label-name>) </node2-label-name></relationship-properties></relationship-name></relationship-label-name></node1-label-name></condition></node2-name></node2-label-name></node1-name></node1-label-name></p>
+<table>
+<thead>
+<tr>
+<th>S.No.</th>
+<th>语法元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1。</td>
+<td>MATCH，WHERE，CREATE</td>
+<td>他们是Neo4j的CQL关键字。</td>
+</tr>
+<tr>
+<td>2。</td>
+<td>&lt;节点1标签名称&gt;</td>
+<td>它是用于创建关系的节点有一个标签名称。</td>
+</tr>
+<tr>
+<td>3。</td>
+<td>&lt;节点1名&gt;    它是用于创建关系一个节点一个名称。</td>
+</tr>
+<tr>
+<td>4。</td>
+<td>&lt;节点2标签名称&gt;    它是用于创建关系的节点有一个标签名称。</td>
+</tr>
+<tr>
+<td>5。</td>
+<td>&lt;节点2名&gt;    它是用于创建关系一个节点一个名称。</td>
+</tr>
+<tr>
+<td>6。</td>
+<td>&lt;条件&gt;    这是一个Neo4j的CQL WHERE子句条件。 它可以是简单的或复杂的。</td>
+</tr>
+<tr>
+<td>7。</td>
+<td>&lt;相关标签名称&gt;</td>
+<td>这是新创建的节点之一，节点两者之间关系的标签名称。</td>
+</tr>
+<tr>
+<td>8。</td>
+<td>&lt;关系名称&gt;    这是新创建的节点之一，节点两者之间关系的一个名字。</td>
+</tr>
+<tr>
+<td>9。</td>
+<td>&lt;关系的属性&gt;</td>
+<td>这是新创建的节点之一，节点两者之间关系的属性列表（键 - 值对）。</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MATCH (<span class="string">cust:</span>Customer),(<span class="string">c:</span>CreditCard) </span><br><span class="line">WHERE cust.id = <span class="string">"1001"</span> AND c.id= <span class="string">"5001"</span> </span><br><span class="line">CREATE (cust)-[<span class="string">r:</span>DO_SHOPPING_WITH&#123;<span class="string">shopdate:</span><span class="string">"12/12/2014"</span>,<span class="string">price:</span><span class="number">55000</span>&#125;]-&gt;(c) </span><br><span class="line">RETURN r</span><br></pre></td></tr></table></figure>
+<h1 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h1><p> DELETE子句用于</p>
+<p>要删除一个节点。<br>要删除一个节点和相关节点和关系。</p>
+<p>删除节点 -<br>通过使用此命令，我们可以从数据库中永久删除节点及其相关属性。</p>
+<p>删除节点子句子语法<br>|||</p>
+<p>DELETE <node-name-list></node-name-list></p>
+<table>
+<thead>
+<tr>
+<th>S.No.</th>
+<th>语法元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1。</td>
+<td>删除</td>
+<td>这是一个Neo4j的CQL关键字。</td>
+</tr>
+<tr>
+<td>2。</td>
+<td>&lt;节点名称列表&gt;</td>
+<td>它是节点名，它会从数据库中删除的列表。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="删除节点和关系子句语法"><a href="#删除节点和关系子句语法" class="headerlink" title="删除节点和关系子句语法"></a>删除节点和关系子句语法</h2><p>DELETE <node1-name>,<node2-name>,<relationship-name></relationship-name></node2-name></node1-name></p>
+<table>
+<thead>
+<tr>
+<th>S.No.</th>
+<th>语法元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1。</td>
+<td>删除</td>
+<td>这是一个Neo4j的CQL关键字。</td>
+</tr>
+<tr>
+<td>2。</td>
+<td>&lt;节点1名&gt;</td>
+<td>它是用于创建关系&lt;关系名称&gt;一端节点名称。</td>
+</tr>
+<tr>
+<td>3。</td>
+<td>&lt;节点2名&gt;</td>
+<td>它是用于创建关系&lt;关系名称&gt;另一个节点名称。</td>
+</tr>
+<tr>
+<td>4。</td>
+<td>&lt;关系名称&gt;</td>
+<td>这是一个关系名，这是&lt;节点1-name&gt;和&lt;节点2名&gt;之间产生。</td>
+</tr>
+</tbody>
+</table>
+<p>从数据库中永久删除节点及其联营节点和关系。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">MATCH</span> (<span class="attribute">cc</span>:CreditCard)<span class="selector-tag">-</span><span class="selector-attr">[r]</span><span class="selector-tag">-</span>(<span class="attribute">c</span>:Customer)<span class="selector-tag">RETURN</span> <span class="selector-tag">r</span></span><br></pre></td></tr></table></figure>
+<p>观察为客户一个节点，对于信用卡式的一个节点和它们之间的关系可用。<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">MATCH</span> (<span class="attribute">cc</span>: CreditCard)<span class="selector-tag">-</span><span class="selector-attr">[rel]</span><span class="selector-tag">-</span>(<span class="attribute">c</span>:Customer) </span><br><span class="line"><span class="selector-tag">DELETE</span> <span class="selector-tag">cc</span>,<span class="selector-tag">c</span>,<span class="selector-tag">rel</span></span><br></pre></td></tr></table></figure></p>
+<p>观察到两个节点及其相关联的10关系成功删除。<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">MATCH</span> (<span class="attribute">cc</span>:CreditCard)<span class="selector-tag">-</span><span class="selector-attr">[r]</span><span class="selector-tag">-</span>(<span class="attribute">c</span>:Customer) <span class="selector-tag">RETURN</span> <span class="selector-tag">r</span></span><br></pre></td></tr></table></figure></p>
+<p>现在检查DELETE操作是否成功还是没有这样做,发现数据库中没有任何记录。</p>
+<h1 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h1><p>基于我们客户的需求，我们需要从现有节点或关系添加或删除属性,SET 子句中新的属性添加到现有节点或关系。<br>remove 子句来删除节点或关系的现有属性。</p>
+<p> REMOVE命令用于</p>
+<ul>
+<li>要删除一个节点或关系标签</li>
+<li>要删除一个节点或关系的性质</li>
+</ul>
+<p>delete 和 remove命令之间的相似性</p>
+<ul>
+<li>两个命令都不能单独使用。</li>
+<li>这两个命令都应该match命令使用。</li>
+</ul>
+<p>删除节点/关系属性<br>我们可以使用相同的语法来删除一个节点或从数据库中永久关系的性质的属性或列表。</p>
+<p>删除属性子句语法<br>REMOVE <property-name-list></property-name-list></p>
+<table>
+<thead>
+<tr>
+<th>S.No.</th>
+<th>语法元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1。</td>
+<td>去掉</td>
+<td>这是一个Neo4j的CQL关键字。</td>
+</tr>
+<tr>
+<td>2。</td>
+<td>&lt;属性名称列表&gt;</td>
+<td>它是属性的列表，以从节点或永久性的关系将其删除。</td>
+</tr>
+</tbody>
+</table>
+<p>属性名称列表 《语法》</p>
+<p><node-name>.<property1-name>,</property1-name></node-name></p>
+<p><node-name>.<property2-name>,<br>…. </property2-name></node-name></p>
+<p><node-name>.<propertyn-name> </propertyn-name></node-name></p>
+<p>语法说明</p>
+<table>
+<thead>
+<tr>
+<th>S.No.</th>
+<th>语法元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1。</td>
+<td>&lt;节点名称&gt;</td>
+<td>它是一个节点的名称。</td>
+</tr>
+<tr>
+<td>2。</td>
+<td>&lt;属性名称&gt;</td>
+<td>它是一个节点的属性名。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>我们应用逗号（，）云算法分隔标签名称列表。</p>
+</blockquote>
+<p>我们应用(.) 运算符分割节点名称和标签名称。</p>
+<p>创建一个节点，并从该节点从数据库中永久删除属性。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">CREATE</span> (<span class="selector-tag">book</span><span class="selector-pseudo">:Book</span> &#123;<span class="attribute">id</span>:<span class="number">122</span>,title:<span class="string">"Neo4j Tutorial"</span>,pages:<span class="number">340</span>,price:<span class="number">250</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>也可以这么写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> BOOK(</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">number</span>,</span><br><span class="line">	title varchar2(<span class="number">20</span>),</span><br><span class="line">	pages <span class="built_in">number</span>,</span><br><span class="line">	price <span class="built_in">number</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> BOOK <span class="keyword">VALUES</span> (<span class="number">122</span>,<span class="string">'Neo4j Tutorial'</span>,<span class="number">340</span>,<span class="number">251</span>);</span><br></pre></td></tr></table></figure>
+<p>删除 price属性</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">MATCH</span> (<span class="selector-tag">book</span> &#123; <span class="attribute">id</span>:<span class="number">122</span> &#125;)</span><br><span class="line"><span class="selector-tag">REMOVE</span> <span class="selector-tag">book</span><span class="selector-class">.price</span></span><br><span class="line"><span class="selector-tag">RETURN</span> <span class="selector-tag">book</span></span><br></pre></td></tr></table></figure>
+<h1 id="set语法"><a href="#set语法" class="headerlink" title="set语法"></a>set语法</h1><p>提供SET子句来执行下列操作。</p>
+<ul>
+<li>新属性添加到现有的节点或关系</li>
+<li>添加或更新属性值</li>
+</ul>
+<p>SET子句语法<br>SET  <property-name-list></property-name-list></p>
+<table>
+<thead>
+<tr>
+<th>S.No.</th>
+<th>语法元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1。</td>
+<td>组</td>
+<td>这是一个Neo4j的CQL关键字。</td>
+</tr>
+<tr>
+<td>2。</td>
+<td>&lt;属性名称列表&gt;</td>
+<td>这是属性执行添加或更新操作满足我们的要求清单。</td>
+</tr>
+</tbody>
+</table>
+<p>&lt;属性名称列表&gt;语法：</p>
+<p><node-label-name>.<property1-name>,</property1-name></node-label-name></p>
+<p><node-label-name>.<property2-name>,<br>…. </property2-name></node-label-name></p>
+<p><node-label-name>.<propertyn-name><br>语法说明</propertyn-name></node-label-name></p>
+<table>
+<thead>
+<tr>
+<th>S.No.</th>
+<th>语法元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1。</td>
+<td>&lt;节点标签名称&gt;</td>
+<td>这是一个节点的标签名称。</td>
+</tr>
+<tr>
+<td>2。</td>
+<td>&lt;属性名称&gt;</td>
+<td>它是一个节点的属性名。</td>
+</tr>
+</tbody>
+</table>
+<p>何将一个新的属性添加到现有的借记卡节点。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE (<span class="name">dc</span><span class="symbol">:DebitCard</span>&#123;I'd:<span class="number">11</span>,name:'ABC11XYZ',valid_from : <span class="number">0211</span>,vaild_to:<span class="number">0221</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>查找这个节点<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (<span class="name">dc</span><span class="symbol">:DebitCard</span>)</span><br><span class="line">RETURN dc</span><br></pre></td></tr></table></figure></p>
+<p>“借记卡”节点都有4个属性。 现在，我们要添加新属性“atm_pin”这个节点。</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MATCH (dc:DebitCard)</span><br><span class="line"><span class="keyword">SET</span> dc.atm_pin <span class="comment">= 3456</span></span><br><span class="line">RETURN <span class="comment">dc</span></span><br></pre></td></tr></table></figure>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p>默认情况下，按升序订单行。 如果我们要在他们降序排序，我们需要用DESC。</p>
+<p>ORDER BY子句语法<br>ORDER BY  <property-name-list>  [DESC]<br>|S.No.|    语法元素|    描述|<br>|1。|    ORDER BY|    这是一个Neo4j的CQL关键字。|<br>|2。|    &lt;属性名称列表&gt;    |它是在分拣使用的属性的列表。|<br>|3。|    DESC    |它是用于指定降序order.It是可选的一个Neo4j的CQL关键字。|</property-name-list></p>
+<p>&lt;属性名称列表&gt;语法：</p>
+<p><node-label-name>.<property1-name>,</property1-name></node-label-name></p>
+<p><node-label-name>.<property2-name>,<br>…. </property2-name></node-label-name></p>
+<p><node-label-name>.<propertyn-name><br>语法说明</propertyn-name></node-label-name></p>
+<p>|S.No.|    语法元素|    描述|<br>|1。|    &lt;节点标签名称&gt;|    这是一个节点的标签名称。|<br>|2。|    &lt;属性名称&gt;    |它是一个节点的属性名。|</p>
+<p>通过员工姓名使用排序结果升序排列。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (emp:Employee)</span><br><span class="line">RETURN emp<span class="selector-class">.empid</span>,emp<span class="selector-class">.name</span>,emp<span class="selector-class">.salary</span>,emp.deptno</span><br></pre></td></tr></table></figure>
+<p>观察数据<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MATCH (emp:Employee)</span><br><span class="line">RETURN emp<span class="selector-class">.empid</span>,emp<span class="selector-class">.name</span>,emp<span class="selector-class">.salary</span>,emp.deptno</span><br><span class="line">ORDER BY emp.name</span><br></pre></td></tr></table></figure></p>
+<p>排序观察</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MATCH (emp:Employee)</span><br><span class="line">RETURN emp<span class="selector-class">.empid</span>,emp<span class="selector-class">.name</span>,emp<span class="selector-class">.salary</span>,emp.deptno</span><br><span class="line">ORDER BY emp<span class="selector-class">.name</span> DESC</span><br></pre></td></tr></table></figure>
+<h1 id="LIMIT-and-SKIP"><a href="#LIMIT-and-SKIP" class="headerlink" title="LIMIT and SKIP"></a>LIMIT and SKIP</h1><p>它修剪从CQL查询结果集底部的结果。</p>
+<p>如果我们要修剪掉CQL查询结果集顶部的结果，那么我们就应该去CQL SKIP子句。</p>
+<p>LIMIT子句语法<br>LIMIT <number><br>语法说明</number></p>
+<table>
+<thead>
+<tr>
+<th>S.No.</th>
+<th>语法元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1。</td>
+<td>limit</td>
+<td>这是一个Neo4j的CQL关键字。</td>
+</tr>
+<tr>
+<td>2。</td>
+<td>number</td>
+<td>它是一个跨值。</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MATCH (<span class="name">emp</span><span class="symbol">:Employee</span>) </span><br><span class="line">RETURN emp</span><br></pre></td></tr></table></figure>
+<p>我们仅取两条数据</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MATCH (<span class="name">emp</span><span class="symbol">:Employee</span>) </span><br><span class="line">RETURN emp</span><br><span class="line">LIMIT <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>SKIP子句语法：<br>SKIP <number><br>语法说明</number></p>
+<table>
+<thead>
+<tr>
+<th>S.No.</th>
+<th>语法元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1。</td>
+<td>skip</td>
+<td>这是一个Neo4j的CQL关键字。</td>
+</tr>
+<tr>
+<td>2。</td>
+<td>number</td>
+<td>它是一个跨值。</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MATCH (emp:Employee) </span><br><span class="line">RETURN emp</span><br><span class="line"><span class="keyword">SKIP </span>2</span><br></pre></td></tr></table></figure>
+<h1 id="MERGE"><a href="#MERGE" class="headerlink" title="MERGE"></a>MERGE</h1><p> MERGE 使用命令</p>
+<ol>
+<li>要创建节点，关系和属性</li>
+<li>为了从数据库中检索数据<br>MERGE 命令是CREATE 命令和MATH命令的组合。<br>MERGE = CREATE + MATCH<br>MERGE 图中给定模式命令搜，如果存在则返回结果<br>如果他不在图中，则创建新的节点/关系并返回结果。</li>
+</ol>
+<p> MERGE语法<br>MERGE (<node-name>:<label-name><br>{<br>   <property1-name>:&lt;Pro<rty1-value><br>   …..<br>   <propertyn-name>:<propertyn-value><br>})</propertyn-value></propertyn-name></rty1-value></property1-name></label-name></node-name></p>
+<p>语法说明</p>
+<table>
+<thead>
+<tr>
+<th>S.No.</th>
+<th>语法元素</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1。</td>
+<td>MERGE</td>
+<td>这是一个Neo4j的CQL关键字。</td>
+</tr>
+<tr>
+<td>2。</td>
+<td>Property1-name</td>
+<td>它是一个节点或关系的名称。</td>
+</tr>
+<tr>
+<td>3。</td>
+<td>label-name</td>
+<td>这是一个节点或关系的标签名称。</td>
+</tr>
+<tr>
+<td>4。</td>
+<td>&lt;PROPERTY_NAME&gt;</td>
+<td>这是一个节点或关系的属性名。</td>
+</tr>
+<tr>
+<td>5。</td>
+<td>&lt;PROPERTY_VALUE&gt;</td>
+<td>这是一个节点或关系的属性值。</td>
+</tr>
+<tr>
+<td>6。</td>
+<td>：</td>
+<td>使用冒号（:)操作符来分隔属性名称和一个节点或关系的价值。</td>
+</tr>
+</tbody>
+</table>
+<p>CREATE执行上述所有操作，MATCH和RETURN命令来创建Google+个人资料。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">CREATE</span> (<span class="selector-tag">gp1</span><span class="selector-pseudo">:GoogleProfile1</span> &#123;<span class="attribute">Id</span>: <span class="number">201401</span>, Name:<span class="string">"Apple"</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>先创建一个数据点</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">CREATE</span> (<span class="selector-tag">gp1</span><span class="selector-pseudo">:GoogleProfile1</span> &#123;<span class="attribute">Id</span>: <span class="number">201401</span>, Name:<span class="string">"Apple"</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>再创建一个数据点</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">MATCH</span>  (<span class="selector-tag">gp1</span><span class="selector-pseudo">:GoogleProfile1)</span> </span><br><span class="line"><span class="selector-tag">RETURN</span> <span class="selector-tag">gp1</span><span class="selector-class">.Id</span>,<span class="selector-tag">gp1</span><span class="selector-class">.Name</span></span><br></pre></td></tr></table></figure>
+<p>获取所有个人资料节点详细信息和观察结果。</p>
+<p>从结果来看，它显示2行有重复的值。</p>
+<p>CQL CREATE命令不检查是否该节点可用与否，它只是在数据库中创建新的节点。</p>
+<p>通过观察这些结果，我们可以说，CREATE命令总是将新节点添加到数据库。</p>
+<p>现在我们用MERGE执行同一套以上操作，并返回命令创建Google+个人资料。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">MERGE</span> (<span class="selector-tag">gp2</span><span class="selector-pseudo">:GoogleProfile2</span>&#123; <span class="attribute">Id</span>: <span class="number">201402</span>,Name:<span class="string">"Nokia"</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>第一次创建<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">MERGE</span> (<span class="selector-tag">gp2</span><span class="selector-pseudo">:GoogleProfile2</span>&#123; <span class="attribute">Id</span>: <span class="number">201402</span>,Name:<span class="string">"Nokia"</span>&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>再次创建</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">MATCH</span>  (<span class="selector-tag">gp1</span><span class="selector-pseudo">:GoogleProfile1)</span> </span><br><span class="line"><span class="selector-tag">RETURN</span> <span class="selector-tag">gp1</span><span class="selector-class">.Id</span>,<span class="selector-tag">gp1</span><span class="selector-class">.Name</span></span><br></pre></td></tr></table></figure>
+<p>获取所有个人资料节点详细信息和观察结果</p>
+<h1 id="定向关系"><a href="#定向关系" class="headerlink" title="定向关系"></a>定向关系</h1><p>在 Neo4j中，两个节点之间的关系是有方向的。他们要么是单向要么是双向。<br>由于 Neo4j的如下属性图的数据模型，他应该只支持方向的关系。如果我们试图简历一个没有任何方向的关系，那么Neo4j的DB服务器应该会抛出一个错误。<br>在本节中，我们将提供一个例子来证明这一点。</p>
+<p>CREATE (<node1-details>)-[<relationship-details>]-&gt;(<node2-details>)</node2-details></relationship-details></node1-details></p>
+<p>如果我们观察上面的语法，它用一个箭头标志：（） - []→（）。 它表示从左侧节点到右侧节点的方向。</p>
+<p>如果我们试图用同样的语法，而不箭头状（） - [] - （），这意味着没有方向的关系。 然后，Neo4j的DB服务器应该抛出一个错误信息</p>
+<p>证明一切Neo4j的关系是有方向的。</p>
 
         
             <div class="donate-container">
