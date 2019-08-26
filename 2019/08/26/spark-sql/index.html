@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="李逸炫的博客">
+    <meta name="keyword"  content="盈盛">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        spark_sql - Ethan Lee | ethan | ethan2lee
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Ethan Lee</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#19-3-建立RDD、DataFrame与Spark-SQL-tempTable"><span class="toc-text">19.3    建立RDD、DataFrame与Spark SQL tempTable</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#建立DataFrame"><span class="toc-text">建立DataFrame</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#建立Spark-SQL-tempTable"><span class="toc-text">建立Spark SQL tempTable</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19-3-显示部分字段"><span class="toc-text">19.3    显示部分字段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19-4-增加计算字段"><span class="toc-text">19.4 增加计算字段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19-5筛选数据"><span class="toc-text">19.5筛选数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19-6-筛选数据"><span class="toc-text">19.6 筛选数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19-6-单个字段排序数据"><span class="toc-text">19.6 单个字段排序数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19-7-多字段排序数据"><span class="toc-text">19.7 多字段排序数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19-8-显示不重复数据"><span class="toc-text">19.8 显示不重复数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19-9-分组统计数据"><span class="toc-text">19.9    分组统计数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19-10-Join关联数据"><span class="toc-text">19.10    Join关联数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ZipCode"><span class="toc-text">ZipCode</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19-19-2-建立zipcode-table"><span class="toc-text">19.19.2    建立zipcode_table</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19-11-以Pandas-DataFrame绘图"><span class="toc-text">19.11    以Pandas DataFrame绘图</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 代码承旧万世基积沙镇海，梦想永在凌云意气风发 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        spark_sql
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-08-26 08:19:59</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#spark" title="spark">spark</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <p>#注意事项:</p>
+<p>#当运行本Notebook的程序后，如果要关闭Notebook，请选择菜单: File &gt; Close and Halt 才能确实停止当前正在运行的程序，并且释放资源</p>
+<p>#如果没有使用以上方法，只关闭此分页，程序仍在运行，未释放资源，当您打开并运行其他的Notebook，可能会发生错误</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc.master</span><br></pre></td></tr></table></figure>
+<pre><code>&apos;spark://192.168.10.170:7077&apos;
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">global</span> Path    </span><br><span class="line"><span class="keyword">if</span> sc.master[<span class="number">0</span>:<span class="number">5</span>]==<span class="string">"local"</span> :</span><br><span class="line">   Path=<span class="string">"file:/home/hduser/pythonsparkexample/PythonProject/"</span></span><br><span class="line"><span class="keyword">else</span>:   </span><br><span class="line">   Path=<span class="string">"hdfs://master:9000/user/hduser/"</span></span><br><span class="line"><span class="comment">#如果要在cluster模式运行(hadoop yarn 或Spark Stand alone)，请按照书上的说明，先把文件上传到HDFS目录</span></span><br></pre></td></tr></table></figure>
+<h1 id="19-3-建立RDD、DataFrame与Spark-SQL-tempTable"><a href="#19-3-建立RDD、DataFrame与Spark-SQL-tempTable" class="headerlink" title="19.3    建立RDD、DataFrame与Spark SQL tempTable"></a>19.3    建立RDD、DataFrame与Spark SQL tempTable</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Step 1  读取文本文件,建立RDD</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RawUserRDD= sc.textFile(Path+<span class="string">"data/u.user"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">distData = sc.parallelize(data)</span><br><span class="line">distData.collect()</span><br></pre></td></tr></table></figure>
+<pre><code>[1, 2, 3, 4, 5]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RawUserRDD.count()</span><br></pre></td></tr></table></figure>
+<pre><code>943
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RawUserRDD.take(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>[&apos;1|24|M|technician|85711&apos;,
+ &apos;2|53|F|other|94043&apos;,
+ &apos;3|23|M|writer|32067&apos;,
+ &apos;4|24|M|technician|43537&apos;,
+ &apos;5|33|F|other|15213&apos;]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">userRDD =RawUserRDD.map(<span class="keyword">lambda</span> line: line.split(<span class="string">"|"</span>))</span><br><span class="line">userRDD .take(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>[[&apos;1&apos;, &apos;24&apos;, &apos;M&apos;, &apos;technician&apos;, &apos;85711&apos;],
+ [&apos;2&apos;, &apos;53&apos;, &apos;F&apos;, &apos;other&apos;, &apos;94043&apos;],
+ [&apos;3&apos;, &apos;23&apos;, &apos;M&apos;, &apos;writer&apos;, &apos;32067&apos;],
+ [&apos;4&apos;, &apos;24&apos;, &apos;M&apos;, &apos;technician&apos;, &apos;43537&apos;],
+ [&apos;5&apos;, &apos;33&apos;, &apos;F&apos;, &apos;other&apos;, &apos;15213&apos;]]
+</code></pre><h1 id="建立DataFrame"><a href="#建立DataFrame" class="headerlink" title="建立DataFrame"></a>建立DataFrame</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlContext = SparkSession.builder.getOrCreate()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> Row</span><br><span class="line">user_Rows = userRDD.map(<span class="keyword">lambda</span> p:</span><br><span class="line">     Row(</span><br><span class="line">         userid=int(p[<span class="number">0</span>]), </span><br><span class="line">         age=int(p[<span class="number">1</span>]),</span><br><span class="line">         gender=p[<span class="number">2</span>],</span><br><span class="line">         occupation=p[<span class="number">3</span>],</span><br><span class="line">         zipcode=p[<span class="number">4</span>]</span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line">user_Rows.take(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>[Row(age=24, gender=&apos;M&apos;, occupation=&apos;technician&apos;, userid=1, zipcode=&apos;85711&apos;),
+ Row(age=53, gender=&apos;F&apos;, occupation=&apos;other&apos;, userid=2, zipcode=&apos;94043&apos;),
+ Row(age=23, gender=&apos;M&apos;, occupation=&apos;writer&apos;, userid=3, zipcode=&apos;32067&apos;),
+ Row(age=24, gender=&apos;M&apos;, occupation=&apos;technician&apos;, userid=4, zipcode=&apos;43537&apos;),
+ Row(age=33, gender=&apos;F&apos;, occupation=&apos;other&apos;, userid=5, zipcode=&apos;15213&apos;)]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">user_df = sqlContext.createDataFrame(user_Rows)</span><br><span class="line">user_df .printSchema()</span><br><span class="line">user_df.show()</span><br></pre></td></tr></table></figure>
+<pre><code>root
+ |-- age: long (nullable = true)
+ |-- gender: string (nullable = true)
+ |-- occupation: string (nullable = true)
+ |-- userid: long (nullable = true)
+ |-- zipcode: string (nullable = true)
+
++---+------+-------------+------+-------+
+|age|gender|   occupation|userid|zipcode|
++---+------+-------------+------+-------+
+| 24|     M|   technician|     1|  85711|
+| 53|     F|        other|     2|  94043|
+| 23|     M|       writer|     3|  32067|
+| 24|     M|   technician|     4|  43537|
+| 33|     F|        other|     5|  15213|
+| 42|     M|    executive|     6|  98101|
+| 57|     M|administrator|     7|  91344|
+| 36|     M|administrator|     8|  05201|
+| 29|     M|      student|     9|  01002|
+| 53|     M|       lawyer|    10|  90703|
+| 39|     F|        other|    11|  30329|
+| 28|     F|        other|    12|  06405|
+| 47|     M|     educator|    13|  29206|
+| 45|     M|    scientist|    14|  55106|
+| 49|     F|     educator|    15|  97301|
+| 21|     M|entertainment|    16|  10309|
+| 30|     M|   programmer|    17|  06355|
+| 35|     F|        other|    18|  37212|
+| 40|     M|    librarian|    19|  02138|
+| 42|     F|    homemaker|    20|  95660|
++---+------+-------------+------+-------+
+only showing top 20 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_df.show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+----------+------+-------+
+|age|gender|occupation|userid|zipcode|
++---+------+----------+------+-------+
+| 24|     M|technician|     1|  85711|
+| 53|     F|     other|     2|  94043|
+| 23|     M|    writer|     3|  32067|
+| 24|     M|technician|     4|  43537|
+| 33|     F|     other|     5|  15213|
++---+------+----------+------+-------+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df=user_df.alias(<span class="string">"df"</span>)</span><br><span class="line">df.show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+----------+------+-------+
+|age|gender|occupation|userid|zipcode|
++---+------+----------+------+-------+
+| 24|     M|technician|     1|  85711|
+| 53|     F|     other|     2|  94043|
+| 23|     M|    writer|     3|  32067|
+| 24|     M|technician|     4|  43537|
+| 33|     F|     other|     5|  15213|
++---+------+----------+------+-------+
+only showing top 5 rows
+</code></pre><h1 id="建立Spark-SQL-tempTable"><a href="#建立Spark-SQL-tempTable" class="headerlink" title="建立Spark SQL tempTable"></a>建立Spark SQL tempTable</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_df.registerTempTable(<span class="string">"user_table"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">" SELECT * FROM user_table"</span>).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+-------------+------+-------+
+|age|gender|   occupation|userid|zipcode|
++---+------+-------------+------+-------+
+| 24|     M|   technician|     1|  85711|
+| 53|     F|        other|     2|  94043|
+| 23|     M|       writer|     3|  32067|
+| 24|     M|   technician|     4|  43537|
+| 33|     F|        other|     5|  15213|
+| 42|     M|    executive|     6|  98101|
+| 57|     M|administrator|     7|  91344|
+| 36|     M|administrator|     8|  05201|
+| 29|     M|      student|     9|  01002|
+| 53|     M|       lawyer|    10|  90703|
+| 39|     F|        other|    11|  30329|
+| 28|     F|        other|    12|  06405|
+| 47|     M|     educator|    13|  29206|
+| 45|     M|    scientist|    14|  55106|
+| 49|     F|     educator|    15|  97301|
+| 21|     M|entertainment|    16|  10309|
+| 30|     M|   programmer|    17|  06355|
+| 35|     F|        other|    18|  37212|
+| 40|     M|    librarian|    19|  02138|
+| 42|     F|    homemaker|    20|  95660|
++---+------+-------------+------+-------+
+only showing top 20 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">" SELECT count(*) counts FROM user_table"</span>).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+------+
+|counts|
++------+
+|   943|
++------+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">"""</span></span><br><span class="line"><span class="string">SELECT count(*) counts </span></span><br><span class="line"><span class="string">FROM   user_table</span></span><br><span class="line"><span class="string">"""</span>).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+------+
+|counts|
++------+
+|   943|
++------+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">" SELECT *  FROM user_table "</span>).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+-------------+------+-------+
+|age|gender|   occupation|userid|zipcode|
++---+------+-------------+------+-------+
+| 24|     M|   technician|     1|  85711|
+| 53|     F|        other|     2|  94043|
+| 23|     M|       writer|     3|  32067|
+| 24|     M|   technician|     4|  43537|
+| 33|     F|        other|     5|  15213|
+| 42|     M|    executive|     6|  98101|
+| 57|     M|administrator|     7|  91344|
+| 36|     M|administrator|     8|  05201|
+| 29|     M|      student|     9|  01002|
+| 53|     M|       lawyer|    10|  90703|
+| 39|     F|        other|    11|  30329|
+| 28|     F|        other|    12|  06405|
+| 47|     M|     educator|    13|  29206|
+| 45|     M|    scientist|    14|  55106|
+| 49|     F|     educator|    15|  97301|
+| 21|     M|entertainment|    16|  10309|
+| 30|     M|   programmer|    17|  06355|
+| 35|     F|        other|    18|  37212|
+| 40|     M|    librarian|    19|  02138|
+| 42|     F|    homemaker|    20|  95660|
++---+------+-------------+------+-------+
+only showing top 20 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">" SELECT *  FROM user_table"</span>).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+----------+------+-------+
+|age|gender|occupation|userid|zipcode|
++---+------+----------+------+-------+
+| 24|     M|technician|     1|  85711|
+| 53|     F|     other|     2|  94043|
+| 23|     M|    writer|     3|  32067|
+| 24|     M|technician|     4|  43537|
+| 33|     F|     other|     5|  15213|
++---+------+----------+------+-------+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">" SELECT *  FROM user_table LIMIT 5"</span>).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+----------+------+-------+
+|age|gender|occupation|userid|zipcode|
++---+------+----------+------+-------+
+| 24|     M|technician|     1|  85711|
+| 53|     F|     other|     2|  94043|
+| 23|     M|    writer|     3|  32067|
+| 24|     M|technician|     4|  43537|
+| 33|     F|     other|     5|  15213|
++---+------+----------+------+-------+
+</code></pre><h1 id="19-3-显示部分字段"><a href="#19-3-显示部分字段" class="headerlink" title="19.3    显示部分字段"></a>19.3    显示部分字段</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">userRDDnew= userRDD.map(<span class="keyword">lambda</span> x: (x[<span class="number">0</span>],x[<span class="number">3</span>],x[<span class="number">2</span>] ,x[<span class="number">1</span>]) )</span><br><span class="line">userRDDnew.take(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>[(&apos;1&apos;, &apos;technician&apos;, &apos;M&apos;, &apos;24&apos;),
+ (&apos;2&apos;, &apos;other&apos;, &apos;F&apos;, &apos;53&apos;),
+ (&apos;3&apos;, &apos;writer&apos;, &apos;M&apos;, &apos;23&apos;),
+ (&apos;4&apos;, &apos;technician&apos;, &apos;M&apos;, &apos;24&apos;),
+ (&apos;5&apos;, &apos;other&apos;, &apos;F&apos;, &apos;33&apos;)]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_df.select(<span class="string">"userid"</span>,<span class="string">"occupation"</span>,<span class="string">"gender"</span>,<span class="string">"age"</span>).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+----------+------+---+
+|userid|occupation|gender|age|
++------+----------+------+---+
+|     1|technician|     M| 24|
+|     2|     other|     F| 53|
+|     3|    writer|     M| 23|
+|     4|technician|     M| 24|
+|     5|     other|     F| 33|
++------+----------+------+---+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_df.select( user_df.userid, user_df.occupation,user_df.gender,user_df.age ).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+----------+------+---+
+|userid|occupation|gender|age|
++------+----------+------+---+
+|     1|technician|     M| 24|
+|     2|     other|     F| 53|
+|     3|    writer|     M| 23|
+|     4|technician|     M| 24|
+|     5|     other|     F| 33|
++------+----------+------+---+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.select(df.userid,df.occupation,df.gender,df.age  ).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+----------+------+---+
+|userid|occupation|gender|age|
++------+----------+------+---+
+|     1|technician|     M| 24|
+|     2|     other|     F| 53|
+|     3|    writer|     M| 23|
+|     4|technician|     M| 24|
+|     5|     other|     F| 33|
++------+----------+------+---+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_df.select(user_df.userid, user_df.occupation,df.gender,df.age ).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+----------+------+---+
+|userid|occupation|gender|age|
++------+----------+------+---+
+|     1|technician|     M| 24|
+|     2|     other|     F| 53|
+|     3|    writer|     M| 23|
+|     4|technician|     M| 24|
+|     5|     other|     F| 33|
++------+----------+------+---+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[df[<span class="string">'userid'</span>],df[<span class="string">'occupation'</span>],df[<span class="string">'gender'</span>],df[<span class="string">'age'</span>]  ].show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+----------+------+---+
+|userid|occupation|gender|age|
++------+----------+------+---+
+|     1|technician|     M| 24|
+|     2|     other|     F| 53|
+|     3|    writer|     M| 23|
+|     4|technician|     M| 24|
+|     5|     other|     F| 33|
++------+----------+------+---+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">" SELECT userid,occupation,gender,age  FROM user_table"</span>).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+----------+------+---+
+|userid|occupation|gender|age|
++------+----------+------+---+
+|     1|technician|     M| 24|
+|     2|     other|     F| 53|
+|     3|    writer|     M| 23|
+|     4|technician|     M| 24|
+|     5|     other|     F| 33|
++------+----------+------+---+
+only showing top 5 rows
+</code></pre><h1 id="19-4-增加计算字段"><a href="#19-4-增加计算字段" class="headerlink" title="19.4 增加计算字段"></a>19.4 增加计算字段</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">userRDDnew= userRDD.map(<span class="keyword">lambda</span> x: (x[<span class="number">0</span>],x[<span class="number">3</span>],x[<span class="number">2</span>],x[<span class="number">1</span>] ,<span class="number">2016</span>-int(x[<span class="number">1</span>])) )</span><br><span class="line">userRDDnew.take(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>[(&apos;1&apos;, &apos;technician&apos;, &apos;M&apos;, &apos;24&apos;, 1992),
+ (&apos;2&apos;, &apos;other&apos;, &apos;F&apos;, &apos;53&apos;, 1963),
+ (&apos;3&apos;, &apos;writer&apos;, &apos;M&apos;, &apos;23&apos;, 1993),
+ (&apos;4&apos;, &apos;technician&apos;, &apos;M&apos;, &apos;24&apos;, 1992),
+ (&apos;5&apos;, &apos;other&apos;, &apos;F&apos;, &apos;33&apos;, 1983)]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.select(<span class="string">"userid"</span>,<span class="string">"occupation"</span>,<span class="string">"gender"</span>,<span class="string">"age"</span>,<span class="number">2016</span>-df.age).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+----------+------+---+------------+
+|userid|occupation|gender|age|(2016 - age)|
++------+----------+------+---+------------+
+|     1|technician|     M| 24|        1992|
+|     2|     other|     F| 53|        1963|
+|     3|    writer|     M| 23|        1993|
+|     4|technician|     M| 24|        1992|
+|     5|     other|     F| 33|        1983|
++------+----------+------+---+------------+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.select(<span class="string">"userid"</span>,<span class="string">"occupation"</span>,<span class="string">"gender"</span>,<span class="string">"age"</span>,(<span class="number">2016</span>-df.age).alias(<span class="string">"birthyear"</span>)).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+----------+------+---+---------+
+|userid|occupation|gender|age|birthyear|
++------+----------+------+---+---------+
+|     1|technician|     M| 24|     1992|
+|     2|     other|     F| 53|     1963|
+|     3|    writer|     M| 23|     1993|
+|     4|technician|     M| 24|     1992|
+|     5|     other|     F| 33|     1983|
++------+----------+------+---+---------+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">"""</span></span><br><span class="line"><span class="string">SELECT userid,occupation,gender,age, 2016-age birthyear </span></span><br><span class="line"><span class="string">FROM user_table"""</span>).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+----------+------+---+---------+
+|userid|occupation|gender|age|birthyear|
++------+----------+------+---+---------+
+|     1|technician|     M| 24|     1992|
+|     2|     other|     F| 53|     1963|
+|     3|    writer|     M| 23|     1993|
+|     4|technician|     M| 24|     1992|
+|     5|     other|     F| 33|     1983|
++------+----------+------+---+---------+
+only showing top 5 rows
+</code></pre><h1 id="19-5筛选数据"><a href="#19-5筛选数据" class="headerlink" title="19.5筛选数据"></a>19.5筛选数据</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userRDD.filter(<span class="keyword">lambda</span> r:   r[<span class="number">3</span>]==<span class="string">'technician'</span> <span class="keyword">and</span> r[<span class="number">2</span>]==<span class="string">'M'</span> <span class="keyword">and</span> r[<span class="number">1</span>]==<span class="string">'24'</span>).take(<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>[[&apos;1&apos;, &apos;24&apos;, &apos;M&apos;, &apos;technician&apos;, &apos;85711&apos;],
+ [&apos;4&apos;, &apos;24&apos;, &apos;M&apos;, &apos;technician&apos;, &apos;43537&apos;],
+ [&apos;456&apos;, &apos;24&apos;, &apos;M&apos;, &apos;technician&apos;, &apos;31820&apos;],
+ [&apos;717&apos;, &apos;24&apos;, &apos;M&apos;, &apos;technician&apos;, &apos;84105&apos;],
+ [&apos;832&apos;, &apos;24&apos;, &apos;M&apos;, &apos;technician&apos;, &apos;77042&apos;],
+ [&apos;889&apos;, &apos;24&apos;, &apos;M&apos;, &apos;technician&apos;, &apos;78704&apos;]]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_df.filter(<span class="string">"occupation='technician' "</span>).filter(<span class="string">"gender='M' "</span>).filter(<span class="string">"age=24"</span>).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+----------+------+-------+
+|age|gender|occupation|userid|zipcode|
++---+------+----------+------+-------+
+| 24|     M|technician|     1|  85711|
+| 24|     M|technician|     4|  43537|
+| 24|     M|technician|   456|  31820|
+| 24|     M|technician|   717|  84105|
+| 24|     M|technician|   832|  77042|
+| 24|     M|technician|   889|  78704|
++---+------+----------+------+-------+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_df.filter(<span class="string">"occupation='technician' and gender='M' and age=24"</span>).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+----------+------+-------+
+|age|gender|occupation|userid|zipcode|
++---+------+----------+------+-------+
+| 24|     M|technician|     1|  85711|
+| 24|     M|technician|     4|  43537|
+| 24|     M|technician|   456|  31820|
+| 24|     M|technician|   717|  84105|
+| 24|     M|technician|   832|  77042|
+| 24|     M|technician|   889|  78704|
++---+------+----------+------+-------+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.filter((df.occupation==<span class="string">'technician'</span> ) &amp; (df.gender==<span class="string">'M'</span> ) &amp; (df.age==<span class="number">24</span>)).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+----------+------+-------+
+|age|gender|occupation|userid|zipcode|
++---+------+----------+------+-------+
+| 24|     M|technician|     1|  85711|
+| 24|     M|technician|     4|  43537|
+| 24|     M|technician|   456|  31820|
+| 24|     M|technician|   717|  84105|
+| 24|     M|technician|   832|  77042|
+| 24|     M|technician|   889|  78704|
++---+------+----------+------+-------+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.filter((df[<span class="string">'occupation'</span>]==<span class="string">'technician'</span> ) &amp; (df[<span class="string">'gender'</span>]==<span class="string">'M'</span> ) &amp; (df[<span class="string">'age'</span>]==<span class="number">24</span>)).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+----------+------+-------+
+|age|gender|occupation|userid|zipcode|
++---+------+----------+------+-------+
+| 24|     M|technician|     1|  85711|
+| 24|     M|technician|     4|  43537|
+| 24|     M|technician|   456|  31820|
+| 24|     M|technician|   717|  84105|
+| 24|     M|technician|   832|  77042|
+| 24|     M|technician|   889|  78704|
++---+------+----------+------+-------+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Step3 使用Spark SQL 筛选数据</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(</span><br><span class="line"><span class="string">'''SELECT *  </span></span><br><span class="line"><span class="string">FROM user_table </span></span><br><span class="line"><span class="string">where occupation='technician' and   gender='M' and age=24'''</span>).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+----------+------+-------+
+|age|gender|occupation|userid|zipcode|
++---+------+----------+------+-------+
+| 24|     M|technician|     1|  85711|
+| 24|     M|technician|     4|  43537|
+| 24|     M|technician|   456|  31820|
+| 24|     M|technician|   717|  84105|
+| 24|     M|technician|   832|  77042|
++---+------+----------+------+-------+
+only showing top 5 rows
+</code></pre><h1 id="19-6-筛选数据"><a href="#19-6-筛选数据" class="headerlink" title="19.6 筛选数据"></a>19.6 筛选数据</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Step1 使用多个filter筛选数据</span></span><br><span class="line">user_df.filter(<span class="string">"occupation='technician' "</span>).filter(<span class="string">"gender='M' "</span>).filter(<span class="string">"age=24"</span>).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+----------+------+-------+
+|age|gender|occupation|userid|zipcode|
++---+------+----------+------+-------+
+| 24|     M|technician|     1|  85711|
+| 24|     M|technician|     4|  43537|
+| 24|     M|technician|   456|  31820|
+| 24|     M|technician|   717|  84105|
+| 24|     M|technician|   832|  77042|
++---+------+----------+------+-------+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_df.filter(<span class="string">"occupation='technician' and gender='M' and age=24"</span>).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+----------+------+-------+
+|age|gender|occupation|userid|zipcode|
++---+------+----------+------+-------+
+| 24|     M|technician|     1|  85711|
+| 24|     M|technician|     4|  43537|
+| 24|     M|technician|   456|  31820|
+| 24|     M|technician|   717|  84105|
+| 24|     M|technician|   832|  77042|
+| 24|     M|technician|   889|  78704|
++---+------+----------+------+-------+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_df.filter(user_df.occupation==<span class="string">'technician'</span> ).filter(user_df.gender==<span class="string">'M'</span> ).filter(user_df.age==<span class="number">24</span>).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+----------+------+-------+
+|age|gender|occupation|userid|zipcode|
++---+------+----------+------+-------+
+| 24|     M|technician|     1|  85711|
+| 24|     M|technician|     4|  43537|
+| 24|     M|technician|   456|  31820|
+| 24|     M|technician|   717|  84105|
+| 24|     M|technician|   832|  77042|
+| 24|     M|technician|   889|  78704|
++---+------+----------+------+-------+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_df.filter((df.occupation==<span class="string">'technician'</span> ) &amp; (df.gender==<span class="string">'M'</span> ) &amp; (df.age==<span class="number">24</span>)).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+----------+------+-------+
+|age|gender|occupation|userid|zipcode|
++---+------+----------+------+-------+
+| 24|     M|technician|     1|  85711|
+| 24|     M|technician|     4|  43537|
+| 24|     M|technician|   456|  31820|
+| 24|     M|technician|   717|  84105|
+| 24|     M|technician|   832|  77042|
+| 24|     M|technician|   889|  78704|
++---+------+----------+------+-------+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.filter((df[<span class="string">'occupation'</span>]==<span class="string">'technician'</span> ) &amp; (df[<span class="string">'gender'</span>]==<span class="string">'M'</span> ) &amp;  (df[<span class="string">'age'</span>]==<span class="number">24</span>)).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+----------+------+-------+
+|age|gender|occupation|userid|zipcode|
++---+------+----------+------+-------+
+| 24|     M|technician|     1|  85711|
+| 24|     M|technician|     4|  43537|
+| 24|     M|technician|   456|  31820|
+| 24|     M|technician|   717|  84105|
+| 24|     M|technician|   832|  77042|
+| 24|     M|technician|   889|  78704|
++---+------+----------+------+-------+
+</code></pre><h1 id="19-6-单个字段排序数据"><a href="#19-6-单个字段排序数据" class="headerlink" title="19.6 单个字段排序数据"></a>19.6 单个字段排序数据</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userRDD.takeOrdered(<span class="number">10</span>, key = <span class="keyword">lambda</span> x: int(x[<span class="number">1</span>]),)</span><br></pre></td></tr></table></figure>
+<pre><code>[[&apos;30&apos;, &apos;7&apos;, &apos;M&apos;, &apos;student&apos;, &apos;55436&apos;],
+ [&apos;471&apos;, &apos;10&apos;, &apos;M&apos;, &apos;student&apos;, &apos;77459&apos;],
+ [&apos;289&apos;, &apos;11&apos;, &apos;M&apos;, &apos;none&apos;, &apos;94619&apos;],
+ [&apos;142&apos;, &apos;13&apos;, &apos;M&apos;, &apos;other&apos;, &apos;48118&apos;],
+ [&apos;609&apos;, &apos;13&apos;, &apos;F&apos;, &apos;student&apos;, &apos;55106&apos;],
+ [&apos;628&apos;, &apos;13&apos;, &apos;M&apos;, &apos;none&apos;, &apos;94306&apos;],
+ [&apos;674&apos;, &apos;13&apos;, &apos;F&apos;, &apos;student&apos;, &apos;55337&apos;],
+ [&apos;880&apos;, &apos;13&apos;, &apos;M&apos;, &apos;student&apos;, &apos;83702&apos;],
+ [&apos;206&apos;, &apos;14&apos;, &apos;F&apos;, &apos;student&apos;, &apos;53115&apos;],
+ [&apos;813&apos;, &apos;14&apos;, &apos;F&apos;, &apos;student&apos;, &apos;02136&apos;]]
+</code></pre><p>倒序</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userRDD.takeOrdered(<span class="number">5</span>, key = <span class="keyword">lambda</span> x: <span class="number">-1</span>*int(x[<span class="number">1</span>]))</span><br></pre></td></tr></table></figure>
+<pre><code>[[&apos;481&apos;, &apos;73&apos;, &apos;M&apos;, &apos;retired&apos;, &apos;37771&apos;],
+ [&apos;767&apos;, &apos;70&apos;, &apos;M&apos;, &apos;engineer&apos;, &apos;00000&apos;],
+ [&apos;803&apos;, &apos;70&apos;, &apos;M&apos;, &apos;administrator&apos;, &apos;78212&apos;],
+ [&apos;860&apos;, &apos;70&apos;, &apos;F&apos;, &apos;retired&apos;, &apos;48322&apos;],
+ [&apos;559&apos;, &apos;69&apos;, &apos;M&apos;, &apos;executive&apos;, &apos;10022&apos;]]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">"""</span></span><br><span class="line"><span class="string">SELECT userid,occupation,gender,age   </span></span><br><span class="line"><span class="string">FROM user_table </span></span><br><span class="line"><span class="string">ORDER BY age"""</span>).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+----------+------+---+
+|userid|occupation|gender|age|
++------+----------+------+---+
+|    30|   student|     M|  7|
+|   471|   student|     M| 10|
+|   289|      none|     M| 11|
+|   880|   student|     M| 13|
+|   628|      none|     M| 13|
++------+----------+------+---+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">"""</span></span><br><span class="line"><span class="string">SELECT userid,occupation,gender,age   </span></span><br><span class="line"><span class="string">FROM user_table </span></span><br><span class="line"><span class="string">ORDER BY age DESC"""</span>).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+-------------+------+---+
+|userid|   occupation|gender|age|
++------+-------------+------+---+
+|   481|      retired|     M| 73|
+|   860|      retired|     F| 70|
+|   767|     engineer|     M| 70|
+|   803|administrator|     M| 70|
+|   559|    executive|     M| 69|
++------+-------------+------+---+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_df.select(<span class="string">"userid"</span>,<span class="string">"occupation"</span>,<span class="string">"gender"</span>,<span class="string">"age"</span>).orderBy(<span class="string">"age"</span>).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+----------+------+---+
+|userid|occupation|gender|age|
++------+----------+------+---+
+|    30|   student|     M|  7|
+|   471|   student|     M| 10|
+|   289|      none|     M| 11|
+|   880|   student|     M| 13|
+|   628|      none|     M| 13|
++------+----------+------+---+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.select(<span class="string">"userid"</span>,<span class="string">"occupation"</span>,<span class="string">"gender"</span>,<span class="string">"age"</span>).orderBy(<span class="string">"age"</span>,ascending=<span class="number">0</span> ).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+-------------+------+---+
+|userid|   occupation|gender|age|
++------+-------------+------+---+
+|   481|      retired|     M| 73|
+|   860|      retired|     F| 70|
+|   767|     engineer|     M| 70|
+|   803|administrator|     M| 70|
+|   559|    executive|     M| 69|
++------+-------------+------+---+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.select(<span class="string">"userid"</span>,<span class="string">"occupation"</span>,<span class="string">"gender"</span>,<span class="string">"age"</span>).orderBy(df.age).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+----------+------+---+
+|userid|occupation|gender|age|
++------+----------+------+---+
+|    30|   student|     M|  7|
+|   471|   student|     M| 10|
+|   289|      none|     M| 11|
+|   880|   student|     M| 13|
+|   628|      none|     M| 13|
++------+----------+------+---+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.select(<span class="string">"userid"</span>,<span class="string">"occupation"</span>,<span class="string">"gender"</span>,<span class="string">"age"</span>).orderBy(df.age.desc()).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+-------------+------+---+
+|userid|   occupation|gender|age|
++------+-------------+------+---+
+|   481|      retired|     M| 73|
+|   767|     engineer|     M| 70|
+|   860|      retired|     F| 70|
+|   803|administrator|     M| 70|
+|   559|    executive|     M| 69|
++------+-------------+------+---+
+only showing top 5 rows
+</code></pre><h1 id="19-7-多字段排序数据"><a href="#19-7-多字段排序数据" class="headerlink" title="19.7 多字段排序数据"></a>19.7 多字段排序数据</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userRDD.takeOrdered(<span class="number">5</span>, key = <span class="keyword">lambda</span> x: (-int(x[<span class="number">1</span>]), x[<span class="number">2</span>] ) )</span><br></pre></td></tr></table></figure>
+<pre><code>[[&apos;481&apos;, &apos;73&apos;, &apos;M&apos;, &apos;retired&apos;, &apos;37771&apos;],
+ [&apos;860&apos;, &apos;70&apos;, &apos;F&apos;, &apos;retired&apos;, &apos;48322&apos;],
+ [&apos;767&apos;, &apos;70&apos;, &apos;M&apos;, &apos;engineer&apos;, &apos;00000&apos;],
+ [&apos;803&apos;, &apos;70&apos;, &apos;M&apos;, &apos;administrator&apos;, &apos;78212&apos;],
+ [&apos;559&apos;, &apos;69&apos;, &apos;M&apos;, &apos;executive&apos;, &apos;10022&apos;]]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">"""</span></span><br><span class="line"><span class="string">SELECT userid, age, gender,occupation,zipcode</span></span><br><span class="line"><span class="string">FROM user_table</span></span><br><span class="line"><span class="string">ORDER BY age DESC,gender """</span>).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+---+------+-------------+-------+
+|userid|age|gender|   occupation|zipcode|
++------+---+------+-------------+-------+
+|   481| 73|     M|      retired|  37771|
+|   860| 70|     F|      retired|  48322|
+|   803| 70|     M|administrator|  78212|
+|   767| 70|     M|     engineer|  00000|
+|   559| 69|     M|    executive|  10022|
++------+---+------+-------------+-------+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.orderBy([<span class="string">"age"</span>,<span class="string">"gender"</span>],ascending=[<span class="number">0</span>,<span class="number">1</span>] ).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+-------------+------+-------+
+|age|gender|   occupation|userid|zipcode|
++---+------+-------------+------+-------+
+| 73|     M|      retired|   481|  37771|
+| 70|     F|      retired|   860|  48322|
+| 70|     M|     engineer|   767|  00000|
+| 70|     M|administrator|   803|  78212|
+| 69|     M|    executive|   559|  10022|
++---+------+-------------+------+-------+
+only showing top 5 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.orderBy(df.age.desc(),df.gender ).show(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+-------------+------+-------+
+|age|gender|   occupation|userid|zipcode|
++---+------+-------------+------+-------+
+| 73|     M|      retired|   481|  37771|
+| 70|     F|      retired|   860|  48322|
+| 70|     M|     engineer|   767|  00000|
+| 70|     M|administrator|   803|  78212|
+| 69|     M|    executive|   559|  10022|
++---+------+-------------+------+-------+
+only showing top 5 rows
+</code></pre><h1 id="19-8-显示不重复数据"><a href="#19-8-显示不重复数据" class="headerlink" title="19.8 显示不重复数据"></a>19.8 显示不重复数据</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userRDD.map( <span class="keyword">lambda</span> x:x[<span class="number">2</span>] ).distinct().collect()</span><br></pre></td></tr></table></figure>
+<pre><code>[&apos;M&apos;, &apos;F&apos;]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userRDD.map( <span class="keyword">lambda</span> x:(x[<span class="number">1</span>],x[<span class="number">2</span>]) ).distinct().take(<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>[(&apos;23&apos;, &apos;M&apos;),
+ (&apos;42&apos;, &apos;M&apos;),
+ (&apos;36&apos;, &apos;M&apos;),
+ (&apos;39&apos;, &apos;F&apos;),
+ (&apos;28&apos;, &apos;F&apos;),
+ (&apos;47&apos;, &apos;M&apos;),
+ (&apos;49&apos;, &apos;F&apos;),
+ (&apos;30&apos;, &apos;M&apos;),
+ (&apos;35&apos;, &apos;F&apos;),
+ (&apos;42&apos;, &apos;F&apos;),
+ (&apos;25&apos;, &apos;M&apos;),
+ (&apos;30&apos;, &apos;F&apos;),
+ (&apos;39&apos;, &apos;M&apos;),
+ (&apos;49&apos;, &apos;M&apos;),
+ (&apos;32&apos;, &apos;M&apos;),
+ (&apos;41&apos;, &apos;M&apos;),
+ (&apos;7&apos;, &apos;M&apos;),
+ (&apos;38&apos;, &apos;F&apos;),
+ (&apos;38&apos;, &apos;M&apos;),
+ (&apos;27&apos;, &apos;F&apos;)]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">" SELECT distinct gender FROM user_table"</span>).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+------+
+|gender|
++------+
+|     F|
+|     M|
++------+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">" SELECT distinct age,gender  FROM user_table"</span>).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+
+|age|gender|
++---+------+
+| 39|     F|
+| 48|     M|
+| 26|     M|
+| 28|     M|
+| 54|     M|
+| 60|     M|
+| 50|     M|
+| 53|     F|
+| 30|     M|
+| 48|     F|
+| 47|     M|
+| 46|     M|
+| 56|     M|
+| 31|     M|
+| 32|     M|
+| 53|     M|
+| 29|     F|
+| 20|     F|
+| 21|     F|
+| 42|     M|
++---+------+
+only showing top 20 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_df.select(<span class="string">"gender"</span>).distinct().show()</span><br></pre></td></tr></table></figure>
+<pre><code>+------+
+|gender|
++------+
+|     F|
+|     M|
++------+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_df.select(<span class="string">"age"</span>,<span class="string">"gender"</span>).distinct().show()</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+
+|age|gender|
++---+------+
+| 48|     M|
+| 39|     F|
+| 26|     M|
+| 28|     M|
+| 54|     M|
+| 60|     M|
+| 50|     M|
+| 30|     M|
+| 53|     F|
+| 48|     F|
+| 47|     M|
+| 46|     M|
+| 56|     M|
+| 31|     M|
+| 32|     M|
+| 53|     M|
+| 29|     F|
+| 20|     F|
+| 21|     F|
+| 42|     M|
++---+------+
+only showing top 20 rows
+</code></pre><h1 id="19-9-分组统计数据"><a href="#19-9-分组统计数据" class="headerlink" title="19.9    分组统计数据"></a>19.9    分组统计数据</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">userRDD.map(<span class="keyword">lambda</span> x: (x[<span class="number">2</span>],<span class="number">1</span>)) \</span><br><span class="line">               .reduceByKey(<span class="keyword">lambda</span> x,y: x+y).collect()</span><br></pre></td></tr></table></figure>
+<pre><code>[(&apos;M&apos;, 670), (&apos;F&apos;, 273)]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userRDD.map(<span class="keyword">lambda</span> x: ((x[<span class="number">2</span>],x[<span class="number">3</span>]),<span class="number">1</span>)).reduceByKey(<span class="keyword">lambda</span> x,y: x+y).collect()</span><br></pre></td></tr></table></figure>
+<pre><code>[((&apos;M&apos;, &apos;technician&apos;), 26),
+ ((&apos;M&apos;, &apos;writer&apos;), 26),
+ ((&apos;M&apos;, &apos;lawyer&apos;), 10),
+ ((&apos;M&apos;, &apos;scientist&apos;), 28),
+ ((&apos;M&apos;, &apos;entertainment&apos;), 16),
+ ((&apos;M&apos;, &apos;librarian&apos;), 22),
+ ((&apos;F&apos;, &apos;librarian&apos;), 29),
+ ((&apos;F&apos;, &apos;marketing&apos;), 10),
+ ((&apos;M&apos;, &apos;marketing&apos;), 16),
+ ((&apos;M&apos;, &apos;healthcare&apos;), 5),
+ ((&apos;M&apos;, &apos;salesman&apos;), 9),
+ ((&apos;F&apos;, &apos;writer&apos;), 19),
+ ((&apos;F&apos;, &apos;lawyer&apos;), 2),
+ ((&apos;F&apos;, &apos;healthcare&apos;), 11),
+ ((&apos;F&apos;, &apos;scientist&apos;), 3),
+ ((&apos;F&apos;, &apos;salesman&apos;), 3),
+ ((&apos;F&apos;, &apos;entertainment&apos;), 2),
+ ((&apos;F&apos;, &apos;technician&apos;), 1),
+ ((&apos;F&apos;, &apos;other&apos;), 36),
+ ((&apos;M&apos;, &apos;executive&apos;), 29),
+ ((&apos;M&apos;, &apos;administrator&apos;), 43),
+ ((&apos;M&apos;, &apos;student&apos;), 136),
+ ((&apos;M&apos;, &apos;educator&apos;), 69),
+ ((&apos;F&apos;, &apos;educator&apos;), 26),
+ ((&apos;M&apos;, &apos;programmer&apos;), 60),
+ ((&apos;F&apos;, &apos;homemaker&apos;), 6),
+ ((&apos;F&apos;, &apos;artist&apos;), 13),
+ ((&apos;M&apos;, &apos;engineer&apos;), 65),
+ ((&apos;M&apos;, &apos;artist&apos;), 15),
+ ((&apos;F&apos;, &apos;student&apos;), 60),
+ ((&apos;F&apos;, &apos;administrator&apos;), 36),
+ ((&apos;M&apos;, &apos;none&apos;), 5),
+ ((&apos;M&apos;, &apos;other&apos;), 69),
+ ((&apos;F&apos;, &apos;executive&apos;), 3),
+ ((&apos;M&apos;, &apos;retired&apos;), 13),
+ ((&apos;M&apos;, &apos;doctor&apos;), 7),
+ ((&apos;F&apos;, &apos;none&apos;), 4),
+ ((&apos;F&apos;, &apos;programmer&apos;), 6),
+ ((&apos;F&apos;, &apos;engineer&apos;), 2),
+ ((&apos;F&apos;, &apos;retired&apos;), 1),
+ ((&apos;M&apos;, &apos;homemaker&apos;), 1)]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">""" </span></span><br><span class="line"><span class="string">SELECT gender ,count(*)  counts  </span></span><br><span class="line"><span class="string">FROM   user_table </span></span><br><span class="line"><span class="string">GROUP BY gender"""</span>).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+------+------+
+|gender|counts|
++------+------+
+|     F|   273|
+|     M|   670|
++------+------+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">""" </span></span><br><span class="line"><span class="string">SELECT gender,occupation,count(*) counts  </span></span><br><span class="line"><span class="string">FROM   user_table </span></span><br><span class="line"><span class="string">GROUP BY gender,occupation </span></span><br><span class="line"><span class="string">"""</span>).show(<span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+-------------+------+
+|gender|   occupation|counts|
++------+-------------+------+
+|     M|    executive|    29|
+|     M|     educator|    69|
+|     F|         none|     4|
+|     F|entertainment|     2|
+|     F|      retired|     1|
+|     F|       artist|    13|
+|     F|    librarian|    29|
+|     F|     engineer|     2|
+|     F|   healthcare|    11|
+|     F|administrator|    36|
+|     M|        other|    69|
+|     M|    homemaker|     1|
+|     F|       lawyer|     2|
+|     M|   programmer|    60|
+|     M|     salesman|     9|
+|     M|         none|     5|
+|     M|    marketing|    16|
+|     M|entertainment|    16|
+|     M|   technician|    26|
+|     M|administrator|    43|
+|     F|    marketing|    10|
+|     F|   programmer|     6|
+|     F|   technician|     1|
+|     F|    executive|     3|
+|     M|    scientist|    28|
+|     F|     educator|    26|
+|     M|      retired|    13|
+|     M|   healthcare|     5|
+|     M|       writer|    26|
+|     M|       lawyer|    10|
+|     M|      student|   136|
+|     F|     salesman|     3|
+|     M|       doctor|     7|
+|     M|       artist|    15|
+|     F|    homemaker|     6|
+|     M|     engineer|    65|
+|     F|        other|    36|
+|     F|       writer|    19|
+|     F|      student|    60|
+|     F|    scientist|     3|
+|     M|    librarian|    22|
++------+-------------+------+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">user_df.select(<span class="string">"gender"</span>)      \</span><br><span class="line">            .groupby(<span class="string">"gender"</span>)  \</span><br><span class="line">            .count().show()</span><br></pre></td></tr></table></figure>
+<pre><code>+------+-----+
+|gender|count|
++------+-----+
+|     F|  273|
+|     M|  670|
++------+-----+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">user_df.select(<span class="string">"gender"</span>,<span class="string">"occupation"</span>).                 \</span><br><span class="line">                groupby(<span class="string">"gender"</span>,<span class="string">"occupation"</span>).           \</span><br><span class="line">                count().                                                   \</span><br><span class="line">                orderBy(<span class="string">"gender"</span>,<span class="string">"occupation"</span>).           \</span><br><span class="line">                show(<span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+------+-------------+-----+
+|gender|   occupation|count|
++------+-------------+-----+
+|     F|administrator|   36|
+|     F|       artist|   13|
+|     F|     educator|   26|
+|     F|     engineer|    2|
+|     F|entertainment|    2|
+|     F|    executive|    3|
+|     F|   healthcare|   11|
+|     F|    homemaker|    6|
+|     F|       lawyer|    2|
+|     F|    librarian|   29|
+|     F|    marketing|   10|
+|     F|         none|    4|
+|     F|        other|   36|
+|     F|   programmer|    6|
+|     F|      retired|    1|
+|     F|     salesman|    3|
+|     F|    scientist|    3|
+|     F|      student|   60|
+|     F|   technician|    1|
+|     F|       writer|   19|
+|     M|administrator|   43|
+|     M|       artist|   15|
+|     M|       doctor|    7|
+|     M|     educator|   69|
+|     M|     engineer|   65|
+|     M|entertainment|   16|
+|     M|    executive|   29|
+|     M|   healthcare|    5|
+|     M|    homemaker|    1|
+|     M|       lawyer|   10|
+|     M|    librarian|   22|
+|     M|    marketing|   16|
+|     M|         none|    5|
+|     M|        other|   69|
+|     M|   programmer|   60|
+|     M|      retired|   13|
+|     M|     salesman|    9|
+|     M|    scientist|   28|
+|     M|      student|  136|
+|     M|   technician|   26|
+|     M|       writer|   26|
++------+-------------+-----+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_df.stat.crosstab(<span class="string">"occupation"</span>,<span class="string">"gender"</span> ).show(<span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+-----------------+---+---+
+|occupation_gender|  F|  M|
++-----------------+---+---+
+|        scientist|  3| 28|
+|          student| 60|136|
+|           writer| 19| 26|
+|         salesman|  3|  9|
+|          retired|  1| 13|
+|    administrator| 36| 43|
+|       programmer|  6| 60|
+|           doctor|  0|  7|
+|        homemaker|  6|  1|
+|        executive|  3| 29|
+|         engineer|  2| 65|
+|    entertainment|  2| 16|
+|        marketing| 10| 16|
+|       technician|  1| 26|
+|           artist| 13| 15|
+|        librarian| 29| 22|
+|           lawyer|  2| 10|
+|         educator| 26| 69|
+|       healthcare| 11|  5|
+|             none|  4|  5|
+|            other| 36| 69|
++-----------------+---+---+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_df.describe().show()</span><br></pre></td></tr></table></figure>
+<pre><code>+-------+-----------------+------+-------------+-----------------+------------------+
+|summary|              age|gender|   occupation|           userid|           zipcode|
++-------+-----------------+------+-------------+-----------------+------------------+
+|  count|              943|   943|          943|              943|               943|
+|   mean|34.05196182396607|  null|         null|            472.0| 50868.78810810811|
+| stddev|12.19273973305903|  null|         null|272.3649512449549|30891.373254138158|
+|    min|                7|     F|administrator|                1|             00000|
+|    max|               73|     M|       writer|              943|             Y1A6B|
++-------+-----------------+------+-------------+-----------------+------------------+
+</code></pre><h1 id="19-10-Join关联数据"><a href="#19-10-Join关联数据" class="headerlink" title="19.10    Join关联数据"></a>19.10    Join关联数据</h1><h1 id="ZipCode"><a href="#ZipCode" class="headerlink" title="ZipCode"></a>ZipCode</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#wget http://federalgovernmentzipcodes.us/free-zipcode-database-Primary.csv</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Path="file:/home/hduser/pythonwork/ipynotebook/"</span></span><br><span class="line">rawDataWithHeader = sc.textFile(Path+<span class="string">"data/free-zipcode-database-Primary.csv"</span>)</span><br><span class="line">rawDataWithHeader .take(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>[&apos;&quot;Zipcode&quot;,&quot;ZipCodeType&quot;,&quot;City&quot;,&quot;State&quot;,&quot;LocationType&quot;,&quot;Lat&quot;,&quot;Long&quot;,&quot;Location&quot;,&quot;Decommisioned&quot;,&quot;TaxReturnsFiled&quot;,&quot;EstimatedPopulation&quot;,&quot;TotalWages&quot;&apos;,
+ &apos;&quot;00705&quot;,&quot;STANDARD&quot;,&quot;AIBONITO&quot;,&quot;PR&quot;,&quot;PRIMARY&quot;,18.14,-66.26,&quot;NA-US-PR-AIBONITO&quot;,&quot;false&quot;,,,&apos;]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">header = rawDataWithHeader.first()</span><br><span class="line">rawData = rawDataWithHeader.filter(<span class="keyword">lambda</span> x:x !=header)</span><br><span class="line">rawData.first()</span><br></pre></td></tr></table></figure>
+<pre><code>&apos;&quot;00705&quot;,&quot;STANDARD&quot;,&quot;AIBONITO&quot;,&quot;PR&quot;,&quot;PRIMARY&quot;,18.14,-66.26,&quot;NA-US-PR-AIBONITO&quot;,&quot;false&quot;,,,&apos;
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rData=rawData.map(<span class="keyword">lambda</span> x: x.replace(<span class="string">"\""</span>, <span class="string">""</span>))   </span><br><span class="line">rData.first()</span><br></pre></td></tr></table></figure>
+<pre><code>&apos;00705,STANDARD,AIBONITO,PR,PRIMARY,18.14,-66.26,NA-US-PR-AIBONITO,false,,,&apos;
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ZipRDD = rData.map(<span class="keyword">lambda</span> x: x.split(<span class="string">","</span>))</span><br><span class="line">ZipRDD.first()</span><br></pre></td></tr></table></figure>
+<pre><code>[&apos;00705&apos;,
+ &apos;STANDARD&apos;,
+ &apos;AIBONITO&apos;,
+ &apos;PR&apos;,
+ &apos;PRIMARY&apos;,
+ &apos;18.14&apos;,
+ &apos;-66.26&apos;,
+ &apos;NA-US-PR-AIBONITO&apos;,
+ &apos;false&apos;,
+ &apos;&apos;,
+ &apos;&apos;,
+ &apos;&apos;]
+</code></pre><h1 id="19-19-2-建立zipcode-table"><a href="#19-19-2-建立zipcode-table" class="headerlink" title="19.19.2    建立zipcode_table"></a>19.19.2    建立zipcode_table</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> Row</span><br><span class="line">zipcode_data =ZipRDD .map(<span class="keyword">lambda</span> p: </span><br><span class="line">   Row(</span><br><span class="line">    zipcode=int(p[<span class="number">0</span>]), </span><br><span class="line">    zipCodeType=p[<span class="number">1</span>],</span><br><span class="line">    city=p[<span class="number">2</span>],</span><br><span class="line">    state=p[<span class="number">3</span>]</span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line">zipcode_data.take(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>[Row(city=&apos;AIBONITO&apos;, state=&apos;PR&apos;, zipCodeType=&apos;STANDARD&apos;, zipcode=705),
+ Row(city=&apos;ANASCO&apos;, state=&apos;PR&apos;, zipCodeType=&apos;STANDARD&apos;, zipcode=610),
+ Row(city=&apos;ANGELES&apos;, state=&apos;PR&apos;, zipCodeType=&apos;PO BOX&apos;, zipcode=611),
+ Row(city=&apos;ARECIBO&apos;, state=&apos;PR&apos;, zipCodeType=&apos;STANDARD&apos;, zipcode=612),
+ Row(city=&apos;ADJUNTAS&apos;, state=&apos;PR&apos;, zipCodeType=&apos;STANDARD&apos;, zipcode=601)]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zipcode_df  = sqlContext.createDataFrame(zipcode_data )</span><br><span class="line">zipcode_df.printSchema()</span><br></pre></td></tr></table></figure>
+<pre><code>root
+ |-- city: string (nullable = true)
+ |-- state: string (nullable = true)
+ |-- zipCodeType: string (nullable = true)
+ |-- zipcode: long (nullable = true)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zipcode_df.registerTempTable(<span class="string">"zipcode_table"</span>)</span><br><span class="line">zipcode_df.show(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+---------+-----+-----------+-------+
+|     city|state|zipCodeType|zipcode|
++---------+-----+-----------+-------+
+| AIBONITO|   PR|   STANDARD|    705|
+|   ANASCO|   PR|   STANDARD|    610|
+|  ANGELES|   PR|     PO BOX|    611|
+|  ARECIBO|   PR|   STANDARD|    612|
+| ADJUNTAS|   PR|   STANDARD|    601|
+| CASTANER|   PR|     PO BOX|    631|
+|   AGUADA|   PR|   STANDARD|    602|
+|AGUADILLA|   PR|   STANDARD|    603|
+|AGUADILLA|   PR|     PO BOX|    604|
+|AGUADILLA|   PR|     PO BOX|    605|
++---------+-----+-----------+-------+
+only showing top 10 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">""" </span></span><br><span class="line"><span class="string">SELECT z.* </span></span><br><span class="line"><span class="string">FROM zipcode_table z </span></span><br><span class="line"><span class="string">"""</span>).show(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+---------+-----+-----------+-------+
+|     city|state|zipCodeType|zipcode|
++---------+-----+-----------+-------+
+| AIBONITO|   PR|   STANDARD|    705|
+|   ANASCO|   PR|   STANDARD|    610|
+|  ANGELES|   PR|     PO BOX|    611|
+|  ARECIBO|   PR|   STANDARD|    612|
+| ADJUNTAS|   PR|   STANDARD|    601|
+| CASTANER|   PR|     PO BOX|    631|
+|   AGUADA|   PR|   STANDARD|    602|
+|AGUADILLA|   PR|   STANDARD|    603|
+|AGUADILLA|   PR|     PO BOX|    604|
+|AGUADILLA|   PR|     PO BOX|    605|
++---------+-----+-----------+-------+
+only showing top 10 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">""" </span></span><br><span class="line"><span class="string">SELECT u.* ,z.city,z.state </span></span><br><span class="line"><span class="string">FROM user_table u </span></span><br><span class="line"><span class="string">LEFT JOIN zipcode_table z  ON u.zipcode = z.zipcode</span></span><br><span class="line"><span class="string">WHERE z.state='NY'</span></span><br><span class="line"><span class="string">"""</span>).show(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+-------------+------+-------+----------------+-----+
+|age|gender|   occupation|userid|zipcode|            city|state|
++---+------+-------------+------+-------+----------------+-----+
+| 29|     M|        other|   478|  10019|        NEW YORK|   NY|
+| 22|     F|   healthcare|   405|  10019|        NEW YORK|   NY|
+| 22|     M|      student|   327|  11101|LONG ISLAND CITY|   NY|
+| 48|     M|     educator|   656|  10314|   STATEN ISLAND|   NY|
+| 27|     F|       writer|   617|  11201|        BROOKLYN|   NY|
+| 35|     F|        other|   760|  14211|         BUFFALO|   NY|
+| 30|     F|       writer|   557|  11217|        BROOKLYN|   NY|
+| 27|     M|    marketing|   806|  11217|        BROOKLYN|   NY|
+| 32|     F|        other|   155|  11217|        BROOKLYN|   NY|
+| 23|     M|administrator|   509|  10011|        NEW YORK|   NY|
++---+------+-------------+------+-------+----------------+-----+
+only showing top 10 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sqlContext.sql(<span class="string">""" </span></span><br><span class="line"><span class="string">SELECT z.state ,count(*)</span></span><br><span class="line"><span class="string">FROM user_table u</span></span><br><span class="line"><span class="string">LEFT JOIN zipcode_table z  ON u.zipcode = z.zipcode</span></span><br><span class="line"><span class="string">GROUP BY z.state </span></span><br><span class="line"><span class="string">"""</span>).show(<span class="number">60</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+-----+--------+
+|state|count(1)|
++-----+--------+
+|   SC|      11|
+|   AZ|      14|
+|   LA|       6|
+|   MN|      78|
+|   NJ|      18|
+|   DC|      14|
+|   OR|      20|
+|   VA|      27|
+| null|      35|
+|   RI|       3|
+|   KY|      11|
+|   WY|       1|
+|   NH|       6|
+|   MI|      23|
+|   NV|       3|
+|   WI|      22|
+|   ID|       7|
+|   CA|     116|
+|   CT|      17|
+|   NE|       6|
+|   MT|       2|
+|   NC|      19|
+|   VT|       5|
+|   MD|      27|
+|   DE|       3|
+|   MO|      17|
+|   IL|      50|
+|   ME|       2|
+|   ND|       2|
+|   WA|      24|
+|   MS|       3|
+|   AL|       3|
+|   IN|       9|
+|   AE|       1|
+|   OH|      32|
+|   TN|      12|
+|   IA|      14|
+|   NM|       2|
+|   PA|      34|
+|   SD|       1|
+|   NY|      60|
+|   TX|      51|
+|   WV|       3|
+|   GA|      19|
+|   MA|      35|
+|   KS|       4|
+|   CO|      20|
+|   FL|      24|
+|   AK|       5|
+|   AR|       1|
+|   OK|       9|
+|   AP|       1|
+|   UT|       9|
+|   HI|       2|
++-----+--------+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#user_df.leftOuterJoin(zipcode_df )</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">joined_df=user_df.join(zipcode_df ,  \</span><br><span class="line">                                 user_df.zipcode == zipcode_df.zipcode, <span class="string">"left_outer"</span>)</span><br><span class="line"></span><br><span class="line">joined_df.printSchema()</span><br></pre></td></tr></table></figure>
+<pre><code>root
+ |-- age: long (nullable = true)
+ |-- gender: string (nullable = true)
+ |-- occupation: string (nullable = true)
+ |-- userid: long (nullable = true)
+ |-- zipcode: string (nullable = true)
+ |-- city: string (nullable = true)
+ |-- state: string (nullable = true)
+ |-- zipCodeType: string (nullable = true)
+ |-- zipcode: long (nullable = true)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">joined_df.show(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+-------------+------+-------+-------------+-----+-----------+-------+
+|age|gender|   occupation|userid|zipcode|         city|state|zipCodeType|zipcode|
++---+------+-------------+------+-------+-------------+-----+-----------+-------+
+| 59|     F|administrator|   131|  15237|   PITTSBURGH|   PA|   STANDARD|  15237|
+| 17|     M|      student|   619|  44134|    CLEVELAND|   OH|   STANDARD|  44134|
+| 38|     F|entertainment|   839|  90814|   LONG BEACH|   CA|   STANDARD|  90814|
+| 48|     M|administrator|   409|  98225|   BELLINGHAM|   WA|   STANDARD|  98225|
+| 31|     M|     educator|   791|  20064|   WASHINGTON|   DC|     UNIQUE|  20064|
+| 51|     M|     engineer|   271|  22932|       CROZET|   VA|   STANDARD|  22932|
+| 17|     M|entertainment|   375|  37777|   LOUISVILLE|   TN|   STANDARD|  37777|
+| 27|     M|      student|   758|  53706|      MADISON|   WI|   STANDARD|  53706|
+| 33|     M|    scientist|   272|  53706|      MADISON|   WI|   STANDARD|  53706|
+| 30|     F|    librarian|   344|  94117|SAN FRANCISCO|   CA|   STANDARD|  94117|
++---+------+-------------+------+-------+-------------+-----+-----------+-------+
+only showing top 10 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">joined_df.filter(<span class="string">"state='NY' "</span>).show(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+---+------+-------------+------+-------+----------------+-----+-----------+-------+
+|age|gender|   occupation|userid|zipcode|            city|state|zipCodeType|zipcode|
++---+------+-------------+------+-------+----------------+-----+-----------+-------+
+| 29|     M|        other|   478|  10019|        NEW YORK|   NY|   STANDARD|  10019|
+| 22|     F|   healthcare|   405|  10019|        NEW YORK|   NY|   STANDARD|  10019|
+| 22|     M|      student|   327|  11101|LONG ISLAND CITY|   NY|   STANDARD|  11101|
+| 48|     M|     educator|   656|  10314|   STATEN ISLAND|   NY|   STANDARD|  10314|
+| 27|     F|       writer|   617|  11201|        BROOKLYN|   NY|   STANDARD|  11201|
+| 35|     F|        other|   760|  14211|         BUFFALO|   NY|   STANDARD|  14211|
+| 30|     F|       writer|   557|  11217|        BROOKLYN|   NY|   STANDARD|  11217|
+| 27|     M|    marketing|   806|  11217|        BROOKLYN|   NY|   STANDARD|  11217|
+| 32|     F|        other|   155|  11217|        BROOKLYN|   NY|   STANDARD|  11217|
+| 23|     M|administrator|   509|  10011|        NEW YORK|   NY|   STANDARD|  10011|
++---+------+-------------+------+-------+----------------+-----+-----------+-------+
+only showing top 10 rows
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GroupByState_df=joined_df.groupBy(<span class="string">"state"</span>).count()</span><br><span class="line">GroupByState_df.show(<span class="number">60</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+-----+-----+
+|state|count|
++-----+-----+
+|   SC|   11|
+|   AZ|   14|
+|   LA|    6|
+|   MN|   78|
+|   NJ|   18|
+|   DC|   14|
+|   OR|   20|
+|   VA|   27|
+| null|   35|
+|   RI|    3|
+|   KY|   11|
+|   WY|    1|
+|   NH|    6|
+|   MI|   23|
+|   NV|    3|
+|   WI|   22|
+|   ID|    7|
+|   CA|  116|
+|   CT|   17|
+|   NE|    6|
+|   MT|    2|
+|   NC|   19|
+|   VT|    5|
+|   MD|   27|
+|   DE|    3|
+|   MO|   17|
+|   IL|   50|
+|   ME|    2|
+|   WA|   24|
+|   ND|    2|
+|   MS|    3|
+|   AL|    3|
+|   IN|    9|
+|   AE|    1|
+|   OH|   32|
+|   TN|   12|
+|   IA|   14|
+|   NM|    2|
+|   PA|   34|
+|   SD|    1|
+|   NY|   60|
+|   TX|   51|
+|   WV|    3|
+|   GA|   19|
+|   MA|   35|
+|   KS|    4|
+|   FL|   24|
+|   CO|   20|
+|   AK|    5|
+|   AR|    1|
+|   OK|    9|
+|   AP|    1|
+|   UT|    9|
+|   HI|    2|
++-----+-----+
+</code></pre><h1 id="19-11-以Pandas-DataFrame绘图"><a href="#19-11-以Pandas-DataFrame绘图" class="headerlink" title="19.11    以Pandas DataFrame绘图"></a>19.11    以Pandas DataFrame绘图</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">GroupByState_pandas_df =GroupByState_df.toPandas().set_index(<span class="string">'state'</span>)</span><br><span class="line">GroupByState_pandas_df</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>count</th><br>    </tr><br>    <tr><br>      <th>state</th><br>      <th></th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>SC</th><br>      <td>11</td><br>    </tr><br>    <tr><br>      <th>AZ</th><br>      <td>14</td><br>    </tr><br>    <tr><br>      <th>LA</th><br>      <td>6</td><br>    </tr><br>    <tr><br>      <th>MN</th><br>      <td>78</td><br>    </tr><br>    <tr><br>      <th>NJ</th><br>      <td>18</td><br>    </tr><br>    <tr><br>      <th>DC</th><br>      <td>14</td><br>    </tr><br>    <tr><br>      <th>OR</th><br>      <td>20</td><br>    </tr><br>    <tr><br>      <th>VA</th><br>      <td>27</td><br>    </tr><br>    <tr><br>      <th>NaN</th><br>      <td>35</td><br>    </tr><br>    <tr><br>      <th>RI</th><br>      <td>3</td><br>    </tr><br>    <tr><br>      <th>KY</th><br>      <td>11</td><br>    </tr><br>    <tr><br>      <th>WY</th><br>      <td>1</td><br>    </tr><br>    <tr><br>      <th>NH</th><br>      <td>6</td><br>    </tr><br>    <tr><br>      <th>MI</th><br>      <td>23</td><br>    </tr><br>    <tr><br>      <th>NV</th><br>      <td>3</td><br>    </tr><br>    <tr><br>      <th>WI</th><br>      <td>22</td><br>    </tr><br>    <tr><br>      <th>ID</th><br>      <td>7</td><br>    </tr><br>    <tr><br>      <th>CA</th><br>      <td>116</td><br>    </tr><br>    <tr><br>      <th>CT</th><br>      <td>17</td><br>    </tr><br>    <tr><br>      <th>NE</th><br>      <td>6</td><br>    </tr><br>    <tr><br>      <th>MT</th><br>      <td>2</td><br>    </tr><br>    <tr><br>      <th>NC</th><br>      <td>19</td><br>    </tr><br>    <tr><br>      <th>VT</th><br>      <td>5</td><br>    </tr><br>    <tr><br>      <th>MD</th><br>      <td>27</td><br>    </tr><br>    <tr><br>      <th>DE</th><br>      <td>3</td><br>    </tr><br>    <tr><br>      <th>MO</th><br>      <td>17</td><br>    </tr><br>    <tr><br>      <th>IL</th><br>      <td>50</td><br>    </tr><br>    <tr><br>      <th>ME</th><br>      <td>2</td><br>    </tr><br>    <tr><br>      <th>WA</th><br>      <td>24</td><br>    </tr><br>    <tr><br>      <th>ND</th><br>      <td>2</td><br>    </tr><br>    <tr><br>      <th>MS</th><br>      <td>3</td><br>    </tr><br>    <tr><br>      <th>AL</th><br>      <td>3</td><br>    </tr><br>    <tr><br>      <th>IN</th><br>      <td>9</td><br>    </tr><br>    <tr><br>      <th>AE</th><br>      <td>1</td><br>    </tr><br>    <tr><br>      <th>OH</th><br>      <td>32</td><br>    </tr><br>    <tr><br>      <th>TN</th><br>      <td>12</td><br>    </tr><br>    <tr><br>      <th>IA</th><br>      <td>14</td><br>    </tr><br>    <tr><br>      <th>NM</th><br>      <td>2</td><br>    </tr><br>    <tr><br>      <th>PA</th><br>      <td>34</td><br>    </tr><br>    <tr><br>      <th>SD</th><br>      <td>1</td><br>    </tr><br>    <tr><br>      <th>NY</th><br>      <td>60</td><br>    </tr><br>    <tr><br>      <th>TX</th><br>      <td>51</td><br>    </tr><br>    <tr><br>      <th>WV</th><br>      <td>3</td><br>    </tr><br>    <tr><br>      <th>GA</th><br>      <td>19</td><br>    </tr><br>    <tr><br>      <th>MA</th><br>      <td>35</td><br>    </tr><br>    <tr><br>      <th>KS</th><br>      <td>4</td><br>    </tr><br>    <tr><br>      <th>CO</th><br>      <td>20</td><br>    </tr><br>    <tr><br>      <th>FL</th><br>      <td>24</td><br>    </tr><br>    <tr><br>      <th>AK</th><br>      <td>5</td><br>    </tr><br>    <tr><br>      <th>AR</th><br>      <td>1</td><br>    </tr><br>    <tr><br>      <th>OK</th><br>      <td>9</td><br>    </tr><br>    <tr><br>      <th>AP</th><br>      <td>1</td><br>    </tr><br>    <tr><br>      <th>UT</th><br>      <td>9</td><br>    </tr><br>    <tr><br>      <th>HI</th><br>      <td>2</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GroupByState_pandas_df.T</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th>state</th><br>      <th>SC</th><br>      <th>AZ</th><br>      <th>LA</th><br>      <th>MN</th><br>      <th>NJ</th><br>      <th>DC</th><br>      <th>OR</th><br>      <th>VA</th><br>      <th>None</th><br>      <th>RI</th><br>      <th>…</th><br>      <th>MA</th><br>      <th>KS</th><br>      <th>CO</th><br>      <th>FL</th><br>      <th>AK</th><br>      <th>AR</th><br>      <th>OK</th><br>      <th>AP</th><br>      <th>UT</th><br>      <th>HI</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>count</th><br>      <td>11</td><br>      <td>14</td><br>      <td>6</td><br>      <td>78</td><br>      <td>18</td><br>      <td>14</td><br>      <td>20</td><br>      <td>27</td><br>      <td>35</td><br>      <td>3</td><br>      <td>…</td><br>      <td>35</td><br>      <td>4</td><br>      <td>20</td><br>      <td>24</td><br>      <td>5</td><br>      <td>1</td><br>      <td>9</td><br>      <td>1</td><br>      <td>9</td><br>      <td>2</td><br>    </tr><br>  </tbody><br></table><br><p>1 rows × 54 columns</p><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line">ax = GroupByState_pandas_df [<span class="string">'count'</span>]  \</span><br><span class="line">            .plot(kind=<span class="string">'bar'</span>, title =<span class="string">"State "</span>,figsize=(<span class="number">12</span>,<span class="number">6</span>),legend=<span class="keyword">True</span>, fontsize=<span class="number">12</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="./image/spark_sql_output_104_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Occupation_df=sqlContext.sql(<span class="string">""" </span></span><br><span class="line"><span class="string">SELECT u.occupation ,count(*) counts</span></span><br><span class="line"><span class="string">FROM user_table u</span></span><br><span class="line"><span class="string">GROUP BY occupation</span></span><br><span class="line"><span class="string">"""</span>)</span><br><span class="line">Occupation_df.show(<span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>+-------------+------+
+|   occupation|counts|
++-------------+------+
+|    librarian|    51|
+|      retired|    14|
+|       lawyer|    12|
+|         none|     9|
+|       writer|    45|
+|   programmer|    66|
+|    marketing|    26|
+|        other|   105|
+|    executive|    32|
+|    scientist|    31|
+|      student|   196|
+|     salesman|    12|
+|       artist|    28|
+|   technician|    27|
+|administrator|    79|
+|     engineer|    67|
+|   healthcare|    16|
+|     educator|    95|
+|entertainment|    18|
+|    homemaker|     7|
+|       doctor|     7|
++-------------+------+
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Occupation_pandas_df =Occupation_df.toPandas().set_index(<span class="string">'occupation'</span>)</span><br><span class="line">Occupation_pandas_df</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>counts</th><br>    </tr><br>    <tr><br>      <th>occupation</th><br>      <th></th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>librarian</th><br>      <td>51</td><br>    </tr><br>    <tr><br>      <th>retired</th><br>      <td>14</td><br>    </tr><br>    <tr><br>      <th>lawyer</th><br>      <td>12</td><br>    </tr><br>    <tr><br>      <th>none</th><br>      <td>9</td><br>    </tr><br>    <tr><br>      <th>writer</th><br>      <td>45</td><br>    </tr><br>    <tr><br>      <th>programmer</th><br>      <td>66</td><br>    </tr><br>    <tr><br>      <th>marketing</th><br>      <td>26</td><br>    </tr><br>    <tr><br>      <th>other</th><br>      <td>105</td><br>    </tr><br>    <tr><br>      <th>executive</th><br>      <td>32</td><br>    </tr><br>    <tr><br>      <th>scientist</th><br>      <td>31</td><br>    </tr><br>    <tr><br>      <th>student</th><br>      <td>196</td><br>    </tr><br>    <tr><br>      <th>salesman</th><br>      <td>12</td><br>    </tr><br>    <tr><br>      <th>artist</th><br>      <td>28</td><br>    </tr><br>    <tr><br>      <th>technician</th><br>      <td>27</td><br>    </tr><br>    <tr><br>      <th>administrator</th><br>      <td>79</td><br>    </tr><br>    <tr><br>      <th>engineer</th><br>      <td>67</td><br>    </tr><br>    <tr><br>      <th>healthcare</th><br>      <td>16</td><br>    </tr><br>    <tr><br>      <th>educator</th><br>      <td>95</td><br>    </tr><br>    <tr><br>      <th>entertainment</th><br>      <td>18</td><br>    </tr><br>    <tr><br>      <th>homemaker</th><br>      <td>7</td><br>    </tr><br>    <tr><br>      <th>doctor</th><br>      <td>7</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ax =Occupation_pandas_df[<span class="string">'counts'</span>].plot(kind=<span class="string">'pie'</span>,</span><br><span class="line">           title =<span class="string">"occupation"</span>,figsize=(<span class="number">8</span>,<span class="number">8</span>),startangle=<span class="number">90</span>,autopct=<span class="string">'%1.1f%%'</span>)</span><br><span class="line">ax.legend(bbox_to_anchor=(<span class="number">1.05</span>, <span class="number">1</span>), loc=<span class="number">2</span>, borderaxespad=<span class="number">0.</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="./image/spark_sql_output_107_0.png" alt="png"></p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 你的支持是我写作的莫大鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+	
+
+
+
+    <ul class="list-inline text-center">
+
+
+	
+
+
+
+
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ethan2lee">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://anne2bin.top">anne2bin</a></span>
+        <span>/</span>
+        
+        <span><a href="https://blog.ywandy.top/">yewei_andy</a></span>
+        <span>/</span>
+        
+        <span><a href="https://wwb.colonp.top/">wwb</a></span>
+        <span>/</span>
+        
+    </p>
+    
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://ethan2lee.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+</html>
