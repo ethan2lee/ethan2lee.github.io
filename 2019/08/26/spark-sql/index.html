@@ -1192,7 +1192,7 @@ only showing top 10 rows
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line">ax = GroupByState_pandas_df [<span class="string">'count'</span>]  \</span><br><span class="line">            .plot(kind=<span class="string">'bar'</span>, title =<span class="string">"State "</span>,figsize=(<span class="number">12</span>,<span class="number">6</span>),legend=<span class="keyword">True</span>, fontsize=<span class="number">12</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="./image/spark_sql_output_104_0.png" alt="png"></p>
+<p><img src="image/spark_sql_output_104_0.png" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Occupation_df=sqlContext.sql(<span class="string">""" </span></span><br><span class="line"><span class="string">SELECT u.occupation ,count(*) counts</span></span><br><span class="line"><span class="string">FROM user_table u</span></span><br><span class="line"><span class="string">GROUP BY occupation</span></span><br><span class="line"><span class="string">"""</span>)</span><br><span class="line">Occupation_df.show(<span class="number">30</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>+-------------+------+
 |   occupation|counts|
@@ -1226,7 +1226,7 @@ only showing top 10 rows
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ax =Occupation_pandas_df[<span class="string">'counts'</span>].plot(kind=<span class="string">'pie'</span>,</span><br><span class="line">           title =<span class="string">"occupation"</span>,figsize=(<span class="number">8</span>,<span class="number">8</span>),startangle=<span class="number">90</span>,autopct=<span class="string">'%1.1f%%'</span>)</span><br><span class="line">ax.legend(bbox_to_anchor=(<span class="number">1.05</span>, <span class="number">1</span>), loc=<span class="number">2</span>, borderaxespad=<span class="number">0.</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="./image/spark_sql_output_107_0.png" alt="png"></p>
+<p><img src="image/spark_sql_output_107_0.png" alt="png"></p>
 
         
             <div class="donate-container">
